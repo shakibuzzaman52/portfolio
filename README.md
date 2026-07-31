@@ -1,0 +1,1 @@
+A modern, responsive personal portfolio website showcasing my projects, skills, education, and competitive programming journey. Built with HTML, CSS, and JavaScript, featuring a clean dark-themed design and smooth user experience.
