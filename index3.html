@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shakib's Portfolio</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v13/font/simple-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* =======================
+           RESET & BASE STYLES
+        ======================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Hide scrollbar Firefox */
+        }
+
+        body {
+            font-family: "Inter", Arial, Helvetica, sans-serif;
+            background-color: #050505; /* পিওর ব্ল্যাক ব্যাকগ্রাউন্ড */
+            color: #ffffff;
+            font-size: 1rem;
+            line-height: 1.8;
+            -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Hide scrollbar Chrome, Edge, Safari */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* ====================================
+           MONOCHROME REVEAL CANVAS STYLE
+        ==================================== */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* =======================
+           TYPOGRAPHY & SHARED
+        ======================= */
+        .text-muted {
+            color: #999;
+            font-size: 1rem;
+        }
+
+        .highlight-link,
+        .findMePlatform a {
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 550;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.144);
+            transition: 0.3s ease;
+        }
+
+        .highlight-link:hover,
+        .findMePlatform a:hover {
+            border-bottom-color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* =======================
+           HEADER & NAV
+        ======================= */
+        header {
+            width: 100%;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 90px;
+            padding: 0 3%;
+        }
+
+        .left {
+            display: flex;
+            align-items: center;
+        }
+
+        .profileLink {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .left img {
+            width: 46px;
+            height: 46px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .profileText {
+            display: flex;
+            align-items: flex-end;
+            height: 46px;
+            padding-bottom: 2px;
+        }
+
+        .profileText span {
+            font-family: "DM Mono", monospace;
+            font-size: 0.78rem;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            color: #999;
+        }
+
+        .right ul {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .right ul li a {
+            color: #999;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .right ul li a:hover {
+            color: #ffffff;
+        }
+
+        .right ul li a i {
+            display: none;
+        }
+
+        /* =======================
+           MAIN LAYOUT
+        ======================= */
+        main {
+            width: min(700px, 80%);
+            margin: auto;
+        }
+
+        section {
+            margin: 50px 0;
+        }
+
+        /* =======================
+           HERO SECTION
+        ======================= */
+        .mainHeader h1 {
+            margin-bottom: 15px;
+            font-size: 2.2rem;
+            font-weight: 750;
+            letter-spacing: -0.5px;
+        }
+
+        .bio {
+            max-width: 700px;
+        }
+
+        /* =======================
+           SKILLS SECTION
+        ======================= */
+        .secondSection {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .secondSection>div {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .secondSection h3,
+        .findMeTitle h3 {
+            margin-right: 3px;
+            color: #999;
+            font-size: 1rem;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        .secondSection span {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 65px;
+            height: 28px;
+            padding: 0 10px;
+            background: #161616;
+            border-radius: 4px;
+            transition: 0.3s ease;
+        }
+
+        .secondSection span a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            text-decoration: none;
+            font-family: "Roboto Condensed", sans-serif;
+            font-size: 0.93rem;
+            font-weight: 400;
+        }
+
+        .secondSection span:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .secondSection span:hover a {
+            color: #ffffff;
+        }
+
+        .secondSection span i {
+            margin-right: 5px;
+            font-size: 0.7rem;
+        }
+
+        /* =======================
+           ABOUT SECTION
+        ======================= */
+        .threeSection {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .threeSection p {
+            max-width: 760px;
+        }
+
+        /* =======================
+           CONTACT SECTION
+        ======================= */
+        .findMeSection {
+            width: 100%;
+        }
+
+        .findMeTitle h3 {
+            margin-bottom: 12px;
+        }
+
+        .findMePlatform {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .findMePlatform a {
+            display: inline-block;
+        }
+
+        .mail {
+            margin-top: 15px;
+        }
+
+        .mail a {
+            color: #999;
+            text-decoration: none;
+            font-family: "DM Mono", monospace;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .mail a:hover {
+            color: #ffffff;
+        }
+
+        /* =======================
+           FOOTER
+        ======================= */
+        .footerSection {
+            width: min(700px, 80%);
+            margin: auto;
+            padding: 25px 0;
+            border-top: 1px solid #262626;
+        }
+
+        .footer p {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* =======================
+           BACK TO TOP BUTTON
+        ======================= */
+        .backToTop {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #999;
+            background: transparent;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s ease;
+            z-index: 9999;
+        }
+
+        .backToTop:hover {
+            color: #fff;
+            background: #161616e1;
+        }
+
+        .backToTop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* =======================
+           RESPONSIVE DESIGN
+        ======================= */
+        @media (max-width: 768px) {
+            nav {
+                height: 80px;
+                padding: 0 6%;
+            }
+
+            .profileText,
+            .right ul li a span {
+                display: none;
+            }
+
+            .left img {
+                width: 42px;
+                height: 42px;
+            }
+
+            .right ul {
+                gap: 18px;
+            }
+
+            .right ul li a i {
+                display: block;
+                color: #999;
+                font-size: 1.1rem;
+                transition: color 0.3s ease;
+            }
+
+            .right ul li a:hover i {
+                color: #ffffff;
+            }
+
+            main,
+            .footerSection {
+                width: 88%;
+            }
+
+            .mainHeader h1 {
+                font-size: 1.6rem;
+            }
+
+            .secondSection>div {
+                align-items: flex-start;
+            }
+
+            .findMePlatform a,
+            .mail p,
+            .footer p {
+                font-size: 0.95rem;
+            }
+
+            .mail a {
+                font-size: 0.9rem;
+                word-break: break-word;
+            }
+        }
+
+        /* =======================
+           PAGE ANIMATIONS
+        ======================= */
+        body {
+            animation: pageFadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes pageFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- মনোক্রোম বাইনারি ক্যানভাস -->
+    <canvas id="bg-canvas"></canvas>
+
+    <div id="top"></div>
+
+    <header>
+        <nav>
+            <div class="left">
+                <a href="index.html" class="profileLink">
+                    <img src="https://github.com/shakibuzzaman52.png" alt="Profile">
+                    <div class="profileText">
+                        <span>shakibuzzaman52.me</span>
+                    </div>
+                </a>
+            </div>
+            <div class="right">
+                <ul>
+                    <li>
+                        <a href="blog.html" title="Blog">
+                            <i class="fa-regular fa-newspaper"></i>
+                            <span>Blog</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="project.html" title="Projects">
+                            <i class="fa-regular fa-folder"></i>
+                            <span>Projects</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="resources.html" title="Resources">
+                            <i class="fa-regular fa-file-pdf"></i>
+                            <span>Resources</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="firstSection">
+            <div class="mainHeader">
+                <h1>G M Shakib Uz Zaman</h1>
+            </div>
+            <div class="bio">
+                <p class="text-muted">
+                    Hey! I'm Shakib Uz Zaman, a <a href="education.html"
+                        title="Blog" class="highlight-link">CSE
+                        undergraduate</a>, competitive programmer and problem solver.
+                </p>
+            </div>
+        </section>
+
+        <section class="secondSection">
+            <div class="langAndTech">
+                <h3>Languages & Technologies</h3>
+                <span><a href="javascript:void(0)"><i class="devicon-c-plain colored"></i> C</a></span>
+                <span><a href="javascript:void(0)"><i class="devicon-cplusplus-plain colored"></i> C++</a></span>
+                <span><a href="javascript:void(0)"><i class="devicon-python-plain colored"></i> Python</a></span>
+                <span><a href="javascript:void(0)"><i class="devicon-html5-plain colored"></i> HTML</a></span>
+                <span><a href="javascript:void(0)"><i class="devicon-css3-plain colored"></i> CSS</a></span>
+            </div>
+
+            <div class="competitiveProg">
+                <h3>Competitive Programming</h3>
+                <span><a href="https://codeforces.com/profile/shakibuzzaman52" target="_blank"
+                        rel="noopener noreferrer"><i class="si si-codeforces" style="color:#ca2606;"></i>
+                        Codeforces</a></span>
+                <span><a href="https://leetcode.com/u/shakibuzzaman52/" target="_blank" rel="noopener noreferrer"><i
+                            class="si si-leetcode" style="color:#ca9e0b;"></i> LeetCode</a></span>
+                <span><a href="https://www.codechef.com/users/shakibuzzaman" target="_blank"
+                        rel="noopener noreferrer"><i class="si si-codechef" style="color:#ffffff;"></i>
+                        CodeChef</a></span>
+            </div>
+
+            <div class="devTools">
+                <h3>Developer Tools</h3>
+                <span><a href="javascript:void(0)"><i class="devicon-vscode-plain colored"></i> VS Code</a></span>
+                <span><a href="javascript:void(0)"><i class="devicon-git-plain colored"></i> Git</a></span>
+                <span><a href="https://github.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i
+                            class="devicon-github-original"></i> GitHub</a></span>
+            </div>
+
+            <div class="currentlyLearning">
+                <h3>Currently Learning</h3>
+                <span><a href="javascript:void(0)"><i class="devicon-cplusplus-plain colored"></i> C++</a></span>
+                <span><a href="javascript:void(0)"><i class="fa-solid fa-diagram-project" style="color:#00d486;"></i>
+                        Data Structures</a></span>
+                <span><a href="javascript:void(0)"><i class="fa-solid fa-brain" style="color:#fafafa;"></i>
+                        Algorithms</a></span>
+                <span><a href="javascript:void(0)"><i class="devicon-python-plain colored"></i> Python</a></span>
+            </div>
+        </section>
+
+        <section class="threeSection">
+            <div class="currentlyDescription">
+                <p class="text-muted">
+                    I enjoy learning new concepts and turning ideas into projects. I continuously improve my skills
+                    through consistent practice. Explore my <a href="project.html"
+                        class="highlight-link">Projects</a> to see what I've built. Read my <a href="blog.html"
+                        title="Blog" class="highlight-link">Blog</a> to follow my journey. Check out my <a
+                        href="resources.html" class="highlight-link">Resources</a>. View my <a
+                        href="javascript:void(0)" class="highlight-link">Achievements</a>. Learn more about me through
+                    my <a href="javascript:void(0)" class="highlight-link">Resume</a>.
+                </p>
+            </div>
+            <div class="futureDescription">
+                <p class="text-muted">
+                    Currently, I'm focused on C++, Data Structures and Algorithms, and competitive programming to build
+                    a solid foundation in computer science.
+                </p>
+                <br>
+                <p class="text-muted">
+                    Outside of programming, I enjoy watching movies. You can explore my <a href="movie.html"
+                        class="highlight-link">Movie Collection</a> to see the films I have watched.
+                </p>
+            </div>
+        </section>
+
+        <section class="findMeSection">
+            <div class="findMeTitle">
+                <h3>Find me on</h3>
+            </div>
+            <div class="findMePlatform">
+                <a href="https://github.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i
+                        class="fa-brands fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i
+                        class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a href="https://www.instagram.com/shakibuzzaman_52" target="_blank" rel="noopener noreferrer"><i
+                        class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="https://www.facebook.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i
+                        class="fa-brands fa-facebook"></i> Facebook</a>
+            </div>
+            <div class="mail">
+                <p class="text-muted">
+                    Or mail me at <a href="mailto:shakibuzzaman52@gmail.com">shakibuzzaman52@gmail.com</a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footerSection">
+        <div class="footer">
+            <p>Thanks for visiting! Let's keep learning, creating and improving together.</p>
+        </div>
+    </footer>
+
+    <a href="#" class="backToTop" id="backToTop">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <!-- ভলিউমেট্রিক টর্চলাইট স্ক্রিপ্ট (বিশুদ্ধ সাদা-কালো) -->
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let columns = [];
+        const mouse = { x: null, y: null };
+        const revealRadius = 150; // স্পটলাইটের ব্যাসার্ধ
+        const topRevealHeight = 160; // ওপরের অলটাইম দৃশ্যমান রেইন হাইট
+
+        // মাউস পজিশন ট্র্যাকিং (Desktop)
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        window.addEventListener('mouseleave', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        // টাচ ট্র্যাকিং (Mobile)
+        window.addEventListener('touchstart', (e) => {
+            if (e.touches.length > 0) {
+                mouse.x = e.touches[0].clientX;
+                mouse.y = e.touches[0].clientY;
+            }
+        });
+
+        window.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                mouse.x = e.touches[0].clientX;
+                mouse.y = e.touches[0].clientY;
+            }
+        });
+
+        window.addEventListener('touchend', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        class PremiumColumn {
+            constructor(x) {
+                this.x = x;
+                this.y = Math.random() * -canvas.height;
+                this.fontSize = 12;
+                // গতিবেগ কমানো হয়েছে (০.২ থেকে ০.৫ পিক্সেল প্রতি ফ্রেম)
+                this.speed = 0.2 + Math.random() * 0.3; 
+            }
+
+            update() {
+                this.y += this.speed;
+                if (this.y > canvas.height) {
+                    this.y = -20;
+                }
+            }
+
+            draw() {
+                ctx.font = `300 ${this.fontSize}px "DM Mono", monospace`;
+
+                const trailLength = 8;
+                for (let i = 0; i < trailLength; i++) {
+                    const charY = this.y - (i * this.fontSize * 1.3);
+                    if (charY < 0 || charY > canvas.height) continue;
+
+                    // ১. মাউস হোভারের স্পটলাইট অপাসিটি হিসেব করা
+                    let revealAlpha = 0;
+                    if (mouse.x !== null && mouse.y !== null) {
+                        const dx = mouse.x - this.x;
+                        const dy = mouse.y - charY;
+                        const distance = Math.hypot(dx, dy);
+                        if (distance < revealRadius) {
+                            // সর্বোচ্চ ব্রাইটনেস ০.২৫ থেকে কমিয়ে ০.১৩ করা হয়েছে
+                            revealAlpha = (1 - distance / revealRadius) * 0.13;
+                        }
+                    }
+
+                    // ২. স্ক্রিনের ওপরের অংশের জন্য স্থায়ী অপাসিটি হিসেব করা
+                    let topAlpha = 0;
+                    if (charY < topRevealHeight) {
+                        topAlpha = (1 - charY / topRevealHeight) * 0.08; 
+                    }
+
+                    // সর্বোচ্চ অপাসিটি নির্বাচন
+                    const alpha = Math.max(revealAlpha, topAlpha);
+
+                    // শুধুমাত্র দৃশ্যমান অপাসিটিতে থাকা সংখ্যাগুলো আঁকা হবে
+                    if (alpha > 0.005) {
+                        const char = Math.random() > 0.98 ? (Math.random() > 0.5 ? '1' : '0') : '0';
+
+                        ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+                        ctx.fillText(Math.random() > 0.5 ? '1' : '0', this.x, charY);
+                    }
+                }
+            }
+        }
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const colWidth = 18;
+            const numColumns = Math.floor(canvas.width / colWidth) + 1;
+            
+            columns = [];
+            for (let i = 0; i < numColumns; i++) {
+                columns.push(new PremiumColumn(i * colWidth));
+            }
+        }
+
+        function drawVolumetricGlow() {
+            if (mouse.x === null || mouse.y === null) return;
+
+            // মাউসের চারপাশে হালকা সাদা গ্লো (অত্যন্ত মৃদু আলোর প্রলেপ)
+            const glow = ctx.createRadialGradient(mouse.x, mouse.y, 10, mouse.x, mouse.y, revealRadius);
+            // অপাসিটি ০.০২৫ থেকে কমিয়ে ০.০১১ করা হয়েছে
+            glow.addColorStop(0, 'rgba(255, 255, 255, 0.011)'); 
+            glow.addColorStop(0.5, 'rgba(255, 255, 255, 0.004)');
+            glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+            ctx.fillStyle = glow;
+            ctx.beginPath();
+            ctx.arc(mouse.x, mouse.y, revealRadius, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // ১. মাউসের চারপাশের ব্যাকগ্রাউন্ড গ্লো
+            drawVolumetricGlow();
+
+            // ২. বাইনারি সংখ্যাগুলোর কন্টিনিউয়াস রেন্ডারিং
+            columns.forEach(col => {
+                col.update();
+                col.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        animate();
+
+        // --- ব্যাক টু টপ স্ক্রোল হ্যান্ডলার ---
+        window.addEventListener("scroll", function () {
+            const btn = document.getElementById("backToTop");
+            if (window.scrollY > 50) {
+                btn.classList.add("active");
+            } else {
+                btn.classList.remove("active");
+            }
+        });
+
+        document.getElementById("backToTop").onclick = function (e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        };
+    </script>
+</body>
+</html>
