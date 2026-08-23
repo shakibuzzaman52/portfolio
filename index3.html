@@ -572,7 +572,7 @@
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 
-    <!-- ভলিউমেট্রিক টর্চলাইট স্ক্রিপ্ট (বিশুদ্ধ সাদা-কালো) -->
+    <!-- ভলিউমেট্রিক টর্চলাইট স্ক্রিপ্ট (উচ্চ ব্রাইটনেস ও পূর্বের গতিবেগ) -->
     <script>
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
@@ -618,8 +618,8 @@
                 this.x = x;
                 this.y = Math.random() * -canvas.height;
                 this.fontSize = 12;
-                // গতিবেগ কমানো হয়েছে (০.২ থেকে ০.৫ পিক্সেল প্রতি ফ্রেম)
-                this.speed = 0.2 + Math.random() * 0.3; 
+                // গতিবেগ বাড়িয়ে আগের গতিবেগে (০.৪৫ থেকে ০.৯৫) ফিরিয়ে আনা হয়েছে
+                this.speed = 0.45 + Math.random() * 0.5; 
             }
 
             update() {
@@ -644,15 +644,16 @@
                         const dy = mouse.y - charY;
                         const distance = Math.hypot(dx, dy);
                         if (distance < revealRadius) {
-                            // সর্বোচ্চ ব্রাইটনেস ০.২৫ থেকে কমিয়ে ০.১৩ করা হয়েছে
-                            revealAlpha = (1 - distance / revealRadius) * 0.13;
+                            // উজ্জ্বলতা বাড়িয়ে ০.২২ করা হয়েছে
+                            revealAlpha = (1 - distance / revealRadius) * 0.22;
                         }
                     }
 
                     // ২. স্ক্রিনের ওপরের অংশের জন্য স্থায়ী অপাসিটি হিসেব করা
                     let topAlpha = 0;
                     if (charY < topRevealHeight) {
-                        topAlpha = (1 - charY / topRevealHeight) * 0.08; 
+                        // ওপরের রেইনের দৃশ্যমানতাও হোভারের মতো ০.২২ করা হয়েছে
+                        topAlpha = (1 - charY / topRevealHeight) * 0.22; 
                     }
 
                     // সর্বোচ্চ অপাসিটি নির্বাচন
@@ -685,11 +686,10 @@
         function drawVolumetricGlow() {
             if (mouse.x === null || mouse.y === null) return;
 
-            // মাউসের চারপাশে হালকা সাদা গ্লো (অত্যন্ত মৃদু আলোর প্রলেপ)
+            // মাউসের চারপাশে হালকা ব্যাকগ্রাউন্ড আভা
             const glow = ctx.createRadialGradient(mouse.x, mouse.y, 10, mouse.x, mouse.y, revealRadius);
-            // অপাসিটি ০.০২৫ থেকে কমিয়ে ০.০১১ করা হয়েছে
-            glow.addColorStop(0, 'rgba(255, 255, 255, 0.011)'); 
-            glow.addColorStop(0.5, 'rgba(255, 255, 255, 0.004)');
+            glow.addColorStop(0, 'rgba(255, 255, 255, 0.02)'); 
+            glow.addColorStop(0.5, 'rgba(255, 255, 255, 0.006)');
             glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
             ctx.fillStyle = glow;
