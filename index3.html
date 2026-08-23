@@ -51,7 +51,7 @@
            SCROLLING MONOCHROME CANVAS STYLE
         ==================================== */
         #bg-canvas {
-            position: absolute; /* absolute করার কারণে এটি টেক্সটের সাথে স্ক্রল হবে */
+            position: absolute; /* টেক্সটের সাথে স্ক্রল করার জন্য */
             top: 0;
             left: 0;
             width: 100%;
@@ -572,7 +572,7 @@
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 
-    <!-- স্ক্রোলিং ভলিউমেট্রিক ক্যানভাস স্ক্রিপ্ট -->
+    <!-- স্ক্রোলিং ভলিউমেট্রিক ক্যানভাস স্ক্রিপ্ট (উন্নত ও বাগ-মুক্ত সংস্করণ) -->
     <script>
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
@@ -582,7 +582,7 @@
         const revealRadius = 150; // স্পটলাইটের ব্যাসার্ধ
         const topRevealHeight = 160; // ওপরের অলটাইম দৃশ্যমান রেইন হাইট
 
-        // মাউস পজিশন ট্র্যাকিং (পেজের সাপেক্ষে স্ক্রলিং পজিশন ট্র্যাক করতে pageX/Y ব্যবহৃত হয়েছে)
+        // মাউস পজিশন ট্র্যাকিং (পেজের সাপেক্ষে স্ক্রলিং পজিশন pageX/Y)
         window.addEventListener('mousemove', (e) => {
             mouse.x = e.pageX;
             mouse.y = e.pageY;
@@ -616,9 +616,10 @@
         class PremiumColumn {
             constructor(x) {
                 this.x = x;
-                this.y = Math.random() * -canvas.height;
+                // পেজ লোড হবার সাথে সাথেই সম্পূর্ণ ডকুমেন্টে কণা ছড়িয়ে দেওয়ার জন্য ওয়াই-অফসেট রেন্ডমাইজ করা
+                this.y = (Math.random() * 2 - 1) * canvas.height; 
                 this.fontSize = 12;
-                this.speed = 0.45 + Math.random() * 0.5; // পূর্বের গতিবেগ পুনরুদ্ধার
+                this.speed = 0.45 + Math.random() * 0.5; // রানিং গতিবেগ
             }
 
             update() {
@@ -667,11 +668,11 @@
             }
         }
 
-        // ক্যানভাস রিসাইজ ও পেজের পূর্ণ স্ক্রলিং হাইট সেট করা
+        // ক্যানভাস রিসাইজ ও পেজের পূর্ণ স্ক্রলিং হাইট সেট করা (রিসেট বাগ মুক্ত)
         function resizeCanvas() {
-            canvas.width = window.innerWidth;
+            const previousWidth = canvas.width;
             
-            // উইন্ডোর স্ক্রিনের উচ্চতা নয়, পেজের সম্পূর্ণ স্ক্রল উচ্চতা নেওয়া হচ্ছে
+            canvas.width = window.innerWidth;
             canvas.height = Math.max(
                 document.body.scrollHeight,
                 document.documentElement.scrollHeight,
@@ -681,16 +682,37 @@
             const colWidth = 18;
             const numColumns = Math.floor(canvas.width / colWidth) + 1;
             
-            columns = [];
-            for (let i = 0; i < numColumns; i++) {
-                columns.push(new PremiumColumn(i * colWidth));
+            // যদি কলাম ইতিমধ্যে ইনিশিয়ালাইজড থাকে, তবে তাদের মুছে না ফেলে চলমান রাখা হবে
+            if (columns.length > 0) {
+                if (numColumns > columns.length) {
+                    // স্ক্রিন চওড়া হলে নতুন কলাম যোগ করা হবে
+                    for (let i = columns.length; i < numColumns; i++) {
+                        columns.push(new PremiumColumn(i * colWidth));
+                    }
+                } else if (numColumns < columns.length) {
+                    // স্ক্রিন ছোট হলে বাড়তি কলাম কেটে বাদ দেওয়া হবে
+                    columns.length = numColumns;
+                }
+                
+                // উচ্চতা পরিবর্তনের সাপেক্ষে কলামের বর্তমান পজিশন চেক করা
+                columns.forEach(col => {
+                    if (col.y > canvas.height) {
+                        col.y = -20;
+                    }
+                });
+            } else {
+                // পেজ প্রথমবার লোড হবার সময়ের ইনিশিয়ালাইজেশন
+                columns = [];
+                for (let i = 0; i < numColumns; i++) {
+                    columns.push(new PremiumColumn(i * colWidth));
+                }
             }
         }
 
         function drawVolumetricGlow() {
             if (mouse.x === null || mouse.y === null) return;
 
-            // মাউসের চারপাশে হালকা সাদা গ্লো (পেজের সাপেক্ষে পজিশন করা)
+            // মাউসের চারপাশে হালকা সাদা ব্যাকগ্রাউন্ড আভা
             const glow = ctx.createRadialGradient(mouse.x, mouse.y, 10, mouse.x, mouse.y, revealRadius);
             glow.addColorStop(0, 'rgba(255, 255, 255, 0.02)'); 
             glow.addColorStop(0.5, 'rgba(255, 255, 255, 0.006)');
@@ -719,7 +741,7 @@
 
         // পেজ লোড ও রিসাইজ হবার সময় ক্যানভাস রি-ক্যালকুলেট করা
         window.addEventListener('resize', resizeCanvas);
-        window.addEventListener('load', resizeCanvas); // ইমেজ লোড হওয়ার পর সঠিক উচ্চতা পেতে
+        window.addEventListener('load', resizeCanvas); // ইমেজ ও ফন্ট লোড হবার পর নিখুঁত হাইট পেতে
         resizeCanvas();
         animate();
 
