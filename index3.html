@@ -48,14 +48,14 @@
         }
 
         /* ====================================
-           MONOCHROME REVEAL CANVAS STYLE
+           SCROLLING MONOCHROME CANVAS STYLE
         ==================================== */
         #bg-canvas {
-            position: fixed;
+            position: absolute; /* absolute করার কারণে এটি টেক্সটের সাথে স্ক্রল হবে */
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
             z-index: -1;
             pointer-events: none;
         }
@@ -420,7 +420,7 @@
 
 <body>
 
-    <!-- মনোক্রোম বাইনারি ক্যানভাস -->
+    <!-- স্ক্রোলিং বাইনারি ক্যানভাস -->
     <canvas id="bg-canvas"></canvas>
 
     <div id="top"></div>
@@ -572,7 +572,7 @@
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 
-    <!-- ভলিউমেট্রিক টর্চলাইট স্ক্রিপ্ট (উচ্চ ব্রাইটনেস ও পূর্বের গতিবেগ) -->
+    <!-- স্ক্রোলিং ভলিউমেট্রিক ক্যানভাস স্ক্রিপ্ট -->
     <script>
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
@@ -582,10 +582,10 @@
         const revealRadius = 150; // স্পটলাইটের ব্যাসার্ধ
         const topRevealHeight = 160; // ওপরের অলটাইম দৃশ্যমান রেইন হাইট
 
-        // মাউস পজিশন ট্র্যাকিং (Desktop)
+        // মাউস পজিশন ট্র্যাকিং (পেজের সাপেক্ষে স্ক্রলিং পজিশন ট্র্যাক করতে pageX/Y ব্যবহৃত হয়েছে)
         window.addEventListener('mousemove', (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
+            mouse.x = e.pageX;
+            mouse.y = e.pageY;
         });
 
         window.addEventListener('mouseleave', () => {
@@ -593,18 +593,18 @@
             mouse.y = null;
         });
 
-        // টাচ ট্র্যাকিং (Mobile)
+        // টাচ ট্র্যাকিং (পেজের সাপেক্ষে)
         window.addEventListener('touchstart', (e) => {
             if (e.touches.length > 0) {
-                mouse.x = e.touches[0].clientX;
-                mouse.y = e.touches[0].clientY;
+                mouse.x = e.touches[0].pageX;
+                mouse.y = e.touches[0].pageY;
             }
         });
 
         window.addEventListener('touchmove', (e) => {
             if (e.touches.length > 0) {
-                mouse.x = e.touches[0].clientX;
-                mouse.y = e.touches[0].clientY;
+                mouse.x = e.touches[0].pageX;
+                mouse.y = e.touches[0].pageY;
             }
         });
 
@@ -618,8 +618,7 @@
                 this.x = x;
                 this.y = Math.random() * -canvas.height;
                 this.fontSize = 12;
-                // গতিবেগ বাড়িয়ে আগের গতিবেগে (০.৪৫ থেকে ০.৯৫) ফিরিয়ে আনা হয়েছে
-                this.speed = 0.45 + Math.random() * 0.5; 
+                this.speed = 0.45 + Math.random() * 0.5; // পূর্বের গতিবেগ পুনরুদ্ধার
             }
 
             update() {
@@ -644,7 +643,6 @@
                         const dy = mouse.y - charY;
                         const distance = Math.hypot(dx, dy);
                         if (distance < revealRadius) {
-                            // উজ্জ্বলতা বাড়িয়ে ০.২২ করা হয়েছে
                             revealAlpha = (1 - distance / revealRadius) * 0.22;
                         }
                     }
@@ -652,7 +650,6 @@
                     // ২. স্ক্রিনের ওপরের অংশের জন্য স্থায়ী অপাসিটি হিসেব করা
                     let topAlpha = 0;
                     if (charY < topRevealHeight) {
-                        // ওপরের রেইনের দৃশ্যমানতাও হোভারের মতো ০.২২ করা হয়েছে
                         topAlpha = (1 - charY / topRevealHeight) * 0.22; 
                     }
 
@@ -670,9 +667,16 @@
             }
         }
 
+        // ক্যানভাস রিসাইজ ও পেজের পূর্ণ স্ক্রলিং হাইট সেট করা
         function resizeCanvas() {
             canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            
+            // উইন্ডোর স্ক্রিনের উচ্চতা নয়, পেজের সম্পূর্ণ স্ক্রল উচ্চতা নেওয়া হচ্ছে
+            canvas.height = Math.max(
+                document.body.scrollHeight,
+                document.documentElement.scrollHeight,
+                window.innerHeight
+            );
             
             const colWidth = 18;
             const numColumns = Math.floor(canvas.width / colWidth) + 1;
@@ -686,7 +690,7 @@
         function drawVolumetricGlow() {
             if (mouse.x === null || mouse.y === null) return;
 
-            // মাউসের চারপাশে হালকা ব্যাকগ্রাউন্ড আভা
+            // মাউসের চারপাশে হালকা সাদা গ্লো (পেজের সাপেক্ষে পজিশন করা)
             const glow = ctx.createRadialGradient(mouse.x, mouse.y, 10, mouse.x, mouse.y, revealRadius);
             glow.addColorStop(0, 'rgba(255, 255, 255, 0.02)'); 
             glow.addColorStop(0.5, 'rgba(255, 255, 255, 0.006)');
@@ -713,7 +717,9 @@
             requestAnimationFrame(animate);
         }
 
+        // পেজ লোড ও রিসাইজ হবার সময় ক্যানভাস রি-ক্যালকুলেট করা
         window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('load', resizeCanvas); // ইমেজ লোড হওয়ার পর সঠিক উচ্চতা পেতে
         resizeCanvas();
         animate();
 
