@@ -18,6 +18,9 @@
         href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
 
+    <!-- Different Background function add -->
+    <script src="background.js" defer></script>
+
     <style>
         /* =======================
            RESET & BASE STYLES
@@ -37,14 +40,13 @@
 
         body {
             font-family: "Inter", Arial, Helvetica, sans-serif;
-            background-color: #050505;
-            background-image: radial-gradient(#1f1f1f 1px, transparent 1px);
-            background-size: 22px 22px;
+            background-color: #050505; /* পিওর ব্ল্যাক ব্যাকগ্রাউন্ড */
             color: #ffffff;
             font-size: 1rem;
             line-height: 1.8;
-            -ms-overflow-style: none;
-            /* Hide scrollbar IE/Edge */
+            -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+            position: relative; /* ক্যানভাস অ্যালাইনমেন্টের জন্য */
+            overflow-x: hidden;
             animation: pageFadeIn 0.4s ease-in-out;
         }
 
