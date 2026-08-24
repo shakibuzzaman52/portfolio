@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements | Shakib Uz Zaman</title>
+
+    <!-- Icon & Font Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v13/font/simple-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Background function add -->
+    <script src="background.js" defer></script>
+
+    <style>
+        /* =======================
+           RESET & BASE STYLES
+        ======================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+
+        body {
+            font-family: "Inter", Arial, Helvetica, sans-serif;
+            background-color: #050505;
+            color: #ffffff;
+            font-size: 1rem;
+            line-height: 1.8;
+            -ms-overflow-style: none;
+            position: relative;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* =======================
+           HEADER & NAV
+        ======================= */
+        header {
+            width: 100%;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 90px;
+            padding: 0 3%;
+        }
+
+        .left {
+            display: flex;
+            align-items: center;
+        }
+
+        .profileLink {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .left img {
+            width: 46px;
+            height: 46px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .profileText span {
+            font-family: "DM Mono", monospace;
+            font-size: 0.78rem;
+            color: #999;
+        }
+
+        .right ul {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .right ul li a {
+            color: #999;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .right ul li a:hover {
+            color: #ffffff;
+        }
+
+        .right ul li a i {
+            display: none;
+        }
+
+        /* =======================
+           MAIN LAYOUT
+        ======================= */
+        main {
+            flex: 1;
+            width: min(700px, 80%);
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            margin: 50px 0;
+        }
+
+        .minimal-header h1 {
+            font-size: 2.2rem;
+            font-weight: 750;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            color: #f5f5f5;
+        }
+
+        .minimal-subtitle {
+            color: #888888;
+            font-size: 0.92rem;
+            font-family: "DM Mono", monospace;
+            margin-bottom: 40px;
+        }
+
+        /* =======================
+           ACHIEVEMENT LIST
+        ======================= */
+        .achievement-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: transparent;
+            border: 1px solid #141414;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .achievement-item:hover {
+            background-color: #0c0c0c;
+            border-color: #262626;
+        }
+
+        /* Certificate Thumbnail Container */
+        .certificate-thumb-wrapper {
+            width: 80px;
+            height: 56px; /* 4:3 or standard ratio aspect ratio */
+            background-color: #111;
+            border-radius: 4px;
+            overflow: hidden;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #222;
+            cursor: zoom-in;
+            transition: border-color 0.25s ease;
+        }
+
+        .achievement-item:hover .certificate-thumb-wrapper {
+            border-color: #444;
+        }
+
+        .certificate-thumb-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Standard fallback icon if image is missing */
+        .certificate-thumb-wrapper i {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .achievement-details {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex-grow: 1;
+            min-width: 0;
+        }
+
+        .achievement-title {
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 550;
+            line-height: 1.4;
+        }
+
+        .achievement-meta-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: 0.82rem;
+            font-family: "DM Mono", monospace;
+            color: #666;
+            transition: color 0.25s ease;
+        }
+
+        .achievement-item:hover .achievement-meta-row {
+            color: #999;
+        }
+
+        .achievement-bullet {
+            color: #222;
+            font-weight: bold;
+        }
+
+        .achievement-desc {
+            font-size: 0.92rem;
+            color: #888;
+            margin-top: 6px;
+            line-height: 1.6;
+        }
+
+        .achievement-view-icon {
+            align-self: center;
+            font-size: 0.9rem;
+            color: #444;
+            transition: color 0.25s ease;
+            padding-left: 10px;
+        }
+
+        .achievement-item:hover .achievement-view-icon {
+            color: #ffffff;
+        }
+
+        /* =======================
+           LIGHTBOX MODAL STYLES
+        ======================= */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(5, 5, 5, 0.95);
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            max-width: 85%;
+            max-height: 80%;
+            border-radius: 6px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            border: 1px solid #222;
+        }
+
+        .lightbox-modal.active .lightbox-content {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: #888;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .lightbox-close:hover {
+            color: #fff;
+        }
+
+        /* =======================
+           FOOTER
+        ======================= */
+        .footerSection {
+            width: min(700px, 80%);
+            margin: auto;
+            padding: 25px 0;
+            border-top: 1px solid #262626;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer p {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* =======================
+           BACK TO TOP BUTTON
+        ======================= */
+        .backToTop {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #999;
+            background: transparent;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s ease;
+            z-index: 9999;
+        }
+
+        .backToTop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* =======================
+           RESPONSIVE DESIGN
+        ======================= */
+        @media (max-width: 768px) {
+            nav {
+                height: 80px;
+                padding: 0 6%;
+            }
+
+            .profileText,
+            .right ul li a span {
+                display: none;
+            }
+
+            .left img {
+                width: 42px;
+                height: 42px;
+            }
+
+            .right ul {
+                gap: 18px;
+            }
+
+            .right ul li a i {
+                display: block;
+                color: #999;
+                font-size: 1.1rem;
+            }
+
+            main,
+            .footerSection {
+                width: 88%;
+            }
+
+            .minimal-header h1 {
+                font-size: 1.6rem;
+            }
+
+            .achievement-item {
+                padding: 16px;
+                gap: 14px;
+            }
+
+            .certificate-thumb-wrapper {
+                width: 70px;
+                height: 50px;
+            }
+
+            .achievement-title {
+                font-size: 1rem;
+            }
+
+            .achievement-view-icon {
+                display: none;
+            }
+        }
+
+        body {
+            animation: pageFadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes pageFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="top"></div>
+
+    <header>
+        <nav>
+            <div class="left">
+                <a href="index.html" class="profileLink">
+                    <img src="https://github.com/shakibuzzaman52.png" alt="Profile">
+                    <div class="profileText">
+                        <span>shakibuzzaman52.me</span>
+                    </div>
+                </a>
+            </div>
+            <div class="right">
+                <ul>
+                    <li>
+                        <a href="blog.html" title="Blog">
+                            <i class="fa-regular fa-newspaper"></i>
+                            <span>Blog</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="project.html" title="Projects">
+                            <i class="fa-regular fa-folder"></i>
+                            <span>Projects</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="resources.html" title="Resources">
+                            <i class="fa-regular fa-file-pdf"></i>
+                            <span>Resources</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="pageSection">
+
+            <div class="minimal-header">
+                <h1>Achievements</h1>
+                <p class="minimal-subtitle">A collection of certificates, programming achievements, and recognitions.</p>
+            </div>
+
+            <!-- Achievement List -->
+            <div class="achievement-list">
+
+                <!-- Achievement Item 1 -->
+                <div class="achievement-item">
+                    <div class="certificate-thumb-wrapper src-trigger">
+                        <img src="blog-nubcc-cp-bootcamp-certificate.jpg" alt="No Image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <i class="fa-solid fa-award" style="display: none;"></i>
+                    </div>
+                    <div class="achievement-details">
+                        <h3 class="achievement-title">CP Bootcamp for Beginners</h3>
+                        <div class="achievement-meta-row">
+                            <span class="achievement-platform">Shohoj Coding</span>
+                            <span class="achievement-bullet">·</span>
+                            <span class="achievement-date">2026</span>
+                        </div>
+                        <p class="achievement-desc"> Competitive Programming and C++</p>
+                    </div>
+                    <div class="achievement-view-icon">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox Modal container -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img class="lightbox-content" id="lightboxImg" src="" alt="Full Certificate View">
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footerSection">
+        <div class="footer">
+            <p>Thanks for visiting! Let's keep learning, creating and improving together.</p>
+        </div>
+    </footer>
+
+    <a href="#" class="backToTop" id="backToTop" title="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <!-- UI Logic Script for Lightbox and BackToTop -->
+    <script>
+        // Back to top behavior
+        window.addEventListener("scroll", function () {
+            const btn = document.getElementById("backToTop");
+            if (window.scrollY > 50) {
+                btn.classList.add("active");
+            } else {
+                btn.classList.remove("active");
+            }
+        });
+
+        document.getElementById("backToTop").onclick = function (e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        };
+
+        // Improved Lightbox Logic: Automatically fetches the inner img src
+        const modal = document.getElementById("lightboxModal");
+        const modalImg = document.getElementById("lightboxImg");
+        const closeBtn = document.getElementById("lightboxClose");
+
+        document.querySelectorAll(".src-trigger").forEach(item => {
+            item.addEventListener("click", function(e) {
+                e.stopPropagation();
+                // থাম্বনেইল এরভেতর থাকা img ট্যাগ থেকে সরাসরি src লিংকটি নিয়ে নেওয়া হচ্ছে
+                const innerImg = this.querySelector("img");
+                if (innerImg && innerImg.style.display !== 'none') {
+                    const imgUrl = innerImg.getAttribute("src");
+                    if (imgUrl) {
+                        modalImg.src = imgUrl;
+                        modal.classList.add("active");
+                        document.body.style.overflow = "hidden"; // Scroll freeze
+                    }
+                }
+            });
+        });
+
+        // Close modal when clicking Close button
+        closeBtn.addEventListener("click", closeModal);
+
+        // Close modal when clicking outside the image
+        modal.addEventListener("click", function(e) {
+            if (e.target !== modalImg) {
+                closeModal();
+            }
+        });
+
+        // Close modal on Escape key press
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape" && modal.classList.contains("active")) {
+                closeModal();
+            }
+        });
+
+        function closeModal() {
+            modal.classList.remove("active");
+            document.body.style.overflow = ""; // restore scroll
+            setTimeout(() => {
+                modalImg.src = ""; // Clear src reset
+            }, 300);
+        }
+    </script>
+</body>
+
+</html>
