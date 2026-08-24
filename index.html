@@ -11,12 +11,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    <!-- Different Background function add -->
+    <!-- External Dynamic Scripts -->
     <script src="background.js" defer></script>
+    <script src="footer.js" defer></script>
 
     <style>
         /* =======================
@@ -31,7 +30,7 @@
 
         html {
             scroll-behavior: smooth;
-            scrollbar-width: none; /* Hide scrollbar Firefox */
+            scrollbar-width: none;
         }
 
         body {
@@ -40,12 +39,11 @@
             color: #ffffff;
             font-size: 1rem;
             line-height: 1.8;
-            -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+            -ms-overflow-style: none;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* Hide scrollbar Chrome, Edge, Safari */
         ::-webkit-scrollbar {
             display: none;
         }
@@ -97,31 +95,56 @@
         .profileLink {
             display: flex;
             align-items: center;
-            gap: 12px;
             color: inherit;
             text-decoration: none;
         }
 
-        .left img {
+        .profile-container {
+            position: relative;
             width: 46px;
             height: 46px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-container img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             border-radius: 50%;
+            transition: transform 0.3s ease;
         }
 
-        .profileText {
+        .zoom-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
             display: flex;
-            align-items: flex-end;
-            height: 46px;
-            padding-bottom: 2px;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 50%;
+            cursor: zoom-in;
         }
 
-        .profileText span {
-            font-family: "DM Mono", monospace;
-            font-size: 0.78rem;
-            font-weight: 400;
-            letter-spacing: 0.3px;
-            color: #999;
+        .zoom-overlay i {
+            color: #ffffff;
+            font-size: 0.85rem;
+        }
+
+        .profile-container:hover .zoom-overlay {
+            opacity: 1;
+        }
+
+        .profile-container:hover img {
+            transform: scale(1.05);
         }
 
         .right ul {
@@ -284,51 +307,57 @@
         }
 
         /* =======================
-           FOOTER
+           ZOOM MODAL STYLES
         ======================= */
-        .footerSection {
-            width: min(700px, 80%);
-            margin: auto;
-            padding: 25px 0;
-            border-top: 1px solid #262626;
-        }
-
-        .footer p {
-            color: #999;
-            font-size: 0.9rem;
-        }
-
-        /* =======================
-           BACK TO TOP BUTTON
-        ======================= */
-        .backToTop {
+        .modal {
+            display: none;
             position: fixed;
-            right: 25px;
-            bottom: 25px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(5, 5, 5, 0.95);
             align-items: center;
-            color: #999;
-            background: transparent;
+            justify-content: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 85%;
             border-radius: 50%;
-            text-decoration: none;
-            font-size: 0.9rem;
-            opacity: 0;
-            pointer-events: none;
-            transition: 0.3s ease;
-            z-index: 9999;
+            border: 2px solid #262626;
+            object-fit: cover;
+            animation: zoomAnimation 0.25s ease-out;
+            cursor: zoom-out;
         }
 
-        .backToTop:hover {
-            color: #fff;
-            background: #161616e1;
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: #999;
+            font-size: 2.5rem;
+            font-weight: 300;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 10001;
+            line-height: 1;
         }
 
-        .backToTop.active {
-            opacity: 1;
-            pointer-events: auto;
+        .close-modal:hover {
+            color: #ffffff;
+        }
+
+        @keyframes zoomAnimation {
+            from {
+                transform: scale(0.85);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         /* =======================
@@ -340,14 +369,17 @@
                 padding: 0 6%;
             }
 
-            .profileText,
             .right ul li a span {
                 display: none;
             }
 
-            .left img {
+            .profile-container {
                 width: 42px;
                 height: 42px;
+            }
+
+            .zoom-overlay i {
+                font-size: 0.75rem;
             }
 
             .right ul {
@@ -365,8 +397,7 @@
                 color: #ffffff;
             }
 
-            main,
-            .footerSection {
+            main {
                 width: 88%;
             }
 
@@ -379,14 +410,24 @@
             }
 
             .findMePlatform a,
-            .mail p,
-            .footer p {
+            .mail p {
                 font-size: 0.95rem;
             }
 
             .mail a {
                 font-size: 0.9rem;
                 word-break: break-word;
+            }
+
+            .modal-content {
+                max-width: 80%;
+                max-height: 80%;
+            }
+
+            .close-modal {
+                top: 20px;
+                right: 25px;
+                font-size: 2.2rem;
             }
         }
 
@@ -415,10 +456,12 @@
     <header>
         <nav>
             <div class="left">
-                <a href="index.html" class="profileLink">
-                    <img src="https://github.com/shakibuzzaman52.png" alt="Profile">
-                    <div class="profileText">
-                        <span>shakibuzzaman52.me</span>
+                <a href="javascript:void(0)" class="profileLink" id="profileZoomTrigger">
+                    <div class="profile-container">
+                        <img src="https://github.com/shakibuzzaman52.png" alt="Profile">
+                        <div class="zoom-overlay">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
                     </div>
                 </a>
             </div>
@@ -454,9 +497,7 @@
             </div>
             <div class="bio">
                 <p class="text-muted">
-                    Hey! I'm Shakib Uz Zaman, a <a href="education.html"
-                        title="Blog" class="highlight-link">CSE
-                        undergraduate</a>, competitive programmer and problem solver.
+                    Hey! I'm Shakib Uz Zaman, a <a href="education.html" title="Blog" class="highlight-link">CSE undergraduate</a>, competitive programmer and problem solver.
                 </p>
             </div>
         </section>
@@ -473,31 +514,23 @@
 
             <div class="competitiveProg">
                 <h3>Competitive Programming</h3>
-                <span><a href="https://codeforces.com/profile/shakibuzzaman52" target="_blank"
-                        rel="noopener noreferrer"><i class="si si-codeforces" style="color:#ca2606;"></i>
-                        Codeforces</a></span>
-                <span><a href="https://leetcode.com/u/shakibuzzaman52/" target="_blank" rel="noopener noreferrer"><i
-                            class="si si-leetcode" style="color:#ca9e0b;"></i> LeetCode</a></span>
-                <span><a href="https://www.codechef.com/users/shakibuzzaman" target="_blank"
-                        rel="noopener noreferrer"><i class="si si-codechef" style="color:#ffffff;"></i>
-                        CodeChef</a></span>
+                <span><a href="https://codeforces.com/profile/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i class="si si-codeforces" style="color:#ca2606;"></i> Codeforces</a></span>
+                <span><a href="https://leetcode.com/u/shakibuzzaman52/" target="_blank" rel="noopener noreferrer"><i class="si si-leetcode" style="color:#ca9e0b;"></i> LeetCode</a></span>
+                <span><a href="https://www.codechef.com/users/shakibuzzaman" target="_blank" rel="noopener noreferrer"><i class="si si-codechef" style="color:#ffffff;"></i> CodeChef</a></span>
             </div>
 
             <div class="devTools">
                 <h3>Developer Tools</h3>
                 <span><a href="javascript:void(0)"><i class="devicon-vscode-plain colored"></i> VS Code</a></span>
                 <span><a href="javascript:void(0)"><i class="devicon-git-plain colored"></i> Git</a></span>
-                <span><a href="https://github.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i
-                            class="devicon-github-original"></i> GitHub</a></span>
+                <span><a href="https://github.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i class="devicon-github-original"></i> GitHub</a></span>
             </div>
 
             <div class="currentlyLearning">
                 <h3>Currently Learning</h3>
                 <span><a href="javascript:void(0)"><i class="devicon-cplusplus-plain colored"></i> C++</a></span>
-                <span><a href="javascript:void(0)"><i class="fa-solid fa-diagram-project" style="color:#00d486;"></i>
-                        Data Structures</a></span>
-                <span><a href="javascript:void(0)"><i class="fa-solid fa-brain" style="color:#fafafa;"></i>
-                        Algorithms</a></span>
+                <span><a href="javascript:void(0)"><i class="fa-solid fa-diagram-project" style="color:#00d486;"></i> Data Structures</a></span>
+                <span><a href="javascript:void(0)"><i class="fa-solid fa-brain" style="color:#fafafa;"></i> Algorithms</a></span>
                 <span><a href="javascript:void(0)"><i class="devicon-python-plain colored"></i> Python</a></span>
             </div>
         </section>
@@ -505,24 +538,16 @@
         <section class="threeSection">
             <div class="currentlyDescription">
                 <p class="text-muted">
-                    I enjoy learning new concepts and turning ideas into projects. I continuously improve my skills
-                    through consistent practice. Explore my <a href="project.html"
-                        class="highlight-link">Projects</a> to see what I've built. Read my <a href="blog.html"
-                        title="Blog" class="highlight-link">Blog</a> to follow my journey. Check out my <a
-                        href="resources.html" class="highlight-link">Resources</a>. View my <a
-                        href="atchivement.html" class="highlight-link">Achievements</a>. Learn more about me through
-                    my <a href="javascript:void(0)" class="highlight-link">Resume</a>.
+                    I enjoy learning new concepts and turning ideas into projects. I continuously improve my skills through consistent practice. Explore my <a href="project.html" class="highlight-link">Projects</a> to see what I've built. Read my <a href="blog.html" title="Blog" class="highlight-link">Blog</a> to follow my journey. Check out my <a href="resources.html" class="highlight-link">Resources</a>. View my <a href="atchivement.html" class="highlight-link">Achievements</a>. Learn more about me through my <a href="javascript:void(0)" class="highlight-link">Resume</a>.
                 </p>
             </div>
             <div class="futureDescription">
                 <p class="text-muted">
-                    Currently, I'm focused on C++, Data Structures and Algorithms, and competitive programming to build
-                    a solid foundation in computer science.
+                    Currently, I'm focused on C++, Data Structures and Algorithms, and competitive programming to build a solid foundation in computer science.
                 </p>
                 <br>
                 <p class="text-muted">
-                    Outside of programming, I enjoy watching movies. You can explore my <a href="movie.html"
-                        class="highlight-link">Movie Collection</a> to see the films I have watched.
+                    Outside of programming, I enjoy watching movies. You can explore my <a href="movie.html" class="highlight-link">Movie Collection</a> to see the films I have watched.
                 </p>
             </div>
         </section>
@@ -532,16 +557,11 @@
                 <h3>Find me on</h3>
             </div>
             <div class="findMePlatform">
-                <a href="https://github.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i
-                        class="fa-brands fa-github"></i> GitHub</a>
-                <a href="https://www.linkedin.com/in/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i
-                        class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                <a href="https://www.instagram.com/shakibuzzaman_52" target="_blank" rel="noopener noreferrer"><i
-                        class="fa-brands fa-instagram"></i> Instagram</a>
-                <a href="https://www.facebook.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i
-                        class="fa-brands fa-facebook"></i> Facebook</a>
-                <a href="https://x.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i
-                        class="fa-brands fa-x-twitter"></i> X</a>
+                <a href="https://github.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a href="https://www.instagram.com/shakibuzzaman_52" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="https://www.facebook.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i> Facebook</a>
+                <a href="https://x.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i> X</a>
             </div>
             <div class="mail">
                 <p class="text-muted">
@@ -551,33 +571,34 @@
         </section>
     </main>
 
-    <footer class="footerSection">
-        <div class="footer">
-            <p>Thanks for visiting! Let's keep learning, creating and improving together.</p>
-        </div>
-    </footer>
+    <!-- Zoom Overlay Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal" id="closeModal" title="Close">&times;</span>
+        <img class="modal-content" id="modalImg" alt="Profile Zoomed">
+    </div>
 
-    <a href="#" class="backToTop" id="backToTop">
-        <i class="fa-solid fa-arrow-up"></i>
-    </a>
-
-    <!-- Back to Top -->
+    <!-- Image Zoom Logic -->
     <script>
-        window.addEventListener("scroll", function () {
-            const btn = document.getElementById("backToTop");
-            if (window.scrollY > 50) {
-                btn.classList.add("active");
-            } else {
-                btn.classList.remove("active");
-            }
-        });
+        const modal = document.getElementById("imageModal");
+        const trigger = document.getElementById("profileZoomTrigger");
+        const modalImg = document.getElementById("modalImg");
+        const closeModal = document.getElementById("closeModal");
 
-        document.getElementById("backToTop").onclick = function (e) {
+        trigger.onclick = function (e) {
             e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+            modalImg.src = this.querySelector("img").src;
+            modal.style.display = "flex";
+        };
+
+        closeModal.onclick = function (e) {
+            e.stopPropagation();
+            modal.style.display = "none";
+        };
+
+        modal.onclick = function (e) {
+            if (e.target !== modalImg) {
+                modal.style.display = "none";
+            }
         };
     </script>
 </body>

@@ -11,15 +11,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v13/font/simple-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
-    <!-- Google Fonts strictly matching your template -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    <!-- Different Background function add -->
+    <!-- External Dynamic Scripts -->
     <script src="background.js" defer></script>
+    <script src="footer.js" defer></script>
 
     <style>
         /* =======================
@@ -35,22 +34,20 @@
         html {
             scroll-behavior: smooth;
             scrollbar-width: none;
-            /* Hide scrollbar Firefox */
         }
 
         body {
             font-family: "Inter", Arial, Helvetica, sans-serif;
-            background-color: #050505; /* পিওর ব্ল্যাক ব্যাকগ্রাউন্ড */
+            background-color: #050505;
             color: #ffffff;
             font-size: 1rem;
             line-height: 1.8;
-            -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
-            position: relative; /* ক্যানভাস অ্যালাইনমেন্টের জন্য */
+            -ms-overflow-style: none;
+            position: relative;
             overflow-x: hidden;
             animation: pageFadeIn 0.4s ease-in-out;
         }
 
-        /* Hide scrollbar Chrome, Edge, Safari */
         ::-webkit-scrollbar {
             display: none;
         }
@@ -79,7 +76,6 @@
         .profileLink {
             display: flex;
             align-items: center;
-            gap: 12px;
             color: inherit;
             text-decoration: none;
         }
@@ -89,21 +85,6 @@
             height: 46px;
             object-fit: cover;
             border-radius: 50%;
-        }
-
-        .profileText {
-            display: flex;
-            align-items: flex-end;
-            height: 46px;
-            padding-bottom: 2px;
-        }
-
-        .profileText span {
-            font-family: "DM Mono", monospace;
-            font-size: 0.78rem;
-            font-weight: 400;
-            letter-spacing: 0.3px;
-            color: #999;
         }
 
         .right ul {
@@ -207,11 +188,11 @@
         }
 
         /* =======================
-           PROJECT ITEMS STYLING (Minimal Block Style)
+           PROJECT ITEMS STYLING
         ======================= */
         .projectItem {
             display: flex;
-            align-items: flex-start; /* Changed from center to align with the top title */
+            align-items: flex-start;
             gap: 20px;
             padding: 15px;
             border-radius: 8px;
@@ -235,7 +216,7 @@
             border-radius: 8px;
             overflow: hidden;
             background-color: transparent;
-            margin-top: 4px; /* Keeps the icon aligned precisely with the first line of text */
+            margin-top: 4px;
         }
 
         .projectIcon img {
@@ -261,7 +242,7 @@
             font-weight: 550;
             color: #ffffff;
             font-size: 1.15rem;
-            line-height: 1.3; /* Adjusted line-height for alignment */
+            line-height: 1.3;
             transition: color 0.25s ease;
         }
 
@@ -281,64 +262,11 @@
         }
 
         /* =======================
-           FOOTER
-        ======================= */
-        .footerSection {
-            width: min(700px, 80%);
-            margin: auto;
-            padding: 25px 0;
-            border-top: 1px solid #262626;
-        }
-
-        .footer p {
-            color: #999;
-            font-size: 0.9rem;
-        }
-
-        /* =======================
-           BACK TO TOP BUTTON
-        ======================= */
-        .backToTop {
-            position: fixed;
-            right: 25px;
-            bottom: 25px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #999;
-            background: transparent;
-            border-radius: 50%;
-            text-decoration: none;
-            font-size: 0.9rem;
-            opacity: 0;
-            pointer-events: none;
-            transition: 0.3s ease;
-            z-index: 9999;
-        }
-
-        .backToTop:hover {
-            color: #fff;
-            background: #161616e1;
-        }
-
-        .backToTop.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        /* =======================
            PAGE ANIMATIONS
         ======================= */
         @keyframes pageFadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         /* =======================
@@ -350,7 +278,6 @@
                 padding: 0 6%;
             }
 
-            .profileText,
             .right ul li a span {
                 display: none;
             }
@@ -375,8 +302,7 @@
                 color: #ffffff;
             }
 
-            main,
-            .footerSection {
+            main {
                 width: 88%;
             }
 
@@ -390,7 +316,7 @@
 
             .projectItem {
                 flex-direction: row;
-                align-items: flex-start; /* Updated for mobile alignment as well */
+                align-items: flex-start;
                 gap: 16px;
                 padding: 12px 6px;
             }
@@ -398,7 +324,7 @@
             .projectIcon {
                 width: 48px;
                 height: 48px;
-                margin-top: 2px; /* Slight adjustment for mobile view */
+                margin-top: 2px;
             }
 
             .projectIcon .defaultIcon {
@@ -423,18 +349,13 @@
 
 <body>
 
-    <!-- Scroll Target Anchor -->
     <div id="top"></div>
 
-    <!-- Navigation Header -->
     <header>
         <nav>
             <div class="left">
                 <a href="index.html" class="profileLink">
                     <img src="https://github.com/shakibuzzaman52.png" alt="Profile">
-                    <div class="profileText">
-                        <span>shakibuzzaman52.me</span>
-                    </div>
                 </a>
             </div>
 
@@ -463,7 +384,6 @@
         </nav>
     </header>
 
-    <!-- Main Workspace Content -->
     <main>
         <section class="pageSection">
             <h1>Projects</h1>
@@ -473,31 +393,26 @@
 
             <!-- Minimal GitHub Link -->
             <div class="projectGrids">
-                <a href="https://github.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer"
-                    class="githubLink">
+                <a href="https://github.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer" class="githubLink">
                     <i class="fa-brands fa-github-alt"></i>
                     <span>Find my projects on GitHub</span>
                 </a>
             </div>
 
-            <!-- Section 1: Recent Projects -->
+            <!-- Recent Projects Section -->
             <div class="projectSection">
                 <h2 class="sectionHeading">Recent Projects</h2>
                 <div class="projectSectionList">
 
                     <!-- Personal Portfolio Website -->
-                    <a href="https://github.com/shakibuzzaman52/portfolio" target="_blank" rel="noopener noreferrer"
-                        class="projectItem">
+                    <a href="https://github.com/shakibuzzaman52/portfolio" target="_blank" rel="noopener noreferrer" class="projectItem">
                         <div class="projectIcon">
-                            <img src="assets/cp-helper.png" alt="Personal Portfolio Website"
-                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <img src="assets/cp-helper.png" alt="Personal Portfolio Website" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <i class="fa-solid fa-folder defaultIcon"></i>
                         </div>
                         <div class="projectContent">
                             <h3 class="projectTitle">Personal Portfolio Website</h3>
-                            <p class="projectDescription">A responsive personal portfolio built to showcase my projects,
-                                skills, blogs, education, and competitive programming profiles with a clean and modern
-                                interface.</p>
+                            <p class="projectDescription">A responsive personal portfolio built to showcase my projects, skills, blogs, education, and competitive programming profiles with a clean and modern interface.</p>
                         </div>
                     </a>
 
@@ -550,41 +465,7 @@
                     </a>
                 </div>
             </div>
-
         </section>
     </main>
-
-    <!-- Footer Section -->
-    <footer class="footerSection">
-        <div class="footer">
-            <p>Thanks for visiting! Let's keep learning, creating and improving together.</p>
-        </div>
-    </footer>
-
-    <!-- Back To Top Control -->
-    <a href="#" class="backToTop" id="backToTop" title="Back to top">
-        <i class="fa-solid fa-arrow-up"></i>
-    </a>
-
-    <!-- UI Logic Scripts -->
-    <script>
-        window.addEventListener("scroll", function () {
-            const btn = document.getElementById("backToTop");
-            if (window.scrollY > 50) {
-                btn.classList.add("active");
-            } else {
-                btn.classList.remove("active");
-            }
-        });
-
-        document.getElementById("backToTop").onclick = function (e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        };
-    </script>
 </body>
-
 </html>

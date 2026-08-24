@@ -11,12 +11,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v13/font/simple-icons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    <!-- Background function add -->
+    <!-- External Dynamic Scripts -->
     <script src="background.js" defer></script>
+    <script src="footer.js" defer></script>
 
     <style>
         /* =======================
@@ -76,7 +75,6 @@
         .profileLink {
             display: flex;
             align-items: center;
-            gap: 12px;
             color: inherit;
             text-decoration: none;
         }
@@ -86,12 +84,6 @@
             height: 46px;
             object-fit: cover;
             border-radius: 50%;
-        }
-
-        .profileText span {
-            font-family: "DM Mono", monospace;
-            font-size: 0.78rem;
-            color: #999;
         }
 
         .right ul {
@@ -175,8 +167,9 @@
 
         /* Certificate Thumbnail Container */
         .certificate-thumb-wrapper {
+            position: relative;
             width: 80px;
-            height: 56px; /* 4:3 or standard ratio aspect ratio */
+            height: 56px;
             background-color: #111;
             border-radius: 4px;
             overflow: hidden;
@@ -185,7 +178,6 @@
             align-items: center;
             justify-content: center;
             border: 1px solid #222;
-            cursor: zoom-in;
             transition: border-color 0.25s ease;
         }
 
@@ -199,8 +191,32 @@
             object-fit: cover;
         }
 
-        /* Standard fallback icon if image is missing */
-        .certificate-thumb-wrapper i {
+        /* Hover Zoom Overlay */
+        .zoom-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            cursor: zoom-in;
+        }
+
+        .zoom-overlay i {
+            color: #ffffff;
+            font-size: 0.85rem;
+        }
+
+        .certificate-thumb-wrapper:hover .zoom-overlay {
+            opacity: 1;
+        }
+
+        .certificate-thumb-wrapper i.fallback-icon {
             font-size: 1.2rem;
             color: #555;
         }
@@ -290,6 +306,7 @@
             transform: scale(0.95);
             transition: transform 0.3s ease;
             border: 1px solid #222;
+            cursor: zoom-out;
         }
 
         .lightbox-modal.active .lightbox-content {
@@ -298,61 +315,19 @@
 
         .lightbox-close {
             position: absolute;
-            top: 30px;
-            right: 30px;
-            color: #888;
-            font-size: 1.8rem;
+            top: 25px;
+            right: 35px;
+            color: #999;
+            font-size: 2.5rem;
+            font-weight: 300;
             cursor: pointer;
-            transition: color 0.2s ease;
+            transition: color 0.3s ease;
+            z-index: 10001;
+            line-height: 1;
         }
 
         .lightbox-close:hover {
             color: #fff;
-        }
-
-        /* =======================
-           FOOTER
-        ======================= */
-        .footerSection {
-            width: min(700px, 80%);
-            margin: auto;
-            padding: 25px 0;
-            border-top: 1px solid #262626;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer p {
-            color: #999;
-            font-size: 0.9rem;
-        }
-
-        /* =======================
-           BACK TO TOP BUTTON
-        ======================= */
-        .backToTop {
-            position: fixed;
-            right: 25px;
-            bottom: 25px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #999;
-            background: transparent;
-            border-radius: 50%;
-            text-decoration: none;
-            font-size: 0.9rem;
-            opacity: 0;
-            pointer-events: none;
-            transition: 0.3s ease;
-            z-index: 9999;
-        }
-
-        .backToTop.active {
-            opacity: 1;
-            pointer-events: auto;
         }
 
         /* =======================
@@ -364,7 +339,6 @@
                 padding: 0 6%;
             }
 
-            .profileText,
             .right ul li a span {
                 display: none;
             }
@@ -384,8 +358,7 @@
                 font-size: 1.1rem;
             }
 
-            main,
-            .footerSection {
+            main {
                 width: 88%;
             }
 
@@ -410,6 +383,12 @@
             .achievement-view-icon {
                 display: none;
             }
+
+            .lightbox-close {
+                top: 20px;
+                right: 25px;
+                font-size: 2.2rem;
+            }
         }
 
         body {
@@ -432,9 +411,6 @@
             <div class="left">
                 <a href="index.html" class="profileLink">
                     <img src="https://github.com/shakibuzzaman52.png" alt="Profile">
-                    <div class="profileText">
-                        <span>shakibuzzaman52.me</span>
-                    </div>
                 </a>
             </div>
             <div class="right">
@@ -464,7 +440,6 @@
 
     <main>
         <section class="pageSection">
-
             <div class="minimal-header">
                 <h1>Achievements</h1>
                 <p class="minimal-subtitle">A collection of certificates, programming achievements, and recognitions.</p>
@@ -472,12 +447,14 @@
 
             <!-- Achievement List -->
             <div class="achievement-list">
-
                 <!-- Achievement Item 1 -->
                 <div class="achievement-item">
                     <div class="certificate-thumb-wrapper src-trigger">
                         <img src="blog-nubcc-cp-bootcamp-certificate.jpg" alt="No Image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fa-solid fa-award" style="display: none;"></i>
+                        <i class="fa-solid fa-award fallback-icon" style="display: none;"></i>
+                        <div class="zoom-overlay">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
                     </div>
                     <div class="achievement-details">
                         <h3 class="achievement-title">CP Bootcamp for Beginners</h3>
@@ -492,49 +469,18 @@
                         <i class="fa-solid fa-magnifying-glass-plus"></i>
                     </div>
                 </div>
-
             </div>
         </section>
     </main>
 
     <!-- Lightbox Modal container -->
     <div class="lightbox-modal" id="lightboxModal">
-        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <span class="lightbox-close" id="lightboxClose" title="Close">&times;</span>
         <img class="lightbox-content" id="lightboxImg" src="" alt="Full Certificate View">
     </div>
 
-    <!-- Footer Section -->
-    <footer class="footerSection">
-        <div class="footer">
-            <p>Thanks for visiting! Let's keep learning, creating and improving together.</p>
-        </div>
-    </footer>
-
-    <a href="#" class="backToTop" id="backToTop" title="Back to top">
-        <i class="fa-solid fa-arrow-up"></i>
-    </a>
-
-    <!-- UI Logic Script for Lightbox and BackToTop -->
+    <!-- Lightbox Dynamic Logic -->
     <script>
-        // Back to top behavior
-        window.addEventListener("scroll", function () {
-            const btn = document.getElementById("backToTop");
-            if (window.scrollY > 50) {
-                btn.classList.add("active");
-            } else {
-                btn.classList.remove("active");
-            }
-        });
-
-        document.getElementById("backToTop").onclick = function (e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        };
-
-        // Improved Lightbox Logic: Automatically fetches the inner img src
         const modal = document.getElementById("lightboxModal");
         const modalImg = document.getElementById("lightboxImg");
         const closeBtn = document.getElementById("lightboxClose");
@@ -542,30 +488,27 @@
         document.querySelectorAll(".src-trigger").forEach(item => {
             item.addEventListener("click", function(e) {
                 e.stopPropagation();
-                // থাম্বনেইল এরভেতর থাকা img ট্যাগ থেকে সরাসরি src লিংকটি নিয়ে নেওয়া হচ্ছে
                 const innerImg = this.querySelector("img");
                 if (innerImg && innerImg.style.display !== 'none') {
                     const imgUrl = innerImg.getAttribute("src");
                     if (imgUrl) {
                         modalImg.src = imgUrl;
                         modal.classList.add("active");
-                        document.body.style.overflow = "hidden"; // Scroll freeze
+                        document.body.style.overflow = "hidden"; // Freeze background scroll
                     }
                 }
             });
         });
 
-        // Close modal when clicking Close button
+        // Close functions
         closeBtn.addEventListener("click", closeModal);
 
-        // Close modal when clicking outside the image
         modal.addEventListener("click", function(e) {
             if (e.target !== modalImg) {
                 closeModal();
             }
         });
 
-        // Close modal on Escape key press
         document.addEventListener("keydown", function(e) {
             if (e.key === "Escape" && modal.classList.contains("active")) {
                 closeModal();
@@ -574,12 +517,11 @@
 
         function closeModal() {
             modal.classList.remove("active");
-            document.body.style.overflow = ""; // restore scroll
+            document.body.style.overflow = ""; // Restore scroll
             setTimeout(() => {
-                modalImg.src = ""; // Clear src reset
+                modalImg.src = ""; // Reset source
             }, 300);
         }
     </script>
 </body>
-
 </html>

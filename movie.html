@@ -11,8 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    <!-- background function script integrated from index.html -->
+    <!-- External Dynamic Scripts -->
     <script src="background.js" defer></script>
+    <script src="footer.js" defer></script>
 
     <style>
         /* =======================
@@ -27,7 +28,7 @@
 
         html {
             scroll-behavior: smooth;
-            scrollbar-width: none; /* Hide scrollbar Firefox */
+            scrollbar-width: none;
         }
 
         body {
@@ -39,13 +40,12 @@
             color: #ffffff;
             font-size: 1rem;
             line-height: 1.8;
-            -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+            -ms-overflow-style: none;
             position: relative;
             overflow-x: hidden;
             animation: pageFadeIn 0.4s ease-in-out;
         }
 
-        /* Hide scrollbar Chrome, Edge, Safari */
         ::-webkit-scrollbar {
             display: none;
         }
@@ -74,7 +74,6 @@
         .profileLink {
             display: flex;
             align-items: center;
-            gap: 12px;
             color: inherit;
             text-decoration: none;
         }
@@ -84,19 +83,6 @@
             height: 46px;
             object-fit: cover;
             border-radius: 50%;
-        }
-
-        .profileText {
-            display: flex;
-            align-items: flex-end;
-            height: 46px;
-            padding-bottom: 2px;
-        }
-
-        .profileText span {
-            font-family: "DM Mono", monospace;
-            font-size: 0.78rem;
-            color: #bcbcbc;
         }
 
         .right ul {
@@ -155,7 +141,7 @@
         }
 
         /* =======================
-            MOVIE RANKING LIST (Typographic Leaderboard Style)
+            MOVIE RANKING LIST
         ======================= */
         .rank-list {
             display: flex;
@@ -176,15 +162,14 @@
         }
 
         .rank-item:hover {
-            background-color: #121212; /* Subtle background highlight on item hover to fit background.js style */
+            background-color: #121212;
         }
 
-        /* Giant styled leaderboard ranking number */
         .rank-number {
             font-family: "DM Mono", monospace;
             font-weight: 700;
             font-size: 2.2rem;
-            color: #222222; /* Deep dark gray by default to blend in */
+            color: #222222;
             min-width: 50px;
             text-align: right;
             letter-spacing: -0.05em;
@@ -193,13 +178,12 @@
         }
 
         .rank-item:hover .rank-number {
-            color: #ffffff; /* Lights up to white on hover */
+            color: #ffffff;
         }
 
-        /* Compact widescreen poster wrapper */
         .rank-poster-wrapper {
             width: 96px;
-            aspect-ratio: 16/9; /* Perfect widescreen trailer ratio */
+            aspect-ratio: 16/9;
             background-color: #000000;
             border-radius: 4px;
             overflow: hidden;
@@ -227,42 +211,35 @@
             flex-direction: column;
             gap: 4px;
             flex-grow: 1;
-            min-width: 0; /* Prevents long text from pushing parent width/height boundaries */
+            min-width: 0;
         }
 
         .rank-title {
             color: #ffffff;
-            font-size: 1.15rem; /* Larger, sleeker typography */
+            font-size: 1.15rem;
             font-weight: 550;
             line-height: 1.4;
             letter-spacing: -0.01em;
             transition: color 0.25s ease;
-            
-            /* Text Truncation to keep single-line beauty */
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             display: block;
         }
 
-        .rank-item:hover .rank-title {
-            color: #ffffff;
-        }
-
-        /* Multi-element dynamic metadata row */
         .rank-meta-row {
             display: flex;
             align-items: center;
             gap: 6px;
             font-size: 0.82rem;
             font-family: "DM Mono", monospace;
-            color: #555555; /* Soft monochrome gray */
+            color: #555555;
             transition: color 0.25s ease;
             min-width: 0;
         }
 
         .rank-item:hover .rank-meta-row {
-            color: #888888; /* Slightly brightens up on card hover */
+            color: #888888;
         }
 
         .rank-author {
@@ -271,11 +248,11 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            max-width: 180px; /* Limits publisher name boundary on desktop */
+            max-width: 180px;
         }
 
         .rank-bullet {
-            color: #222222; /* Subtle divider dots */
+            color: #222222;
             font-weight: bold;
         }
 
@@ -284,63 +261,11 @@
             flex-shrink: 0;
         }
 
-        /* Spinner keyframe for loading state */
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
         .fa-spin {
             animation: spin 1s linear infinite;
-        }
-
-        /* =======================
-            FOOTER
-        ======================= */
-        .footerSection {
-            width: min(700px, 80%);
-            margin: auto;
-            padding: 25px 0;
-            border-top: 1px solid #262626;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer p {
-            color: #999;
-            font-size: 0.9rem;
-        }
-
-        /* =======================
-            BACK TO TOP BUTTON
-        ======================= */
-        .backToTop {
-            position: fixed;
-            right: 25px;
-            bottom: 25px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #888;
-            background: transparent;
-            border-radius: 50%;
-            text-decoration: none;
-            font-size: 0.9rem;
-            opacity: 0;
-            pointer-events: none;
-            cursor: pointer;
-            transition: 0.3s ease;
-            z-index: 9999;
-        }
-
-        .backToTop:hover {
-            color: #fff;
-            background: #161616e1;
-        }
-
-        .backToTop.active {
-            opacity: 1;
-            pointer-events: auto;
         }
 
         /* =======================
@@ -364,7 +289,6 @@
                 padding: 0 6%;
             }
 
-            .profileText,
             .right ul li a span {
                 display: none;
             }
@@ -389,8 +313,7 @@
                 color: #ffffff;
             }
 
-            main,
-            .footerSection {
+            main {
                 width: 88%;
             }
 
@@ -422,7 +345,7 @@
             }
 
             .rank-author {
-                max-width: 100px; /* Limits publisher name boundary on mobile */
+                max-width: 100px;
             }
         }
     </style>
@@ -437,9 +360,6 @@
             <div class="left">
                 <a href="index.html" class="profileLink">
                     <img src="https://github.com/shakibuzzaman52.png" alt="Profile">
-                    <div class="profileText">
-                        <span>shakibuzzaman52.me</span>
-                    </div>
                 </a>
             </div>
             <div class="right">
@@ -469,74 +389,35 @@
 
     <main>
         <section class="pageSection">
-            
-            <!-- Minimalist Left-Aligned Header -->
             <div class="minimal-header">
                 <h1>Watching</h1>
                 <p class="minimal-subtitle">My personal cinematic watch-diary and leaderboard.</p>
             </div>
 
-            <!-- Netflix Styled Compact Grid -->
+            <!-- YouTube Video Trailer List -->
             <div class="rank-list">
-
-                <!-- Ranked Movie Item 2 (Inception Trailer) -->
+                <!-- Ranked Movie Item 1 (Inception Trailer) -->
                 <div class="rank-item" data-url="https://www.youtube.com/watch?v=YoHD9XEInc0"></div>
 
-                <!-- Ranked Movie Item 3 (The Dark Knight Trailer) -->
+                <!-- Ranked Movie Item 2 (The Dark Knight Trailer) -->
                 <div class="rank-item" data-url="https://www.youtube.com/watch?v=EXeTwQWrcwY"></div>
 
-                <!-- Ranked Movie Item 4 (Oppenheimer Trailer) -->
+                <!-- Ranked Movie Item 3 (Oppenheimer Trailer) -->
                 <div class="rank-item" data-url="https://www.youtube.com/watch?v=uYPbbksJxIg"></div>
-
             </div>
         </section>
     </main>
 
-    <!-- Footer Section -->
-    <footer class="footerSection">
-        <div class="footer">
-            <p>Thanks for visiting! Let's keep learning, creating and improving together.</p>
-        </div>
-    </footer>
-
-    <!-- Interactive Scroll Top Control -->
-    <a href="#" class="backToTop" id="backToTop" title="Back to top">
-        <i class="fa-solid fa-arrow-up"></i>
-    </a>
-
-    <!-- UI Logic Scripts -->
+    <!-- Client-side YouTube oEmbed dynamic Leaderboard card loader -->
     <script>
-        // Track document scroll offsets to manage visibility parameters
-        window.addEventListener("scroll", function () {
-            const btn = document.getElementById("backToTop");
-            if (window.scrollY > 50) {
-                btn.classList.add("active");
-            } else {
-                btn.classList.remove("active");
-            }
-        });
-
-        // Click interaction workflow for dynamic layout transitions
-        document.getElementById("backToTop").onclick = function (e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        };
-
-        // Intelligent client-side YouTube oEmbed dynamic Leaderboard card loader
         document.querySelectorAll(".rank-item").forEach((item, index) => {
             const youtubeUrl = item.getAttribute("data-url");
             if (!youtubeUrl) return;
 
-            // Generate autoincrement index formatting (e.g. 01, 02)
             const indexStr = String(index + 1).padStart(2, '0');
-
-            // Generate YouTube oEmbed endpoint (cross-origin supported)
             const oembedUrl = `https://noembed.com/embed?url=${encodeURIComponent(youtubeUrl)}`;
 
-            // Inject spinner loader while fetching resources
+            // Temporary loading spinner injection
             item.innerHTML = `
                 <span class="rank-number">${indexStr}</span>
                 <div class="rank-poster-wrapper">
@@ -547,7 +428,7 @@
                 </div>
             `;
 
-            // Request YouTube oEmbed API cross-origin
+            // Request YouTube oEmbed API
             fetch(oembedUrl)
                 .then(response => {
                     if (!response.ok) throw new Error("Resource error");
@@ -558,7 +439,6 @@
                     const channel = data.author_name || "YouTube Video";
                     const thumbnail = data.thumbnail_url || "";
 
-                    // Construct populated minimalist row card
                     item.innerHTML = `
                         <span class="rank-number">${indexStr}</span>
                         <div class="rank-poster-wrapper">
@@ -578,16 +458,15 @@
                         </div>
                     `;
                 })
-                .catch(err => {
-                    // Fail-safe regex parser to extract YouTube thumbnail directly if fetch fails
+                .catch(() => {
+                    // Fallback to direct YouTube Image API if Fetch fails
                     const ytRegex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/;
                     const match = youtubeUrl.match(ytRegex);
                     let fallbackThumb = "";
                     if (match && match[1]) {
-                        fallbackThumb = `https://img.youtube.com/vi/${match[1]}/mqdefault.jpg`;
+                        fallbackThumb = `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`;
                     }
 
-                    // Graceful minimal layout restoration
                     item.innerHTML = `
                         <span class="rank-number">${indexStr}</span>
                         <div class="rank-poster-wrapper">
@@ -596,7 +475,7 @@
                         <div class="rank-details">
                             <h3 class="rank-title">
                                 <a href="${youtubeUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
-                                    Watch Video
+                                    Watch Trailer
                                 </a>
                             </h3>
                             <div class="rank-meta-row">
