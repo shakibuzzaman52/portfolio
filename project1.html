@@ -14,7 +14,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
     <!-- External Dynamic Scripts -->
     <script src="background.js" defer></script>
@@ -130,7 +130,7 @@
         }
 
         .pageSubtitle {
-            color: #999;
+            color: #888888;
             font-size: 0.92rem;
             font-family: "DM Mono", monospace;
             margin-bottom: 30px;
@@ -172,13 +172,27 @@
             margin-bottom: 45px;
         }
 
-        .sectionHeading {
+        .sectionHeader {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 25px;
             margin-bottom: 24px;
-            color: #999;
-            font-size: 1rem;
+        }
+
+        .sectionHeading {
+            color: #888888;
+            font-size: 0.85rem;
             font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
+            font-family: "DM Mono", monospace;
+        }
+
+        .sectionLine {
+            flex-grow: 1;
+            border-bottom: 1px solid #141414;
+            height: 1px;
         }
 
         .projectSectionList {
@@ -188,7 +202,7 @@
         }
 
         /* =======================
-           PROJECT CARD STYLING
+           PROJECT CARD STYLING (EXPANDED SINGLE CORNER BLEND)
         ======================= */
         .projectCard {
             border: 1px solid transparent;
@@ -197,14 +211,26 @@
             display: flex;
             flex-direction: column;
             gap: 24px;
-            text-decoration: none;
             color: inherit;
-            /* লিনিয়ার গ্রেডিয়েন্ট: ওপর থেকে নিচে সম্পূর্ণ সমানভাবে বর্ডার এবং ব্যাকগ্রাউন্ড ব্লেন্ড হবে */
+            /* 
+               ওপরের ডান কোণা (100% 0%) থেকে কালো রঙের ব্লেন্ডটির ব্যাসার্ধ ৭৫% করা হয়েছে।
+               এতে কোণার কালো ভাবটি আরও বেশি জায়গা জুড়ে ধাপে ধাপে ছড়িয়ে পড়বে।
+            */
             background-image: 
-                linear-gradient(180deg, #000000 0%, #0c0c0e 100%),  /* ব্যাকগ্রাউন্ড গ্রেডিয়েন্ট */
-                linear-gradient(180deg, #000000 0%, #2c2c2c 100%);  /* বর্ডার গ্রেডিয়েন্ট */
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
+                /* Inner Background Layers */
+                radial-gradient(circle at 100% 0%, #000000 0%, transparent 75%),
+                linear-gradient(to bottom, #111113, #0d0d0f),
+                
+                /* Border Layers */
+                radial-gradient(circle at 100% 0%, #000000 0%, transparent 75%),
+                linear-gradient(to bottom, #333336, #1c1c1e);
+                
+            background-origin: 
+                padding-box, padding-box, 
+                border-box, border-box;
+            background-clip: 
+                padding-box, padding-box, 
+                border-box, border-box;
         }
 
         /* Top visual preview container */
@@ -226,6 +252,20 @@
             height: 100%;
             object-fit: cover;
             border-radius: 16px;
+        }
+
+        .projectPreview .fallbackIconContainer {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+        }
+
+        .projectPreview .fallbackIconContainer i {
+            font-size: 3rem;
+            color: #222222;
         }
 
         /* Text layout */
@@ -258,6 +298,13 @@
             font-size: 1rem;
             font-weight: 500;
             margin-top: 4px;
+            text-decoration: none;
+            width: fit-content;
+            transition: color 0.25s ease;
+        }
+
+        .projectAction:hover {
+            color: #bcbcbc;
         }
 
         .projectAction i {
@@ -391,68 +438,98 @@
 
             <!-- Recent Projects Section -->
             <div class="projectSection">
-                <h2 class="sectionHeading">Recent Projects</h2>
+                
+                <div class="sectionHeader">
+                    <h2 class="sectionHeading">RECENT PROJECTS</h2>
+                    <span class="sectionLine"></span>
+                </div>
+
                 <div class="projectSectionList">
 
                     <!-- Personal Portfolio Website -->
-                    <a href="https://github.com/shakibuzzaman52/portfolio" target="_blank" rel="noopener noreferrer" class="projectCard">
+                    <div class="projectCard">
                         <div class="projectPreview">
-                            <img src="images.jpeg" alt="Personal Portfolio Website">
+                            <img src="images.jpeg" alt="Personal Portfolio Website" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallbackIconContainer">
+                                <i class="fa-regular fa-folder-open"></i>
+                            </div>
                         </div>
                         <div class="projectDetails">
                             <h3 class="projectTitle">Personal Portfolio Website</h3>
                             <p class="projectDescription">A responsive personal portfolio built to showcase my projects, skills, blogs, education, and competitive programming profiles with a clean and modern interface.</p>
-                            <span class="projectAction">View on GitHub <i class="fa-solid fa-arrow-right"></i></span>
+                            <a href="https://github.com/shakibuzzaman52/portfolio" target="_blank" rel="noopener noreferrer" class="projectAction">
+                                View on GitHub <i class="fa-solid fa-arrow-right"></i>
+                            </a>
                         </div>
-                    </a>
+                    </div>
 
                     <!-- FilmHaat - Movie Discovery Platform -->
-                    <a href="https://github.com/shakibuzzaman52/FilmHaat" target="_blank" rel="noopener noreferrer" class="projectCard">
+                    <div class="projectCard">
                         <div class="projectPreview">
-                            <img src="images.jpeg" alt="FilmHaat - Movie Discovery Platform">
+                            <img src="images.jpeg" alt="FilmHaat - Movie Discovery Platform" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallbackIconContainer">
+                                <i class="fa-regular fa-folder-open"></i>
+                            </div>
                         </div>
                         <div class="projectDetails">
                             <h3 class="projectTitle">FilmHaat - Movie Discovery Platform</h3>
                             <p class="projectDescription">A movie discovery web application that helps users search and explore movies with a clean, responsive interface and an easy-to-use browsing experience.</p>
-                            <span class="projectAction">View on GitHub <i class="fa-solid fa-arrow-right"></i></span>
+                            <a href="https://github.com/shakibuzzaman52/FilmHaat" target="_blank" rel="noopener noreferrer" class="projectAction">
+                                View on GitHub <i class="fa-solid fa-arrow-right"></i>
+                            </a>
                         </div>
-                    </a>
+                    </div>
 
                     <!-- VidExtract - Video Metadata Extractor -->
-                    <a href="https://github.com/shakibuzzaman52/VidExtract" target="_blank" rel="noopener noreferrer" class="projectCard">
+                    <div class="projectCard">
                         <div class="projectPreview">
-                            <img src="images.jpeg" alt="VidExtract - Video Metadata Extractor">
+                            <img src="images.jpeg" alt="VidExtract - Video Metadata Extractor" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallbackIconContainer">
+                                <i class="fa-regular fa-folder-open"></i>
+                            </div>
                         </div>
                         <div class="projectDetails">
                             <h3 class="projectTitle">VidExtract - Video Metadata Extractor</h3>
                             <p class="projectDescription">A tool for extracting YouTube and Facebook video metadata like titles, descriptions, tags, and thumbnails with a clean interface.</p>
-                            <span class="projectAction">View on GitHub <i class="fa-solid fa-arrow-right"></i></span>
+                            <a href="https://github.com/shakibuzzaman52/VidExtract" target="_blank" rel="noopener noreferrer" class="projectAction">
+                                View on GitHub <i class="fa-solid fa-arrow-right"></i>
+                            </a>
                         </div>
-                    </a>
+                    </div>
 
                     <!-- CalenderX -->
-                    <a href="https://github.com/shakibuzzaman52/CalenderX" target="_blank" rel="noopener noreferrer" class="projectCard">
+                    <div class="projectCard">
                         <div class="projectPreview">
-                            <img src="images.jpeg" alt="CalenderX">
+                            <img src="images.jpeg" alt="CalenderX" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallbackIconContainer">
+                                <i class="fa-regular fa-folder-open"></i>
+                            </div>
                         </div>
                         <div class="projectDetails">
                             <h3 class="projectTitle">CalenderX</h3>
                             <p class="projectDescription">A responsive calendar application that helps users manage dates, events, and schedules with a clean and user-friendly interface.</p>
-                            <span class="projectAction">View on GitHub <i class="fa-solid fa-arrow-right"></i></span>
+                            <a href="https://github.com/shakibuzzaman52/CalenderX" target="_blank" rel="noopener noreferrer" class="projectAction">
+                                View on GitHub <i class="fa-solid fa-arrow-right"></i>
+                            </a>
                         </div>
-                    </a>
+                    </div>
 
                     <!-- PhyHunt Download -->
-                    <a href="https://github.com/shakibuzzaman52/PhyHunt-Download" target="_blank" rel="noopener noreferrer" class="projectCard">
+                    <div class="projectCard">
                         <div class="projectPreview">
-                            <img src="images.jpeg" alt="PhyHunt Download">
+                            <img src="images.jpeg" alt="PhyHunt Download" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallbackIconContainer">
+                                <i class="fa-regular fa-folder-open"></i>
+                            </div>
                         </div>
                         <div class="projectDetails">
                             <h3 class="projectTitle">PhyHunt Download</h3>
                             <p class="projectDescription">A tool that extracts hidden YouTube class links from the Physics Hunters platform with a simple and user-friendly interface.</p>
-                            <span class="projectAction">View on GitHub <i class="fa-solid fa-arrow-right"></i></span>
+                            <a href="https://github.com/shakibuzzaman52/PhyHunt-Download" target="_blank" rel="noopener noreferrer" class="projectAction">
+                                View on GitHub <i class="fa-solid fa-arrow-right"></i>
+                            </a>
                         </div>
-                    </a>
+                    </div>
 
                 </div>
             </div>
