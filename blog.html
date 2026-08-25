@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
     <!-- External Dynamic Scripts -->
     <script src="background.js" defer></script>
@@ -180,6 +180,11 @@
             padding: 24px 0;
             border-bottom: 1px solid #141414;
             gap: 20px;
+        }
+
+        /* সর্বশেষ ব্লগের নিচের বর্ডার লাইনটি বাদ দেওয়া হয়েছে */
+        .blogPost:last-of-type {
+            border-bottom: none;
         }
 
         .postLeft {
