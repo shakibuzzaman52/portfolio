@@ -200,14 +200,14 @@
             align-items: center;
             gap: 12px;
             font-family: "DM Mono", monospace;
-            font-size: 1rem;
+            font-size: 1.15rem; /* Increased slightly for better visibility */
             color: #777777;
             white-space: nowrap;
             transition: color 0.25s ease;
         }
 
         .marquee-item i {
-            font-size: 1.2rem;
+            font-size: 1.38rem; /* Increased slightly to balance with the text */
             color: #555555;
             transition: color 0.25s ease;
         }
@@ -240,6 +240,7 @@
             display: flex;
             flex-direction: column;
             gap: 0px;
+            margin-top: 10px;
         }
 
         .achievement-item {
@@ -533,7 +534,7 @@
         <section class="pageSection">
             <div class="minimal-header">
                 <h1>Achievements</h1>
-                <p class="minimal-subtitle">A collection of certificates, achievements, and recognitions.</p>
+                <p class="minimal-subtitle">A collection of certificates, achievements and recognitions.</p>
             </div>
 
             <!-- Auto sliding technologies marquee container -->
@@ -570,13 +571,7 @@
                 </div>
             </div>
 
-            <!-- Section Header for Certificates -->
-            <div class="sectionHeader">
-                <h2 class="sectionHeading">CERTIFICATES & AWARDS</h2>
-                <span class="sectionLine"></span>
-            </div>
-
-            <!-- Achievement List -->
+            <!-- Achievement List (Directly placed under the slider) -->
             <div class="achievement-list">
                 <!-- Achievement Item 1 -->
                 <div class="achievement-item">
