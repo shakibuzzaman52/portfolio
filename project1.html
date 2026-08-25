@@ -199,10 +199,10 @@
             gap: 24px;
             text-decoration: none;
             color: inherit;
-            /* ডাবল রেডিয়াল গ্রেডিয়েন্ট: ব্যাকগ্রাউন্ড এবং বর্ডার উভয়ই ওপরের কোণার দিকে সুন্দরভাবে ব্লেন্ড হবে */
+            /* লিনিয়ার গ্রেডিয়েন্ট: ওপর থেকে নিচে সম্পূর্ণ সমানভাবে বর্ডার এবং ব্যাকগ্রাউন্ড ব্লেন্ড হবে */
             background-image: 
-                radial-gradient(ellipse at 50% 110%, #121216 0%, #000000 85%), /* ব্যাকগ্রাউন্ড গ্রেডিয়েন্ট */
-                radial-gradient(ellipse at 50% 110%, #2c2c2c 0%, #000000 85%); /* বর্ডার গ্রেডিয়েন্ট */
+                linear-gradient(180deg, #000000 0%, #0c0c0e 100%),  /* ব্যাকগ্রাউন্ড গ্রেডিয়েন্ট */
+                linear-gradient(180deg, #000000 0%, #2c2c2c 100%);  /* বর্ডার গ্রেডিয়েন্ট */
             background-origin: border-box;
             background-clip: padding-box, border-box;
         }
