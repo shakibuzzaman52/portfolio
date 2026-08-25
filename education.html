@@ -137,75 +137,119 @@
         }
 
         /* =======================
+           SECTION HEADER DIVIDER
+        ======================= */
+        .sectionHeader {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .sectionHeading {
+            color: #888888;
+            font-size: 0.85rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-family: "DM Mono", monospace;
+        }
+
+        .sectionLine {
+            flex-grow: 1;
+            border-bottom: 1px solid #141414;
+            height: 1px;
+        }
+
+        /* =======================
            EDUCATION ITEMS
         ======================= */
         .pageContent {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 24px;
             margin-top: 25px;
+            position: relative;
         }
 
         .educationItem {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 20px;
-            padding: 15px;
-            border-radius: 8px;
-            background-color: transparent;
-            text-decoration: none;
-            color: inherit;
-            transition: background-color 0.25s ease;
+            position: relative;
         }
 
-        .educationItem:hover {
-            background-color: #0c0c0c;
+        /* Connecting timeline line */
+        .educationItem:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 28px;
+            top: 56px;
+            bottom: -24px;
+            width: 1px;
+            background-color: #1a1a1a;
+            z-index: 1;
         }
 
         .educationIcon {
-            width: 64px;
-            height: 64px;
+            width: 56px;
+            height: 56px;
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 8px;
-            overflow: hidden;
-            background-color: transparent;
+            background-color: #050505;
+            z-index: 2;
         }
 
         .educationIcon img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            border-radius: 6px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: filter 0.3s ease, opacity 0.3s ease;
         }
 
-        .educationIcon .defaultIcon {
-            font-size: 2.2rem;
-            color: #333;
-            display: none;
+        .educationItem:hover .educationIcon img {
+            filter: grayscale(0%);
+            opacity: 1;
         }
 
         .educationDetails {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 2px;
+            padding-top: 2px;
         }
 
         .educationDetails h2 {
-            color: #ffffff;
             font-size: 1.15rem;
-            font-weight: 550;
+            font-weight: 600;
             letter-spacing: -0.01em;
-            transition: color 0.25s ease;
+            line-height: 1.4;
+        }
+
+        .educationLink {
+            color: #ffffff;
+            text-decoration: underline;
+            text-decoration-color: rgba(255, 255, 255, 0.25);
+            text-underline-offset: 4px;
+            text-decoration-thickness: 1px;
+            display: inline-block;
+            transition: color 0.2s ease, text-decoration-color 0.2s ease;
+        }
+
+        .educationLink:hover {
+            color: #ffffff;
+            text-decoration-color: rgba(255, 255, 255, 1);
         }
 
         .educationDegree {
             color: #888888;
             font-size: 0.95rem;
-            line-height: 1.6;
-            transition: color 0.25s ease;
+            line-height: 1.5;
         }
 
         .educationYear {
@@ -213,16 +257,7 @@
             font-size: 0.82rem;
             font-family: "DM Mono", monospace;
             letter-spacing: 0.3px;
-            margin-top: 2px;
-            transition: color 0.25s ease;
-        }
-
-        .educationItem:hover .educationDegree {
-            color: #bcbcbc;
-        }
-
-        .educationItem:hover .educationYear {
-            color: #888888;
+            margin-top: 1px;
         }
 
         /* =======================
@@ -270,32 +305,27 @@
             }
 
             .educationItem {
-                flex-direction: row; 
-                align-items: center;
                 gap: 16px;
-                padding: 12px 6px;
+            }
+
+            .educationItem:not(:last-child)::after {
+                left: 23px;
+                top: 46px;
+                bottom: -28px;
             }
 
             .educationIcon {
-                width: 48px; 
-                height: 48px;
-            }
-
-            .educationIcon .defaultIcon {
-                font-size: 1.6rem;
-            }
-
-            .educationDetails {
-                gap: 2px;
+                width: 46px; 
+                height: 46px;
             }
 
             .educationDetails h2 {
-                font-size: 1.02rem;
+                font-size: 1.05rem;
             }
 
             .educationDegree {
-                font-size: 0.85rem;
-                line-height: 1.5;
+                font-size: 0.88rem;
+                line-height: 1.4;
             }
 
             .educationYear {
@@ -350,14 +380,22 @@
 
             <div class="pageContent">
                 
+                <div class="sectionHeader">
+                    <h2 class="sectionHeading">Academic education</h2>
+                    <span class="sectionLine"></span>
+                </div>
+
                 <!-- DIU Entry -->
                 <div class="educationItem">
                     <div class="educationIcon">
-                        <img src="assets/diu-logo.png" alt="Daffodil International University Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fa-solid fa-graduation-cap defaultIcon" style="display: flex;"></i>
+                        <img src="education-diu.png" alt="Daffodil International University Logo">
                     </div>
                     <div class="educationDetails">
-                        <h2>Daffodil International University</h2>
+                        <h2>
+                            <a href="https://daffodilvarsity.edu.bd/" target="_blank" rel="noopener noreferrer" class="educationLink">
+                                Daffodil International University
+                            </a>
+                        </h2>
                         <p class="educationDegree">B.Sc. in Computer Science & Engineering (CSE)</p>
                         <p class="educationYear">2026 – Present</p>
                     </div>
@@ -366,11 +404,14 @@
                 <!-- College Entry -->
                 <div class="educationItem">
                     <div class="educationIcon">
-                        <img src="assets/cantonment-college-logo.png" alt="Cantonment College Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fa-solid fa-school defaultIcon" style="display: flex;"></i>
+                        <img src="education-ccj.png" alt="Cantonment College Logo">
                     </div>
                     <div class="educationDetails">
-                        <h2>Cantonment College, Jashore</h2>
+                        <h2>
+                            <a href="https://ccj.edu.bd/" target="_blank" rel="noopener noreferrer" class="educationLink">
+                                Cantonment College, Jashore
+                            </a>
+                        </h2>
                         <p class="educationDegree">Higher Secondary Certificate (HSC)</p>
                         <p class="educationYear">2022 – 2024</p>
                     </div>
@@ -379,11 +420,14 @@
                 <!-- High School Entry -->
                 <div class="educationItem">
                     <div class="educationIcon">
-                        <img src="assets/jk-school-logo.png" alt="Bankra J.K. High School Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <i class="fa-solid fa-school defaultIcon" style="display: flex;"></i>
+                        <img src="education-bjk.png" alt="Bankra J.K. High School Logo">
                     </div>
                     <div class="educationDetails">
-                        <h2>Bankra J.K. High School</h2>
+                        <h2>
+                            <a href="https://www.facebook.com/BankraJKhighschool.info" target="_blank" rel="noopener noreferrer" class="educationLink">
+                                Bankra J.K. High School
+                            </a>
+                        </h2>
                         <p class="educationDegree">Secondary School Certificate (SSC)</p>
                         <p class="educationYear">2020 – 2022</p>
                     </div>
