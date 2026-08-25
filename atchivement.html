@@ -139,21 +139,38 @@
         }
 
         /* =======================
+           SECTION HEADER WITH LINE
+        ======================= */
+        .sectionHeader {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 25px;
+            margin-bottom: 20px;
+        }
+
+        .sectionHeading {
+            color: #888888;
+            font-size: 0.85rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-family: "DM Mono", monospace;
+        }
+
+        .sectionLine {
+            flex-grow: 1;
+            border-bottom: 1px solid #141414;
+            height: 1px;
+        }
+
+        /* =======================
            INFINITE MARQUEE SLIDER
         ======================= */
         .marquee-section {
             margin-bottom: 50px;
             overflow: hidden;
             width: 100%;
-        }
-
-        .marquee-title {
-            font-family: "DM Mono", monospace;
-            font-size: 0.78rem;
-            color: #555555;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
         }
 
         .marquee-wrapper {
@@ -181,16 +198,16 @@
         .marquee-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-family: "DM Mono", monospace;
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #777777;
             white-space: nowrap;
             transition: color 0.25s ease;
         }
 
         .marquee-item i {
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: #555555;
             transition: color 0.25s ease;
         }
@@ -516,17 +533,23 @@
         <section class="pageSection">
             <div class="minimal-header">
                 <h1>Achievements</h1>
-                <p class="minimal-subtitle">A collection of certificates, programming achievements, and recognitions.</p>
+                <p class="minimal-subtitle">A collection of certificates, achievements, and recognitions.</p>
             </div>
 
             <!-- Auto sliding technologies marquee container -->
             <div class="marquee-section">
-                <div class="marquee-title">Technologies & Tools</div>
+                <!-- Section Header with a horizontal line on the right -->
+                <div class="sectionHeader">
+                    <h2 class="sectionHeading">Technologies & Tools</h2>
+                    <span class="sectionLine"></span>
+                </div>
+                
                 <div class="marquee-wrapper">
                     <div class="marquee-content">
                         <!-- Track 1 -->
                         <div class="marquee-track">
                             <div class="marquee-item"><i class="fa-solid fa-code"></i> C++</div>
+                            <div class="marquee-item"><i class="fa-brands fa-python"></i> Python</div>
                             <div class="marquee-item"><i class="fa-brands fa-html5"></i> HTML5</div>
                             <div class="marquee-item"><i class="fa-brands fa-css3-alt"></i> CSS3</div>
                             <div class="marquee-item"><i class="fa-brands fa-js"></i> JavaScript</div>
@@ -536,6 +559,7 @@
                         <!-- Track 2 (Exact Duplicate for Seamless Loop) -->
                         <div class="marquee-track" aria-hidden="true">
                             <div class="marquee-item"><i class="fa-solid fa-code"></i> C++</div>
+                            <div class="marquee-item"><i class="fa-brands fa-python"></i> Python</div>
                             <div class="marquee-item"><i class="fa-brands fa-html5"></i> HTML5</div>
                             <div class="marquee-item"><i class="fa-brands fa-css3-alt"></i> CSS3</div>
                             <div class="marquee-item"><i class="fa-brands fa-js"></i> JavaScript</div>
@@ -544,6 +568,12 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Section Header for Certificates -->
+            <div class="sectionHeader">
+                <h2 class="sectionHeading">CERTIFICATES & AWARDS</h2>
+                <span class="sectionLine"></span>
             </div>
 
             <!-- Achievement List -->
