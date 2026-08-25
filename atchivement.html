@@ -135,7 +135,85 @@
             color: #888888;
             font-size: 0.92rem;
             font-family: "DM Mono", monospace;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
+        }
+
+        /* =======================
+           INFINITE MARQUEE SLIDER
+        ======================= */
+        .marquee-section {
+            margin-bottom: 50px;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .marquee-title {
+            font-family: "DM Mono", monospace;
+            font-size: 0.78rem;
+            color: #555555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .marquee-wrapper {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            user-select: none;
+            mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+        }
+
+        .marquee-content {
+            display: flex;
+            flex-shrink: 0;
+            gap: 60px;
+            animation: scroll-left 25s linear infinite;
+        }
+
+        .marquee-track {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: "DM Mono", monospace;
+            font-size: 1rem; /* Increased from 0.9rem for readability */
+            color: #777777;
+            white-space: nowrap;
+            transition: color 0.25s ease;
+        }
+
+        .marquee-item i {
+            font-size: 1.2rem; /* Increased from 1rem for better presence */
+            color: #555555;
+            transition: color 0.25s ease;
+        }
+
+        .marquee-item:hover {
+            color: #ffffff;
+        }
+
+        .marquee-item:hover i {
+            color: #ffffff;
+        }
+
+        .marquee-wrapper:hover .marquee-content {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         /* =======================
@@ -144,25 +222,24 @@
         .achievement-list {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 0px;
         }
 
         .achievement-item {
             display: flex;
             align-items: flex-start;
             gap: 20px;
-            padding: 20px;
-            border-radius: 8px;
+            padding: 24px 0;
+            border-radius: 2px;
             background-color: transparent;
-            border: 1px solid #141414;
-            transition: all 0.25s ease;
+            border: none;
+            border-bottom: 1px solid #1f1f1f;
             text-decoration: none;
             color: inherit;
         }
 
-        .achievement-item:hover {
-            background-color: #0c0c0c;
-            border-color: #262626;
+        .achievement-list .achievement-item:last-child {
+            border-bottom: none;
         }
 
         /* Certificate Thumbnail Container */
@@ -171,7 +248,7 @@
             width: 80px;
             height: 56px;
             background-color: #111;
-            border-radius: 4px;
+            border-radius: 2px;
             overflow: hidden;
             flex-shrink: 0;
             display: flex;
@@ -181,7 +258,7 @@
             transition: border-color 0.25s ease;
         }
 
-        .achievement-item:hover .certificate-thumb-wrapper {
+        .certificate-thumb-wrapper:hover {
             border-color: #444;
         }
 
@@ -243,16 +320,11 @@
             gap: 6px;
             font-size: 0.82rem;
             font-family: "DM Mono", monospace;
-            color: #666;
-            transition: color 0.25s ease;
-        }
-
-        .achievement-item:hover .achievement-meta-row {
-            color: #999;
+            color: #888888;
         }
 
         .achievement-bullet {
-            color: #222;
+            color: #333333;
             font-weight: bold;
         }
 
@@ -271,7 +343,8 @@
             padding-left: 10px;
         }
 
-        .achievement-item:hover .achievement-view-icon {
+        .certificate-thumb-wrapper:hover ~ .achievement-view-icon,
+        .achievement-view-icon:hover {
             color: #ffffff;
         }
 
@@ -301,7 +374,7 @@
         .lightbox-content {
             max-width: 85%;
             max-height: 80%;
-            border-radius: 6px;
+            border-radius: 4px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transform: scale(0.95);
             transition: transform 0.3s ease;
@@ -367,13 +440,14 @@
             }
 
             .achievement-item {
-                padding: 16px;
+                padding: 20px 0;
                 gap: 14px;
             }
 
             .certificate-thumb-wrapper {
                 width: 70px;
                 height: 50px;
+                border-radius: 2px;
             }
 
             .achievement-title {
@@ -445,6 +519,35 @@
                 <p class="minimal-subtitle">A collection of certificates, programming achievements, and recognitions.</p>
             </div>
 
+            <!-- Auto sliding technologies marquee container -->
+            <div class="marquee-section">
+                <div class="marquee-title">Technologies & Tools</div>
+                <div class="marquee-wrapper">
+                    <div class="marquee-content">
+                        <!-- Track 1 -->
+                        <div class="marquee-track">
+                            <div class="marquee-item"><i class="fa-solid fa-code"></i> C++</div>
+                            <div class="marquee-item"><i class="fa-brands fa-python"></i> Python</div>
+                            <div class="marquee-item"><i class="fa-brands fa-html5"></i> HTML5</div>
+                            <div class="marquee-item"><i class="fa-brands fa-css3-alt"></i> CSS3</div>
+                            <div class="marquee-item"><i class="fa-brands fa-js"></i> JavaScript</div>
+                            <div class="marquee-item"><i class="fa-brands fa-git-alt"></i> Git</div>
+                            <div class="marquee-item"><i class="fa-solid fa-terminal"></i> VS Code</div>
+                        </div>
+                        <!-- Track 2 (Exact Duplicate for Seamless Loop) -->
+                        <div class="marquee-track" aria-hidden="true">
+                            <div class="marquee-item"><i class="fa-solid fa-code"></i> C++</div>
+                            <div class="marquee-item"><i class="fa-brands fa-python"></i> Python</div>
+                            <div class="marquee-item"><i class="fa-brands fa-html5"></i> HTML5</div>
+                            <div class="marquee-item"><i class="fa-brands fa-css3-alt"></i> CSS3</div>
+                            <div class="marquee-item"><i class="fa-brands fa-js"></i> JavaScript</div>
+                            <div class="marquee-item"><i class="fa-brands fa-git-alt"></i> Git</div>
+                            <div class="marquee-item"><i class="fa-solid fa-terminal"></i> VS Code</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Achievement List -->
             <div class="achievement-list">
                 <!-- Achievement Item 1 -->
@@ -463,7 +566,7 @@
                             <span class="achievement-bullet">·</span>
                             <span class="achievement-date">2026</span>
                         </div>
-                        <p class="achievement-desc"> Competitive Programming and C++</p>
+                        <p class="achievement-desc">Competitive Programming and C++</p>
                     </div>
                     <div class="achievement-view-icon">
                         <i class="fa-solid fa-magnifying-glass-plus"></i>
