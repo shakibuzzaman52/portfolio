@@ -144,18 +144,52 @@
         .blogList {
             display: flex;
             flex-direction: column;
-            gap: 14px;
         }
 
+        /* Section Heading Divider */
+        .sectionHeader {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .sectionHeading {
+            color: #888888;
+            font-size: 0.85rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-family: "DM Mono", monospace;
+        }
+
+        .sectionLine {
+            flex-grow: 1;
+            border-bottom: 1px solid #141414;
+            height: 1px;
+        }
+
+        /* =======================
+           BLOG POST LAYOUT
+        ======================= */
         .blogPost {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            border-bottom: 1px solid #141414;
+            gap: 20px;
+        }
+
+        .postLeft {
             display: flex;
             flex-direction: column;
             gap: 6px;
-            padding: 12px 0;
-            background-color: transparent;
         }
 
         .postLink {
+            font-family: "Inter", Arial, Helvetica, sans-serif;
             color: #ffffff;
             text-decoration: none;
             font-size: 1.15rem;
@@ -168,69 +202,37 @@
             color: #bcbcbc;
         }
 
-        /* Section Heading Divider */
-        .sectionHeader {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-top: 15px;
-            margin-bottom: 10px;
-        }
-
-        .sectionHeading {
-            color: #cdcdcd;
-            font-size: 1rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-family: "DM Mono", monospace;
-        }
-
-        .sectionLine {
-            flex-grow: 1;
-            border-bottom: 1px solid #1f1f1f;
-            height: 1px;
-        }
-
-        /* =======================
-           BLOG ACTION BUTTONS & META
-        ======================= */
-        .blogMeta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 4px;
-        }
-
-        .blogMeta p {
-            color: #888888;
-            font-family: "DM Mono", monospace;
-            font-size: 0.82rem;
-        }
-
-        .blogActions {
-            display: flex;
-            gap: 18px;
-        }
-
-        .blogActions a {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: #555555;
-            text-decoration: none;
-            font-family: "Inter", Arial, Helvetica, sans-serif;
+        .postDate {
+            color: #666666;
             font-size: 0.85rem;
-            cursor: pointer;
-            transition: color 0.25s ease;
+            font-family: "DM Mono", monospace;
         }
 
-        .blogActions a i {
-            font-size: 0.82rem;
-        }
-
-        .blogActions a:hover {
+        .postActionBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid #1e1e1e;
+            background-color: transparent;
             color: #ffffff;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        .postActionBtn svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            transition: transform 0.25s ease;
+        }
+
+        .postActionBtn:hover {
+            background-color: #111111;
+            border-color: #444444;
         }
 
         /* =======================
@@ -278,33 +280,30 @@
                 width: 88%;
             }
 
-            .pageSection h1 {
+            .blogSection h1 {
                 font-size: 1.6rem;
             }
 
             .blogPost {
-                padding: 12px 0;
-                gap: 4px;
+                padding: 18px 0;
             }
 
             .postLink {
-                font-size: 1.02rem;
+                font-size: 1.05rem;
             }
 
-            .blogMeta p {
+            .postDate {
                 font-size: 0.78rem;
             }
 
-            .blogActions {
-                gap: 14px;
+            .postActionBtn {
+                width: 42px;
+                height: 42px;
             }
 
-            .blogActions a {
-                font-size: 0.85rem;
-            }
-
-            .blogActions a i {
-                font-size: 0.85rem;
+            .postActionBtn svg {
+                width: 14px;
+                height: 14px;
             }
         }
     </style>
@@ -354,120 +353,71 @@
 
             <div class="blogList">
                 <div class="sectionHeader">
-                    <h2 class="sectionHeading">2026</h2>
+                    <h2 class="sectionHeading">FROM THE BLOG — 2026</h2>
                     <span class="sectionLine"></span>
                 </div>
 
                 <article class="blogPost">
-                    <a class="postLink" href="blog-nubcc-cp-bootcamp-certificate.html">
-                        NUBCC CP Bootcamp Certificate 
-                    </a>
-                    <div class="blogMeta">
-                        <p>August 13, 2026</p>
-                        <div class="blogActions">
-                            <a class="readBtn">
-                                <i class="fa-solid fa-book-open"></i>
-                                Read
-                            </a>
-                            <a href="#" class="shareBtn">
-                                <i class="fa-solid fa-share-nodes"></i>
-                                Share
-                            </a>
-                        </div>
+                    <div class="postLeft">
+                        <a class="postLink" href="blog-nubcc-cp-bootcamp-certificate.html">
+                            NUBCC CP Bootcamp Certificate 
+                        </a>
+                        <span class="postDate">August 13, 2026</span>
                     </div>
+                    <a class="postActionBtn" href="blog-nubcc-cp-bootcamp-certificate.html" title="Read Post">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 10l5 5-5 5"/>
+                            <path d="M4 4v7a4 4 0 0 0 4 4h12"/>
+                        </svg>
+                    </a>
                 </article>
 
                 <article class="blogPost">
-                    <a class="postLink" href="blog-nub-shohoj-coding-cp-bootcamp.html">
-                        Shohoj Coding CP Bootcamp (NUB) 
-                    </a>
-                    <div class="blogMeta">
-                        <p>August 6, 2026</p>
-                        <div class="blogActions">
-                            <a class="readBtn">
-                                <i class="fa-solid fa-book-open"></i>
-                                Read
-                            </a>
-                            <a href="#" class="shareBtn">
-                                <i class="fa-solid fa-share-nodes"></i>
-                                Share
-                            </a>
-                        </div>
+                    <div class="postLeft">
+                        <a class="postLink" href="blog-nub-shohoj-coding-cp-bootcamp.html">
+                            Shohoj Coding CP Bootcamp (NUB) 
+                        </a>
+                        <span class="postDate">August 6, 2026</span>
                     </div>
+                    <a class="postActionBtn" href="blog-nub-shohoj-coding-cp-bootcamp.html" title="Read Post">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 10l5 5-5 5"/>
+                            <path d="M4 4v7a4 4 0 0 0 4 4h12"/>
+                        </svg>
+                    </a>
                 </article>
                 
                 <article class="blogPost">
-                    <a class="postLink" href="blog-cse-presentation-experience.html">
-                        My CSE Presentation Experience
-                    </a>
-                    <div class="blogMeta">
-                        <p>July 17, 2026</p>
-                        <div class="blogActions">
-                            <a class="readBtn">
-                                <i class="fa-solid fa-book-open"></i>
-                                Read
-                            </a>
-                            <a href="#" class="shareBtn">
-                                <i class="fa-solid fa-share-nodes"></i>
-                                Share
-                            </a>
-                        </div>
+                    <div class="postLeft">
+                        <a class="postLink" href="blog-cse-presentation-experience.html">
+                            My CSE Presentation Experience
+                        </a>
+                        <span class="postDate">July 17, 2026</span>
                     </div>
+                    <a class="postActionBtn" href="blog-cse-presentation-experience.html" title="Read Post">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 10l5 5-5 5"/>
+                            <path d="M4 4v7a4 4 0 0 0 4 4h12"/>
+                        </svg>
+                    </a>
                 </article>
             
                 <article class="blogPost">
-                    <a class="postLink" href="blog-first-programing-contest.html">
-                        First Programming Contest Experience
-                    </a>
-                    <div class="blogMeta">
-                        <p>July 10, 2026</p>
-                        <div class="blogActions">
-                            <a class="readBtn">
-                                <i class="fa-solid fa-book-open"></i>
-                                Read
-                            </a>
-                            <a href="#" class="shareBtn">
-                                <i class="fa-solid fa-share-nodes"></i>
-                                Share
-                            </a>
-                        </div>
+                    <div class="postLeft">
+                        <a class="postLink" href="blog-first-programing-contest.html">
+                            First Programming Contest Experience
+                        </a>
+                        <span class="postDate">July 10, 2026</span>
                     </div>
+                    <a class="postActionBtn" href="blog-first-programing-contest.html" title="Read Post">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 10l5 5-5 5"/>
+                            <path d="M4 4v7a4 4 0 0 0 4 4h12"/>
+                        </svg>
+                    </a>
                 </article>
             </div>
         </section>
     </main>
-
-    <!-- Post Routing and Sharing Logic -->
-    <script>
-        document.querySelectorAll(".blogPost").forEach(post => {
-            const postLink = post.querySelector(".postLink");
-            const readBtn = post.querySelector(".readBtn");
-            const shareBtn = post.querySelector(".shareBtn");
-
-            if (postLink && readBtn && shareBtn) {
-                const link = postLink.href;
-                const title = postLink.textContent.trim();
-
-                readBtn.href = link;
-
-                shareBtn.onclick = function (e) {
-                    e.preventDefault();
-                    if (navigator.share) {
-                        navigator.share({
-                            title: title,
-                            text: "Read my blog post: " + title,
-                            url: link
-                        }).catch(() => {});
-                    } else {
-                        navigator.clipboard.writeText(link).then(() => {
-                            alert("Link copied to clipboard!");
-                        }).catch(() => {
-                            alert("Failed to copy link.");
-                        });
-                    }
-                };
-            }
-        });
-    </script>
 </body>
 </html>
