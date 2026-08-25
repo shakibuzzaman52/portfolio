@@ -38,7 +38,7 @@
 
         body {
             font-family: "Inter", Arial, Helvetica, sans-serif;
-            background-color: #000000;
+            background-color: #050505;
             color: #ffffff;
             font-size: 1rem;
             line-height: 1.8;
@@ -202,7 +202,7 @@
         }
 
         /* =======================
-           PROJECT CARD STYLING (EXPANDED SINGLE CORNER BLEND)
+           PROJECT CARD STYLING (HOLLOW / TRANSPARENT DESIGN)
         ======================= */
         .projectCard {
             border: 1px solid transparent;
@@ -213,23 +213,22 @@
             gap: 24px;
             color: inherit;
             /* 
-               ওপরের ডান কোণা (100% 0%) থেকে কালো রঙের ব্লেন্ডটির ব্যাসার্ধ ৭৫% করা হয়েছে।
-               এতে কোণার কালো ভাবটি আরও বেশি জায়গা জুড়ে ধাপে ধাপে ছড়িয়ে পড়বে।
+               - কার্ডের ভেতরটি সম্পূর্ণ ফাঁকা (transparent) দেখানোর জন্য ইনার লেয়ারে বডির কালার #050505 দেওয়া হয়েছে।
+               - বর্ডারটি আগের মতোই থাকবে এবং ওপরের ডান কোণায় (100% 0%) মসৃণভাবে ফেড হয়ে যাবে।
             */
             background-image: 
-                /* Inner Background Layers */
-                radial-gradient(circle at 100% 0%, #000000 0%, transparent 75%),
-                linear-gradient(to bottom, #111113, #0d0d0f),
+                /* Inner Background (Padding-box) */
+                linear-gradient(to bottom, #050505, #050505),
                 
-                /* Border Layers */
-                radial-gradient(circle at 100% 0%, #000000 0%, transparent 75%),
+                /* Border Layers (Border-box) */
+                radial-gradient(circle at 100% 0%, #050505 0%, transparent 75%),
                 linear-gradient(to bottom, #333336, #1c1c1e);
                 
             background-origin: 
-                padding-box, padding-box, 
+                padding-box, 
                 border-box, border-box;
             background-clip: 
-                padding-box, padding-box, 
+                padding-box, 
                 border-box, border-box;
         }
 
