@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shakib's Portfolio</title>
 
+    <!-- Icon & Font Libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v13/font/simple-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Single Google Font Import: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- External Dynamic Scripts -->
     <script src="background.js" defer></script>
@@ -34,14 +36,17 @@
         }
 
         body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
             font-family: "Inter", Arial, Helvetica, sans-serif;
-            background-color: #050505;
+            background-color: #000000; 
             color: #ffffff;
             font-size: 1rem;
             line-height: 1.8;
-            -ms-overflow-style: none;
             position: relative;
             overflow-x: hidden;
+            animation: pageFadeIn 0.4s ease-in-out;
         }
 
         ::-webkit-scrollbar {
@@ -52,17 +57,18 @@
            TYPOGRAPHY & SHARED
         ======================= */
         .text-muted {
-            color: #999;
-            font-size: 1rem;
+            color: #999; /* #b3b3b3 থেকে পরিবর্তন করে সামগ্রিক সামঞ্জস্যের জন্য #999 করা হয়েছে */
+            font-size: 1.08rem;
+            line-height: 1.8;
         }
 
         .highlight-link,
         .findMePlatform a {
             color: #ffffff;
             font-size: 1rem;
-            font-weight: 550;
+            font-weight: 500; 
             text-decoration: none;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.144);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
             transition: 0.3s ease;
         }
 
@@ -71,8 +77,17 @@
             border-bottom-color: rgba(255, 255, 255, 0.8);
         }
 
+        .hero-name {
+            font-size: 2.05rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
+        }
+
         /* =======================
-           HEADER & NAV
+           HEADER & NAVIGATION
         ======================= */
         header {
             width: 100%;
@@ -92,59 +107,30 @@
             align-items: center;
         }
 
-        .profileLink {
+        /* Logo Box Styles */
+        .logo-box {
             display: flex;
             align-items: center;
-            color: inherit;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border: 2.5px solid #ffffff; 
             text-decoration: none;
+            transition: opacity 0.2s ease;
+            padding: 2px;
         }
 
-        .profile-container {
-            position: relative;
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .logo-box:hover {
+            opacity: 0.8;
         }
 
-        .profile-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            transition: transform 0.3s ease;
-        }
-
-        .zoom-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.55);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: 50%;
-            cursor: zoom-in;
-        }
-
-        .zoom-overlay i {
-            color: #ffffff;
-            font-size: 0.85rem;
-        }
-
-        .profile-container:hover .zoom-overlay {
-            opacity: 1;
-        }
-
-        .profile-container:hover img {
-            transform: scale(1.05);
+        /* Bold 'S' shape path styles */
+        .logo-svg-path {
+            fill: none;
+            stroke: #ffffff;
+            stroke-width: 4;
+            stroke-linecap: square;
+            stroke-linejoin: miter;
         }
 
         .right ul {
@@ -173,6 +159,7 @@
            MAIN LAYOUT
         ======================= */
         main {
+            flex: 1;
             width: min(700px, 80%);
             margin: auto;
         }
@@ -181,18 +168,65 @@
             margin: 50px 0;
         }
 
-        /* =======================
-           HERO SECTION
-        ======================= */
-        .mainHeader h1 {
-            margin-bottom: 15px;
-            font-size: 2.2rem;
-            font-weight: 750;
-            letter-spacing: -0.5px;
+        /* ===================================================
+           MODERN CSS-ONLY CURVED HERO SECTION
+        =================================================== */
+        .curvedHero {
+            width: 100%;
+            position: relative;
+            margin-top: 35px;
+            margin-bottom: 45px;
         }
 
-        .bio {
-            max-width: 700px;
+        .curvedHeroContentContainer {
+            background: linear-gradient(180deg, #18181b 0%, #000000 100%); 
+            width: 100%;
+            padding: 55px 24px 0px 24px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            clip-path: ellipse(var(--curve-rx, 90%) 100% at 50% 100%);
+            will-change: clip-path;
+        }
+
+        .visualContainer {
+            position: relative;
+            width: 100%;
+            height: 380px; 
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+
+        .heroBgText {
+            position: absolute;
+            top: 52%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: "Inter", sans-serif;
+            font-size: 165px; 
+            font-weight: 900;
+            line-height: 1;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.03) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            white-space: nowrap;
+            z-index: 1; 
+            pointer-events: none;
+            user-select: none;
+            letter-spacing: -4px;
+        }
+
+        .heroImage {
+            position: relative;
+            z-index: 2;
+            height: 100%; 
+            max-height: 98%;
+            width: auto;
+            object-fit: contain;
+            mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
         }
 
         /* =======================
@@ -220,38 +254,34 @@
             white-space: nowrap;
         }
 
-        .secondSection span {
+        /* Common Skill Badge Styles */
+        .skill-badge {
             display: inline-flex;
             justify-content: center;
             align-items: center;
             min-width: 65px;
             height: 28px;
             padding: 0 10px;
-            background: #161616;
+            background: #18181b; 
             border-radius: 4px;
-            transition: 0.3s ease;
-        }
-
-        .secondSection span a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
             color: #999;
             text-decoration: none;
-            font-family: "Roboto Condensed", sans-serif;
             font-size: 0.93rem;
             font-weight: 400;
+            transition: 0.3s ease;
+            cursor: default;
         }
 
-        .secondSection span:hover {
+        a.skill-badge {
+            cursor: pointer;
+        }
+
+        .skill-badge:hover {
             background: rgba(255, 255, 255, 0.08);
-        }
-
-        .secondSection span:hover a {
             color: #ffffff;
         }
 
-        .secondSection span i {
+        .skill-badge i {
             margin-right: 5px;
             font-size: 0.7rem;
         }
@@ -297,7 +327,6 @@
         .mail a {
             color: #999;
             text-decoration: none;
-            font-family: "DM Mono", monospace;
             font-size: 0.95rem;
             transition: color 0.3s ease;
         }
@@ -307,57 +336,11 @@
         }
 
         /* =======================
-           ZOOM MODAL STYLES
+           PAGE ANIMATION
         ======================= */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 10000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(5, 5, 5, 0.95);
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            max-width: 90%;
-            max-height: 85%;
-            border-radius: 50%;
-            border: 2px solid #262626;
-            object-fit: cover;
-            animation: zoomAnimation 0.25s ease-out;
-            cursor: zoom-out;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 25px;
-            right: 35px;
-            color: #999;
-            font-size: 2.5rem;
-            font-weight: 300;
-            cursor: pointer;
-            transition: color 0.3s ease;
-            z-index: 10001;
-            line-height: 1;
-        }
-
-        .close-modal:hover {
-            color: #ffffff;
-        }
-
-        @keyframes zoomAnimation {
-            from {
-                transform: scale(0.85);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
+        @keyframes pageFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         /* =======================
@@ -371,15 +354,6 @@
 
             .right ul li a span {
                 display: none;
-            }
-
-            .profile-container {
-                width: 42px;
-                height: 42px;
-            }
-
-            .zoom-overlay i {
-                font-size: 0.75rem;
             }
 
             .right ul {
@@ -401,8 +375,24 @@
                 width: 88%;
             }
 
-            .mainHeader h1 {
-                font-size: 1.6rem;
+            .hero-name {
+                font-size: 1.65rem;
+                margin-bottom: 15px;
+            }
+
+            .curvedHeroContentContainer {
+                padding: 45px 16px 0px 16px;
+                clip-path: ellipse(var(--curve-rx, 92%) 100% at 50% 100%);
+            }
+
+            .visualContainer {
+                height: 300px;
+            }
+
+            .heroBgText {
+                font-size: clamp(80px, 22vw, 115px); 
+                top: 52%; 
+                letter-spacing: -2px;
             }
 
             .secondSection>div {
@@ -418,51 +408,21 @@
                 font-size: 0.9rem;
                 word-break: break-word;
             }
-
-            .modal-content {
-                max-width: 80%;
-                max-height: 80%;
-            }
-
-            .close-modal {
-                top: 20px;
-                right: 25px;
-                font-size: 2.2rem;
-            }
-        }
-
-        /* =======================
-           PAGE ANIMATIONS
-        ======================= */
-        body {
-            animation: pageFadeIn 0.4s ease-in-out;
-        }
-
-        @keyframes pageFadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
         }
     </style>
 </head>
 
 <body>
 
-    <div id="top"></div>
-
     <header>
         <nav>
             <div class="left">
-                <a href="javascript:void(0)" class="profileLink" id="profileZoomTrigger">
-                    <div class="profile-container">
-                        <img src="https://github.com/shakibuzzaman52.png" alt="Profile">
-                        <div class="zoom-overlay">
-                            <i class="fa-solid fa-expand"></i>
-                        </div>
-                    </div>
+                <!-- Geometric Logo [S] -->
+                <a href="index.html" class="logo-box">
+                    <svg viewBox="0 0 32 32" width="100%" height="100%">
+                        <!-- Sharp S-shaped vector path -->
+                        <path class="logo-svg-path" d="M 23,8 L 10,8 L 10,16 L 22,16 L 22,24 L 9,24" />
+                    </svg>
                 </a>
             </div>
             <div class="right">
@@ -491,50 +451,49 @@
     </header>
 
     <main>
-        <section class="firstSection">
-            <div class="mainHeader">
-                <h1>G M Shakib Uz Zaman</h1>
-            </div>
-            <div class="bio">
-                <p class="text-muted">
-                    Hey! I'm Shakib Uz Zaman, a <a href="education.html" title="Blog" class="highlight-link">CSE undergraduate</a>, competitive programmer and problem solver.
-                </p>
-            </div>
+        <!-- 1. Introduction Text -->
+        <section style="margin-top: 60px; margin-bottom: 35px;">
+            <h1 class="hero-name">G M Shakib Uz Zaman</h1>
+            <p class="text-muted">
+                Hey! I'm Shakib Uz Zaman, a <a href="education.html" title="Education" class="highlight-link">CSE undergraduate</a>, competitive programmer and problem solver.
+            </p>
         </section>
 
+        <!-- 2. Languages, Technologies & Dev tools Section -->
         <section class="secondSection">
             <div class="langAndTech">
                 <h3>Languages & Technologies</h3>
-                <span><a href="javascript:void(0)"><i class="devicon-c-plain colored"></i> C</a></span>
-                <span><a href="javascript:void(0)"><i class="devicon-cplusplus-plain colored"></i> C++</a></span>
-                <span><a href="javascript:void(0)"><i class="devicon-python-plain colored"></i> Python</a></span>
-                <span><a href="javascript:void(0)"><i class="devicon-html5-plain colored"></i> HTML</a></span>
-                <span><a href="javascript:void(0)"><i class="devicon-css3-plain colored"></i> CSS</a></span>
+                <span class="skill-badge"><i class="devicon-c-plain colored"></i> C</span>
+                <span class="skill-badge"><i class="devicon-cplusplus-plain colored"></i> C++</span>
+                <span class="skill-badge"><i class="devicon-python-plain colored"></i> Python</span>
+                <span class="skill-badge"><i class="devicon-html5-plain colored"></i> HTML</span>
+                <span class="skill-badge"><i class="devicon-css3-plain colored"></i> CSS</span>
             </div>
 
             <div class="competitiveProg">
                 <h3>Competitive Programming</h3>
-                <span><a href="https://codeforces.com/profile/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i class="si si-codeforces" style="color:#ca2606;"></i> Codeforces</a></span>
-                <span><a href="https://leetcode.com/u/shakibuzzaman52/" target="_blank" rel="noopener noreferrer"><i class="si si-leetcode" style="color:#ca9e0b;"></i> LeetCode</a></span>
-                <span><a href="https://www.codechef.com/users/shakibuzzaman" target="_blank" rel="noopener noreferrer"><i class="si si-codechef" style="color:#ffffff;"></i> CodeChef</a></span>
+                <a href="https://codeforces.com/profile/shakibuzzaman52" class="skill-badge" target="_blank" rel="noopener noreferrer"><i class="si si-codeforces" style="color:#ca2606;"></i> Codeforces</a>
+                <a href="https://leetcode.com/u/shakibuzzaman52/" class="skill-badge" target="_blank" rel="noopener noreferrer"><i class="si si-leetcode" style="color:#ca9e0b;"></i> LeetCode</a>
+                <a href="https://www.codechef.com/users/shakibuzzaman" class="skill-badge" target="_blank" rel="noopener noreferrer"><i class="si si-codechef" style="color:#ffffff;"></i> CodeChef</a>
             </div>
 
             <div class="devTools">
                 <h3>Developer Tools</h3>
-                <span><a href="javascript:void(0)"><i class="devicon-vscode-plain colored"></i> VS Code</a></span>
-                <span><a href="javascript:void(0)"><i class="devicon-git-plain colored"></i> Git</a></span>
-                <span><a href="https://github.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i class="devicon-github-original"></i> GitHub</a></span>
+                <span class="skill-badge"><i class="devicon-vscode-plain colored"></i> VS Code</span>
+                <span class="skill-badge"><i class="devicon-git-plain colored"></i> Git</span>
+                <a href="https://github.com/shakibuzzaman52" class="skill-badge" target="_blank" rel="noopener noreferrer"><i class="devicon-github-original"></i> GitHub</a>
             </div>
 
             <div class="currentlyLearning">
                 <h3>Currently Learning</h3>
-                <span><a href="javascript:void(0)"><i class="devicon-cplusplus-plain colored"></i> C++</a></span>
-                <span><a href="javascript:void(0)"><i class="fa-solid fa-diagram-project" style="color:#00d486;"></i> Data Structures</a></span>
-                <span><a href="javascript:void(0)"><i class="fa-solid fa-brain" style="color:#fafafa;"></i> Algorithms</a></span>
-                <span><a href="javascript:void(0)"><i class="devicon-python-plain colored"></i> Python</a></span>
+                <span class="skill-badge"><i class="devicon-cplusplus-plain colored"></i> C++</span>
+                <span class="skill-badge"><i class="fa-solid fa-diagram-project" style="color:#00d486;"></i> Data Structures</span>
+                <span class="skill-badge"><i class="fa-solid fa-brain" style="color:#ffffff;"></i> Algorithms</span> <!-- inline color #fafafa থেকে পরিবর্তন করে #ffffff করা হয়েছে -->
+                <span class="skill-badge"><i class="devicon-python-plain colored"></i> Python</span>
             </div>
         </section>
 
+        <!-- 3. Detailed Description Paragraphs Section -->
         <section class="threeSection">
             <div class="currentlyDescription">
                 <p class="text-muted">
@@ -542,7 +501,7 @@
                 </p>
                 <br>
                 <p class="text-muted">
-                    You can explore my <a href="project.html" class="highlight-link">Projects</a> to see what I’ve built, read my <a href="blog.html" title="Blog" class="highlight-link">Blog</a> to follow my journey, check out my <a href="resources.html" class="highlight-link">Resources</a>, and view my <a href="atchivement.html" class="highlight-link">Achievements</a>. You can also learn more about me through my <a href="javascript:void(0)" class="highlight-link">Resume</a>.
+                    You can explore my <a href="project.html" class="highlight-link">Projects</a> to see what I’ve built, read my <a href="blog.html" title="Blog" class="highlight-link">Blog</a> to follow my journey, check out my <a href="resources.html" class="highlight-link">Resources</a>, and view my <a href="achievement.html" class="highlight-link">Achievements</a>. You can also learn more about me through my <a href="#" class="highlight-link">Resume</a>.
                 </p>
             </div>
             <div class="futureDescription">
@@ -552,6 +511,7 @@
             </div>
         </section>
 
+        <!-- 4. Contact Section -->
         <section class="findMeSection">
             <div class="findMeTitle">
                 <h3>Find me on</h3>
@@ -569,37 +529,51 @@
                 </p>
             </div>
         </section>
+
+        <!-- 5. Curved Hero Graphic Element -->
+        <section class="curvedHero">
+            <div class="curvedHeroContentContainer">
+                <div class="visualContainer">
+                    <div class="heroBgText">Shakib</div>
+                    <img src="index-myphoto.png" alt="Shakib" class="heroImage">
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Zoom Overlay Modal -->
-    <div id="imageModal" class="modal">
-        <span class="close-modal" id="closeModal" title="Close">&times;</span>
-        <img class="modal-content" id="modalImg" alt="Profile Zoomed">
-    </div>
-
-    <!-- Image Zoom Logic -->
+    <!-- Real-Time Curve Deformation Scroll Script with Smoothstep Easing -->
     <script>
-        const modal = document.getElementById("imageModal");
-        const trigger = document.getElementById("profileZoomTrigger");
-        const modalImg = document.getElementById("modalImg");
-        const closeModal = document.getElementById("closeModal");
+        const curveContainer = document.querySelector('.curvedHeroContentContainer');
+        const heroSection = document.querySelector('.curvedHero');
 
-        trigger.onclick = function (e) {
-            e.preventDefault();
-            modalImg.src = this.querySelector("img").src;
-            modal.style.display = "flex";
-        };
+        function handleScroll() {
+            if (!curveContainer || !heroSection) return;
 
-        closeModal.onclick = function (e) {
-            e.stopPropagation();
-            modal.style.display = "none";
-        };
+            const rect = heroSection.getBoundingClientRect();
+            const startThreshold = window.innerHeight * 0.45; 
+            const endThreshold = -150; 
 
-        modal.onclick = function (e) {
-            if (e.target !== modalImg) {
-                modal.style.display = "none";
+            let ratio = 0;
+            if (rect.top <= startThreshold) {
+                const totalDistance = startThreshold - endThreshold;
+                const scrolledDistance = startThreshold - rect.top;
+                ratio = Math.min(scrolledDistance / totalDistance, 1);
+            } else {
+                ratio = 0;
             }
-        };
-    </script> 
+
+            const easedRatio = ratio * ratio * (3 - 2 * ratio);
+            const baseRx = window.innerWidth <= 768 ? 92 : 90;
+            const maxRx = 500;
+            const instantRx = baseRx + (easedRatio * (maxRx - baseRx));
+
+            curveContainer.style.setProperty('--curve-rx', `${instantRx}%`);
+        }
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('resize', handleScroll);
+        handleScroll();
+    </script>
 </body>
+
 </html>
