@@ -183,7 +183,7 @@
         }
 
         /* ===================================================
-           MODERN CSS-ONLY CURVED HERO SECTION (STABLE POSITIONING)
+           MODERN CSS-ONLY CURVED HERO SECTION (ORIGINAL & UNTOUCHED)
         =================================================== */
         .curvedHero {
             width: 100%;
@@ -199,6 +199,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            /* Stable, static curve */
             clip-path: ellipse(90% 100% at 50% 100%);
         }
 
@@ -212,29 +213,29 @@
             overflow: hidden;
         }
 
-        /* Stable absolute centering for background text */
+        /* Giant Background Text - Expanded and Centered */
         .heroBgText {
             position: absolute;
-            top: 55%; /* Vertical center alignment */
+            top: 52%; 
             left: 50%;
-            transform: translate(-50%, -50%); /* Centered both ways */
+            transform: translate(-50%, -50%);
             font-family: "Inter", "Arial Black", sans-serif;
-            font-size: 130px; /* Fixed sizing for consistent layout */
+            font-size: 165px; /* Increased Desktop Size */
             font-weight: 900;
             line-height: 1;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.04) 100%);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.03) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             white-space: nowrap;
             z-index: 1; 
             pointer-events: none;
             user-select: none;
-            letter-spacing: -3px;
+            letter-spacing: -4px;
         }
 
         .heroImage {
             position: relative;
-            z-index: 2; /* Remains in front of the text */
+            z-index: 2;
             height: 100%; 
             max-height: 98%;
             width: auto;
@@ -455,13 +456,13 @@
             }
 
             .visualContainer {
-                height: 300px; /* Reduced container height for mobile */
+                height: 300px;
             }
 
-            /* Clamp function limits font-size dynamically based on screen width */
+            /* Responsive larger clamp sizing for mobile screens */
             .heroBgText {
-                font-size: clamp(65px, 18vw, 85px); 
-                top: 55%; 
+                font-size: clamp(80px, 22vw, 115px); 
+                top: 52%; 
                 letter-spacing: -2px;
             }
 
@@ -610,7 +611,7 @@
             </div>
         </section>
 
-        <!-- 4. Curved Hero Graphic Element -->
+        <!-- 4. Curved Hero Graphic Element (With Background Shakib text) -->
         <section class="curvedHero">
             <div class="curvedHeroContentContainer">
                 <div class="visualContainer">
