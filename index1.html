@@ -183,7 +183,7 @@
         }
 
         /* ===================================================
-           MODERN CSS-ONLY CURVED HERO SECTION (ORIGINAL & UNTOUCHED)
+           MODERN CSS-ONLY CURVED HERO SECTION
         =================================================== */
         .curvedHero {
             width: 100%;
@@ -199,7 +199,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Curved top dome shape using dynamic CSS variable to keep scroll script active */
+            /* Curved top dome shape using dynamic CSS variable */
             clip-path: ellipse(var(--curve-rx, 90%) 100% at 50% 100%);
             will-change: clip-path;
         }
@@ -214,7 +214,7 @@
             overflow: hidden;
         }
 
-        /* Giant Background Text - Precise Centering & Original Sizing */
+        /* Giant Background Text - Expanded and Centered */
         .heroBgText {
             position: absolute;
             top: 52%; 
@@ -616,7 +616,7 @@
         <section class="curvedHero">
             <div class="curvedHeroContentContainer">
                 <div class="visualContainer">
-                    <!-- Giant Background Text with precise centering & original styling -->
+                    <!-- Giant Background Text with precise centering -->
                     <div class="heroBgText">Shakib</div>
                     <!-- Foreground Image -->
                     <img src="index-myphoto.png" alt="Shakib" class="heroImage">
@@ -650,36 +650,17 @@
         <img class="modal-content" id="modalImg" alt="Profile Zoomed">
     </div>
 
-    <!-- Smooth Lerp Scroll-Exit Animation Script -->
+    <!-- Real-Time Curve Deformation Scroll Script -->
     <script>
         const curveContainer = document.querySelector('.curvedHeroContentContainer');
         const heroSection = document.querySelector('.curvedHero');
-
-        // State variables for smooth Lerping (Linear Interpolation)
-        let targetRx = window.innerWidth <= 768 ? 92 : 90;
-        let currentRx = targetRx;
-        let isLoopActive = false;
-
-        function updateCurve() {
-            currentRx += (targetRx - currentRx) * 0.12;
-
-            curveContainer.style.setProperty('--curve-rx', `${currentRx}%`);
-
-            if (Math.abs(targetRx - currentRx) > 0.05) {
-                requestAnimationFrame(updateCurve);
-            } else {
-                isLoopActive = false;
-                currentRx = targetRx;
-                curveContainer.style.setProperty('--curve-rx', `${currentRx}%`);
-            }
-        }
 
         function handleScroll() {
             if (!curveContainer || !heroSection) return;
 
             const rect = heroSection.getBoundingClientRect();
             
-            // Only flattens when passing the upper exit thresholds
+            // Thresholds for curve transformation as section enters top exit boundary
             const startThreshold = 100; 
             const endThreshold = -100;     
 
@@ -695,21 +676,17 @@
             const baseRx = window.innerWidth <= 768 ? 92 : 90;
             const maxRx = 500;
             
-            targetRx = baseRx + (ratio * (maxRx - baseRx));
+            // Instantaneous calculation directly mapped to current scroll position
+            const instantRx = baseRx + (ratio * (maxRx - baseRx));
 
-            if (!isLoopActive) {
-                isLoopActive = true;
-                requestAnimationFrame(updateCurve);
-            }
+            // Directly applying the property in real-time without transition/lerping lag
+            curveContainer.style.setProperty('--curve-rx', `${instantRx}%`);
         }
 
         window.addEventListener('scroll', handleScroll, { passive: true });
-        window.addEventListener('resize', () => {
-            targetRx = window.innerWidth <= 768 ? 92 : 90;
-            handleScroll();
-        });
+        window.addEventListener('resize', handleScroll);
         
-        // Initial call
+        // Initial setup on load
         handleScroll();
     </script>
 
