@@ -650,7 +650,7 @@
         <img class="modal-content" id="modalImg" alt="Profile Zoomed">
     </div>
 
-    <!-- Real-Time Curve Deformation Scroll Script -->
+    <!-- Real-Time Curve Deformation Scroll Script with Smoothstep Easing -->
     <script>
         const curveContainer = document.querySelector('.curvedHeroContentContainer');
         const heroSection = document.querySelector('.curvedHero');
@@ -660,9 +660,9 @@
 
             const rect = heroSection.getBoundingClientRect();
             
-            // Thresholds for curve transformation as section enters top exit boundary
-            const startThreshold = 100; 
-            const endThreshold = -100;     
+            // Starts straightening when the container crosses slightly above the middle of the viewport
+            const startThreshold = window.innerHeight * 0.45; 
+            const endThreshold = -150; // Fully straight when the element exits the top by 150px    
 
             let ratio = 0;
             if (rect.top <= startThreshold) {
@@ -673,20 +673,23 @@
                 ratio = 0;
             }
 
+            // Applying Hermite/Smoothstep Easing (Smooths the start and end in real-time)
+            const easedRatio = ratio * ratio * (3 - 2 * ratio);
+
             const baseRx = window.innerWidth <= 768 ? 92 : 90;
             const maxRx = 500;
             
-            // Instantaneous calculation directly mapped to current scroll position
-            const instantRx = baseRx + (ratio * (maxRx - baseRx));
+            // Synchronous instant calculation directly mapped to scroll position
+            const instantRx = baseRx + (easedRatio * (maxRx - baseRx));
 
-            // Directly applying the property in real-time without transition/lerping lag
+            // Instantaneous property application with smooth transition flow
             curveContainer.style.setProperty('--curve-rx', `${instantRx}%`);
         }
 
         window.addEventListener('scroll', handleScroll, { passive: true });
         window.addEventListener('resize', handleScroll);
         
-        // Initial setup on load
+        // Initial setup on page load
         handleScroll();
     </script>
 
