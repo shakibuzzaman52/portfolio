@@ -1,6 +1,6 @@
 /**
  * Dynamic Footer & Extended Curved Hero Section Integration
- * Theme: Desktop-Enhanced Deep Curve & Ultra-Flatter Mobile Curve with Editorial Spacing
+ * Theme: Desktop-Enhanced Deep Curve & Perfect 160% Flatter Mobile Curve with Editorial Spacing
  */
 
 (function () {
@@ -183,8 +183,8 @@
             .backToTop { right: 20px; bottom: 20px; }
             .curvedHeroContentContainer {
                 padding: 45px 0 40px 0;
-                /* Significantly flatter starting curve on mobile viewports (180% ratio) */
-                clip-path: ellipse(var(--curve-rx, 180%) 100% at 50% 100%);
+                /* Standardized starting curve on mobile viewports (160% ratio) */
+                clip-path: ellipse(var(--curve-rx, 160%) 100% at 50% 100%);
             }
             .visualContainer { height: 380px; }
             .heroBgText { font-size: clamp(100px, 24vw, 150px); letter-spacing: -0.02em; }
@@ -276,8 +276,8 @@
         const ratio = Math.max(0, Math.min((start - rect.top) / total, 1));
         const eased = ratio * ratio * (3 - 2 * ratio);
         
-        // Custom curved arc starting base: Ultra-flatter on mobile (180%), deeper on desktop (84%)
-        const baseRx = window.innerWidth <= 768 ? 180 : 84;
+        // Custom curved arc starting base: Flatter on mobile (160%), deeper on desktop (84%)
+        const baseRx = window.innerWidth <= 768 ? 160 : 84;
         const rx = baseRx + eased * (500 - baseRx);
         container.style.setProperty("--curve-rx", `${rx}%`);
     }, { passive: true });
