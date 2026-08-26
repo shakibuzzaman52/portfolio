@@ -199,8 +199,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Stable, static curve */
-            clip-path: ellipse(90% 100% at 50% 100%);
+            /* Curved top dome shape using dynamic CSS variable to keep scroll script active */
+            clip-path: ellipse(var(--curve-rx, 90%) 100% at 50% 100%);
+            will-change: clip-path;
         }
 
         .visualContainer {
@@ -213,14 +214,14 @@
             overflow: hidden;
         }
 
-        /* Giant Background Text - Expanded and Centered */
+        /* Giant Background Text - Precise Centering & Original Sizing */
         .heroBgText {
             position: absolute;
             top: 52%; 
             left: 50%;
             transform: translate(-50%, -50%);
             font-family: "Inter", "Arial Black", sans-serif;
-            font-size: 165px; /* Increased Desktop Size */
+            font-size: 165px; 
             font-weight: 900;
             line-height: 1;
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.03) 100%);
@@ -452,7 +453,7 @@
 
             .curvedHeroContentContainer {
                 padding: 45px 16px 0px 16px;
-                clip-path: ellipse(92% 100% at 50% 100%);
+                clip-path: ellipse(var(--curve-rx, 92%) 100% at 50% 100%);
             }
 
             .visualContainer {
@@ -615,7 +616,7 @@
         <section class="curvedHero">
             <div class="curvedHeroContentContainer">
                 <div class="visualContainer">
-                    <!-- Giant Background Text with precise centering -->
+                    <!-- Giant Background Text with precise centering & original styling -->
                     <div class="heroBgText">Shakib</div>
                     <!-- Foreground Image -->
                     <img src="index-myphoto.png" alt="Shakib" class="heroImage">
@@ -648,6 +649,69 @@
         <span class="close-modal" id="closeModal" title="Close">&times;</span>
         <img class="modal-content" id="modalImg" alt="Profile Zoomed">
     </div>
+
+    <!-- Smooth Lerp Scroll-Exit Animation Script -->
+    <script>
+        const curveContainer = document.querySelector('.curvedHeroContentContainer');
+        const heroSection = document.querySelector('.curvedHero');
+
+        // State variables for smooth Lerping (Linear Interpolation)
+        let targetRx = window.innerWidth <= 768 ? 92 : 90;
+        let currentRx = targetRx;
+        let isLoopActive = false;
+
+        function updateCurve() {
+            currentRx += (targetRx - currentRx) * 0.12;
+
+            curveContainer.style.setProperty('--curve-rx', `${currentRx}%`);
+
+            if (Math.abs(targetRx - currentRx) > 0.05) {
+                requestAnimationFrame(updateCurve);
+            } else {
+                isLoopActive = false;
+                currentRx = targetRx;
+                curveContainer.style.setProperty('--curve-rx', `${currentRx}%`);
+            }
+        }
+
+        function handleScroll() {
+            if (!curveContainer || !heroSection) return;
+
+            const rect = heroSection.getBoundingClientRect();
+            
+            // Only flattens when passing the upper exit thresholds
+            const startThreshold = 100; 
+            const endThreshold = -100;     
+
+            let ratio = 0;
+            if (rect.top <= startThreshold) {
+                const totalDistance = startThreshold - endThreshold;
+                const scrolledDistance = startThreshold - rect.top;
+                ratio = Math.min(scrolledDistance / totalDistance, 1);
+            } else {
+                ratio = 0;
+            }
+
+            const baseRx = window.innerWidth <= 768 ? 92 : 90;
+            const maxRx = 500;
+            
+            targetRx = baseRx + (ratio * (maxRx - baseRx));
+
+            if (!isLoopActive) {
+                isLoopActive = true;
+                requestAnimationFrame(updateCurve);
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('resize', () => {
+            targetRx = window.innerWidth <= 768 ? 92 : 90;
+            handleScroll();
+        });
+        
+        // Initial call
+        handleScroll();
+    </script>
 
     <!-- Image Zoom Logic -->
     <script>
