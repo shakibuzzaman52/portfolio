@@ -31,7 +31,7 @@
         .curvedHero {
             width: 100%;
             position: relative;
-            margin: 100px 0 0 0; /* Clear top separation, absolutely zero side margins */
+            margin: 150px 0 0 0; /* Premium margin space above the curve */
             padding: 0;
             overflow: hidden;
         }
@@ -39,11 +39,11 @@
         .curvedHeroContentContainer {
             background: linear-gradient(180deg, #18181b 0%, #000000 100%);
             width: 100%;
-            padding: 60px 0 60px 0; /* Elegant bottom padding */
+            padding: 55px 0 65px 0; 
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Fine-tuned desktop curve with slightly flatter 84% starting ratio */
+            /* Fine-tuned curve using ellipse formula */
             clip-path: ellipse(var(--curve-rx, 84%) 100% at 50% 100%);
             will-change: clip-path;
         }
@@ -52,7 +52,7 @@
         .visualContainer {
             position: relative;
             width: 100%;
-            height: 520px; /* Extended height for dynamic visual look */
+            height: 490px; 
             display: flex;
             justify-content: center;
             align-items: flex-end;
@@ -61,15 +61,15 @@
 
         .heroBgText {
             position: absolute;
-            top: 58%; left: 50%;
+            top: 55%; left: 50%;
             transform: translate(-50%, -50%);
             font-family: "Inter", sans-serif;
-            font-size: 185px; /* Massive display text */
-            font-weight: 500; /* Medium weight, matching "Building elegant code," perfectly */
+            font-size: 175px; 
+            font-weight: 500; 
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.03) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -0.03em; /* Clean, modern spacing matching the tagline */
+            letter-spacing: -0.03em; 
             z-index: 1;
             pointer-events: none;
             user-select: none;
@@ -78,7 +78,7 @@
         .heroImage {
             position: relative;
             z-index: 2;
-            height: 88%; /* Slightly scaled down from 100% to create elegant space */
+            height: 90%; 
             object-fit: contain;
             mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
@@ -86,24 +86,24 @@
 
         /* Minimal Grid Container */
         .footer-grid-container {
-            width: min(700px, 80%); /* Aligns perfectly with main site content container */
+            width: min(700px, 80%); 
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             flex-wrap: wrap;
             gap: 50px;
-            padding-top: 80px; /* Soft space padding instead of hard divider line */
+            padding-top: 70px; 
             margin-top: 20px;
             z-index: 5;
         }
 
         /* Brand Column with Contrast Typography */
         .footer-brand-column {
-            flex: 1.2;
-            min-width: 280px;
+            flex: 0.8; 
+            min-width: 260px;
             display: flex;
             flex-direction: column;
-            gap: 20px; /* Space between tagline and metadata */
+            gap: 20px; 
         }
 
         /* Large, elegant contrast tagline */
@@ -117,7 +117,7 @@
         }
 
         .footer-tagline span {
-            color: #555555; /* Muted contrast styling */
+            color: #555555; 
         }
 
         .footer-meta {
@@ -130,70 +130,49 @@
         }
 
         .meta-dot {
-            color: #eab308; /* Premium gold dot */
+            color: #eab308; 
             font-weight: bold;
         }
 
-        /* Link columns style with tightly integrated spacing */
-        .footer-nav-columns {
-            display: flex;
-            gap: 35px; /* Brought closer together horizontally for desktop */
-            min-width: 240px;
-            flex: 1;
-            justify-content: flex-end;
+        /* Continuous Grid Flow (Always 4 items per row) */
+        .footer-nav-flow {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px 30px; 
+            flex: 1.5;
+            min-width: 340px;
         }
 
-        .footer-column {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .column-title {
-            color: #ffffff; /* Crisp white header matching screenshot */
-            font-size: 1.05rem;
-            font-weight: 500;
-            letter-spacing: -0.01em;
-            margin-bottom: 4px;
-        }
-
-        .column-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 15px; /* Generous link gap */
-            padding: 0;
-            margin: 0;
-        }
-
-        .column-links li a {
-            color: #888888; /* Sophisticated gray link */
+        .footer-nav-flow a {
+            color: #888888;
             text-decoration: none;
             font-size: 1.05rem;
             font-weight: 400;
             transition: color 0.25s ease;
         }
 
-        .column-links li a:hover {
+        .footer-nav-flow a:hover {
             color: #ffffff;
         }
 
         /* Responsive Layout Adjustments */
         @media (max-width: 768px) {
             .backToTop { right: 20px; bottom: 20px; }
+            .curvedHero {
+                margin: 90px 0 0 0; 
+            }
             .curvedHeroContentContainer {
-                padding: 45px 0 40px 0;
-                /* Adjusted starting curve on mobile viewports (148% ratio) */
+                padding: 30px 0 40px 0;
                 clip-path: ellipse(var(--curve-rx, 148%) 100% at 50% 100%);
             }
-            .visualContainer { height: 380px; }
-            .heroBgText { font-size: clamp(90px, 22vw, 130px); top: 58%; letter-spacing: -0.02em; }
-            .heroImage { height: 85%; /* Slightly smaller on mobile to keep proportions */ }
+            .visualContainer { height: 360px; }
+            .heroBgText { font-size: clamp(90px, 22vw, 130px); top: 56%; letter-spacing: -0.02em; }
+            .heroImage { height: 88%; }
 
             .footer-grid-container {
                 width: 88%;
                 flex-direction: column;
-                gap: 50px;
+                gap: 40px;
                 padding-top: 40px;
             }
             .footer-brand-column {
@@ -204,31 +183,36 @@
                 font-size: 1.25rem;
                 max-width: 100%;
             }
-            .footer-nav-columns {
+            .footer-nav-flow {
                 width: 100%;
-                justify-content: flex-start; /* Align columns left on mobile instead of stretching */
-                gap: 30px; /* Brought closer together on mobile to eliminate empty space */
+                /* 4 items per row on mobile screens as requested */
+                grid-template-columns: repeat(4, 1fr); 
+                gap: 15px 10px; /* Reduced gaps on mobile to avoid overflow */
+                min-width: unset;
             }
-            .column-title { font-size: 1rem; }
-            .column-links li a { font-size: 1rem; }
+            .footer-nav-flow a { 
+                /* Scaled down font size on mobile to fit long words nicely in 4 columns */
+                font-size: clamp(0.75rem, 2.5vw, 0.9rem); 
+                word-break: break-word;
+            }
         }
     `;
     document.head.appendChild(styleTag);
 
-    // 2. Create the unified full-width Curved Section containing the visual elements followed by the grid footer
+    // 2. Create the unified full-width Curved Section
     const curvedHero = document.createElement("section");
     curvedHero.className = "curvedHero";
     curvedHero.innerHTML = `
         <div class="curvedHeroContentContainer">
-            <!-- Top: Extended graphic visual elements -->
+            <!-- Top: Spaced dynamic visual elements -->
             <div class="visualContainer">
                 <div class="heroBgText">Shakib</div>
                 <img src="index-myphoto.png" alt="Shakib" class="heroImage">
             </div>
 
-            <!-- Bottom: Center-aligned multi-column grid footer -->
+            <!-- Bottom: Center-aligned flow grid footer -->
             <div class="footer-grid-container">
-                <!-- Left brand and metadata block (Restored and aligned) -->
+                <!-- Left brand and metadata block -->
                 <div class="footer-brand-column">
                     <p class="footer-tagline">
                         Building elegant code,<br><span>and solving complex algorithms.</span>
@@ -240,26 +224,25 @@
                     </div>
                 </div>
 
-                <!-- Right link navigation columns matching actual portfolio pages -->
-                <div class="footer-nav-columns">
-                    <div class="footer-column">
-                        <h3 class="column-title">Pages</h3>
-                        <ul class="column-links">
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="project.html">Projects</a></li>
-                            <li><a href="resources.html">Resources</a></li>
-                            <li><a href="achievement.html">Achievements</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3 class="column-title">Info</h3>
-                        <ul class="column-links">
-                            <li><a href="education.html">Education</a></li>
-                            <li><a href="movie.html">Movies</a></li>
-                            <li><a href="#">Resume</a></li>
-                            <li><a href="mailto:shakibuzzaman52@gmail.com">Contact</a></li>
-                        </ul>
-                    </div>
+                <!-- Right continuous Grid flow (Exactly 4 items per row, Contact removed) -->
+                <div class="footer-nav-flow">
+                    <!-- Row 1 -->
+                    <a href="blog.html">Blog</a>
+                    <a href="project.html">Projects</a>
+                    <a href="resources.html">Resources</a>
+                    <a href="achievement.html">Achievements</a>
+                    
+                    <!-- Row 2 -->
+                    <a href="education.html">Education</a>
+                    <a href="movie.html">Movies</a>
+                    <a href="#">Resume</a>
+                    <a href="https://github.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    
+                    <!-- Row 3 -->
+                    <a href="https://www.linkedin.com/in/shakibuzzaman52" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="https://www.instagram.com/shakibuzzaman_52" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.facebook.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer">Facebook</a>
+                    <a href="https://x.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer">X</a>
                 </div>
             </div>
         </div>
@@ -268,7 +251,7 @@
     // Append to body so it stretches full viewport width bypassing <main> constraints
     document.body.appendChild(curvedHero);
 
-    // 3. Real-time scroll deformation calculations with adjusted curvature base
+    // 3. Real-time scroll deformation calculations
     const container = curvedHero.querySelector(".curvedHeroContentContainer");
     window.addEventListener("scroll", () => {
         const rect = curvedHero.getBoundingClientRect();
@@ -277,7 +260,6 @@
         const ratio = Math.max(0, Math.min((start - rect.top) / total, 1));
         const eased = ratio * ratio * (3 - 2 * ratio);
         
-        // Custom curved arc starting base: Flatter on mobile (148%), deeper on desktop (84%)
         const baseRx = window.innerWidth <= 768 ? 148 : 84;
         const rx = baseRx + eased * (500 - baseRx);
         container.style.setProperty("--curve-rx", `${rx}%`);
