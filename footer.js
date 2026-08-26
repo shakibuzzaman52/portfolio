@@ -134,10 +134,12 @@
             font-weight: bold;
         }
 
-        /* Continuous Grid Flow (Always 4 items per row) */
+        /* Vertical Columns Flow (Desktop: Max 3 items vertically before wrapping to next column) */
         .footer-nav-flow {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, auto); /* Max 3 rows (vertical items) */
+            grid-auto-flow: column; /* Flow items vertically top-to-bottom first */
+            grid-auto-columns: 1fr; /* All columns share equal width */
             gap: 25px 30px; 
             flex: 1.5;
             min-width: 340px;
@@ -183,16 +185,18 @@
                 font-size: 1.25rem;
                 max-width: 100%;
             }
+            
+            /* Vertical Columns Flow (Mobile: Max 4 items vertically before wrapping) */
             .footer-nav-flow {
                 width: 100%;
-                /* 4 items per row on mobile screens as requested */
-                grid-template-columns: repeat(4, 1fr); 
-                gap: 15px 10px; /* Reduced gaps on mobile to avoid overflow */
+                grid-template-rows: repeat(4, auto); /* Max 4 rows (vertical items) on mobile */
+                grid-auto-flow: column; 
+                grid-auto-columns: 1fr;
+                gap: 15px 15px; 
                 min-width: unset;
             }
             .footer-nav-flow a { 
-                /* Scaled down font size on mobile to fit long words nicely in 4 columns */
-                font-size: clamp(0.75rem, 2.5vw, 0.9rem); 
+                font-size: clamp(0.8rem, 2.8vw, 1rem); 
                 word-break: break-word;
             }
         }
@@ -224,21 +228,17 @@
                     </div>
                 </div>
 
-                <!-- Right continuous Grid flow (Exactly 4 items per row, Contact removed) -->
+                <!-- Right continuous Grid flow (Vertically ordered top-to-bottom) -->
                 <div class="footer-nav-flow">
-                    <!-- Row 1 -->
+                    <!-- Column-based flow -->
                     <a href="blog.html">Blog</a>
                     <a href="project.html">Projects</a>
                     <a href="resources.html">Resources</a>
                     <a href="achievement.html">Achievements</a>
-                    
-                    <!-- Row 2 -->
                     <a href="education.html">Education</a>
                     <a href="movie.html">Movies</a>
                     <a href="#">Resume</a>
                     <a href="https://github.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    
-                    <!-- Row 3 -->
                     <a href="https://www.linkedin.com/in/shakibuzzaman52" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                     <a href="https://www.instagram.com/shakibuzzaman_52" target="_blank" rel="noopener noreferrer">Instagram</a>
                     <a href="https://www.facebook.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer">Facebook</a>
