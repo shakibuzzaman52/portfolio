@@ -168,67 +168,6 @@
             margin: 50px 0;
         }
 
-        /* ===================================================
-           MODERN CSS-ONLY CURVED HERO SECTION
-        =================================================== */
-        .curvedHero {
-            width: 100%;
-            position: relative;
-            margin-top: 35px;
-            margin-bottom: 45px;
-        }
-
-        .curvedHeroContentContainer {
-            background: linear-gradient(180deg, #18181b 0%, #000000 100%); 
-            width: 100%;
-            padding: 55px 24px 0px 24px; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            clip-path: ellipse(var(--curve-rx, 90%) 100% at 50% 100%);
-            will-change: clip-path;
-        }
-
-        .visualContainer {
-            position: relative;
-            width: 100%;
-            height: 380px; 
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            overflow: hidden;
-        }
-
-        .heroBgText {
-            position: absolute;
-            top: 52%; 
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: "Inter", sans-serif;
-            font-size: 165px; 
-            font-weight: 900;
-            line-height: 1;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.03) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            white-space: nowrap;
-            z-index: 1; 
-            pointer-events: none;
-            user-select: none;
-            letter-spacing: -4px;
-        }
-
-        .heroImage {
-            position: relative;
-            z-index: 2;
-            height: 100%; 
-            max-height: 98%;
-            width: auto;
-            object-fit: contain;
-            mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
-        }
-
         /* =======================
            SKILLS SECTION
         ======================= */
@@ -381,21 +320,6 @@
                 margin-bottom: 15px;
             }
 
-            .curvedHeroContentContainer {
-                padding: 45px 16px 0px 16px;
-                clip-path: ellipse(var(--curve-rx, 92%) 100% at 50% 100%);
-            }
-
-            .visualContainer {
-                height: 300px;
-            }
-
-            .heroBgText {
-                font-size: clamp(80px, 22vw, 115px); 
-                top: 52%; 
-                letter-spacing: -2px;
-            }
-
             .secondSection>div {
                 align-items: flex-start;
             }
@@ -530,51 +454,8 @@
                 </p>
             </div>
         </section>
-
-        <!-- 5. Curved Hero Graphic Element -->
-        <section class="curvedHero">
-            <div class="curvedHeroContentContainer">
-                <div class="visualContainer">
-                    <div class="heroBgText">Shakib</div>
-                    <img src="index-myphoto.png" alt="Shakib" class="heroImage">
-                </div>
-            </div>
-        </section>
     </main>
 
-    <!-- Real-Time Curve Deformation Scroll Script with Smoothstep Easing -->
-    <script>
-        const curveContainer = document.querySelector('.curvedHeroContentContainer');
-        const heroSection = document.querySelector('.curvedHero');
-
-        function handleScroll() {
-            if (!curveContainer || !heroSection) return;
-
-            const rect = heroSection.getBoundingClientRect();
-            const startThreshold = window.innerHeight * 0.45; 
-            const endThreshold = -150; 
-
-            let ratio = 0;
-            if (rect.top <= startThreshold) {
-                const totalDistance = startThreshold - endThreshold;
-                const scrolledDistance = startThreshold - rect.top;
-                ratio = Math.min(scrolledDistance / totalDistance, 1);
-            } else {
-                ratio = 0;
-            }
-
-            const easedRatio = ratio * ratio * (3 - 2 * ratio);
-            const baseRx = window.innerWidth <= 768 ? 92 : 90;
-            const maxRx = 500;
-            const instantRx = baseRx + (easedRatio * (maxRx - baseRx));
-
-            curveContainer.style.setProperty('--curve-rx', `${instantRx}%`);
-        }
-
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        window.addEventListener('resize', handleScroll);
-        handleScroll();
-    </script>
 </body>
 
 </html>
