@@ -1,6 +1,6 @@
 /**
  * Dynamic Footer & Extended Curved Hero Section Integration
- * Theme: Fine-Tuned Elegant Curves (80% Desktop, 142% Mobile) & Tight-Knit Spacing
+ * Theme: Balanced 84%/148% Curve & Tight-Knit Real Navigation Columns
  */
 
 (function () {
@@ -43,8 +43,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Fine-tuned desktop curve with slightly flatter 80% starting ratio */
-            clip-path: ellipse(var(--curve-rx, 80%) 100% at 50% 100%);
+            /* Fine-tuned desktop curve with slightly flatter 84% starting ratio */
+            clip-path: ellipse(var(--curve-rx, 84%) 100% at 50% 100%);
             will-change: clip-path;
         }
 
@@ -61,10 +61,10 @@
 
         .heroBgText {
             position: absolute;
-            top: 52%; left: 50%;
+            top: 58%; left: 50%;
             transform: translate(-50%, -50%);
             font-family: "Inter", sans-serif;
-            font-size: 210px; /* Massive display text */
+            font-size: 185px; /* Massive display text */
             font-weight: 500; /* Medium weight, matching "Building elegant code," perfectly */
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.03) 100%);
             -webkit-background-clip: text;
@@ -78,7 +78,7 @@
         .heroImage {
             position: relative;
             z-index: 2;
-            height: 100%;
+            height: 88%; /* Slightly scaled down from 100% to create elegant space */
             object-fit: contain;
             mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
@@ -134,10 +134,10 @@
             font-weight: bold;
         }
 
-        /* Link columns style mimicking screenshot aesthetics with tightened spacing */
+        /* Link columns style with tightly integrated spacing */
         .footer-nav-columns {
             display: flex;
-            gap: 45px; /* Brought closer together for tighter, cohesive layout */
+            gap: 35px; /* Brought closer together horizontally for desktop */
             min-width: 240px;
             flex: 1;
             justify-content: flex-end;
@@ -183,11 +183,12 @@
             .backToTop { right: 20px; bottom: 20px; }
             .curvedHeroContentContainer {
                 padding: 45px 0 40px 0;
-                /* Standardized starting curve on mobile viewports (142% ratio) */
-                clip-path: ellipse(var(--curve-rx, 142%) 100% at 50% 100%);
+                /* Adjusted starting curve on mobile viewports (148% ratio) */
+                clip-path: ellipse(var(--curve-rx, 148%) 100% at 50% 100%);
             }
             .visualContainer { height: 380px; }
-            .heroBgText { font-size: clamp(100px, 24vw, 150px); letter-spacing: -0.02em; }
+            .heroBgText { font-size: clamp(90px, 22vw, 130px); top: 58%; letter-spacing: -0.02em; }
+            .heroImage { height: 85%; /* Slightly smaller on mobile to keep proportions */ }
 
             .footer-grid-container {
                 width: 88%;
@@ -206,7 +207,7 @@
             .footer-nav-columns {
                 width: 100%;
                 justify-content: flex-start; /* Align columns left on mobile instead of stretching */
-                gap: 40px; /* Brought closer together on mobile to eliminate empty space */
+                gap: 30px; /* Brought closer together on mobile to eliminate empty space */
             }
             .column-title { font-size: 1rem; }
             .column-links li a { font-size: 1rem; }
@@ -276,8 +277,8 @@
         const ratio = Math.max(0, Math.min((start - rect.top) / total, 1));
         const eased = ratio * ratio * (3 - 2 * ratio);
         
-        // Custom curved arc starting base: Flatter on mobile (142%), deeper on desktop (80%)
-        const baseRx = window.innerWidth <= 768 ? 142 : 80;
+        // Custom curved arc starting base: Flatter on mobile (148%), deeper on desktop (84%)
+        const baseRx = window.innerWidth <= 768 ? 148 : 84;
         const rx = baseRx + eased * (500 - baseRx);
         container.style.setProperty("--curve-rx", `${rx}%`);
     }, { passive: true });
