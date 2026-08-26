@@ -183,7 +183,7 @@
         }
 
         /* ===================================================
-           MODERN CSS-ONLY CURVED HERO SECTION
+           MODERN CSS-ONLY CURVED HERO SECTION (STABLE POSITIONING)
         =================================================== */
         .curvedHero {
             width: 100%;
@@ -199,9 +199,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Curved top dome shape using dynamic CSS variable */
-            clip-path: ellipse(var(--curve-rx, 90%) 100% at 50% 100%);
-            will-change: clip-path;
+            clip-path: ellipse(90% 100% at 50% 100%);
         }
 
         .visualContainer {
@@ -214,26 +212,29 @@
             overflow: hidden;
         }
 
-        .bgText {
+        /* Stable absolute centering for background text */
+        .heroBgText {
             position: absolute;
-            bottom: 15%; 
+            top: 55%; /* Vertical center alignment */
             left: 50%;
-            transform: translateX(-50%);
-            font-size: clamp(6.5rem, 18vw, 11rem);
-            font-weight: 800;
-            letter-spacing: -2px;
-            background: linear-gradient(180deg, #ffffff 15%, #7e7e7e 95%);
+            transform: translate(-50%, -50%); /* Centered both ways */
+            font-family: "Inter", "Arial Black", sans-serif;
+            font-size: 130px; /* Fixed sizing for consistent layout */
+            font-weight: 900;
+            line-height: 1;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.04) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            opacity: 0.85; 
-            z-index: 1;
-            user-select: none;
+            white-space: nowrap;
+            z-index: 1; 
             pointer-events: none;
+            user-select: none;
+            letter-spacing: -3px;
         }
 
         .heroImage {
             position: relative;
-            z-index: 2;
+            z-index: 2; /* Remains in front of the text */
             height: 100%; 
             max-height: 98%;
             width: auto;
@@ -450,11 +451,18 @@
 
             .curvedHeroContentContainer {
                 padding: 45px 16px 0px 16px;
-                clip-path: ellipse(var(--curve-rx, 92%) 100% at 50% 100%);
+                clip-path: ellipse(92% 100% at 50% 100%);
             }
 
             .visualContainer {
-                height: 300px;
+                height: 300px; /* Reduced container height for mobile */
+            }
+
+            /* Clamp function limits font-size dynamically based on screen width */
+            .heroBgText {
+                font-size: clamp(65px, 18vw, 85px); 
+                top: 55%; 
+                letter-spacing: -2px;
             }
 
             .secondSection>div {
@@ -602,11 +610,13 @@
             </div>
         </section>
 
-        <!-- 4. Curved Hero Graphic Element (Now positioned right above the "Find me on" section) -->
+        <!-- 4. Curved Hero Graphic Element -->
         <section class="curvedHero">
             <div class="curvedHeroContentContainer">
                 <div class="visualContainer">
-                    <div class="bgText">Shakib</div>
+                    <!-- Giant Background Text with precise centering -->
+                    <div class="heroBgText">Shakib</div>
+                    <!-- Foreground Image -->
                     <img src="index-myphoto.png" alt="Shakib" class="heroImage">
                 </div>
             </div>
@@ -637,69 +647,6 @@
         <span class="close-modal" id="closeModal" title="Close">&times;</span>
         <img class="modal-content" id="modalImg" alt="Profile Zoomed">
     </div>
-
-    <!-- Smooth Lerp Scroll-Exit Animation Script -->
-    <script>
-        const curveContainer = document.querySelector('.curvedHeroContentContainer');
-        const heroSection = document.querySelector('.curvedHero');
-
-        // State variables for smooth Lerping (Linear Interpolation)
-        let targetRx = window.innerWidth <= 768 ? 92 : 90;
-        let currentRx = targetRx;
-        let isLoopActive = false;
-
-        function updateCurve() {
-            currentRx += (targetRx - currentRx) * 0.12;
-
-            curveContainer.style.setProperty('--curve-rx', `${currentRx}%`);
-
-            if (Math.abs(targetRx - currentRx) > 0.05) {
-                requestAnimationFrame(updateCurve);
-            } else {
-                isLoopActive = false;
-                currentRx = targetRx;
-                curveContainer.style.setProperty('--curve-rx', `${currentRx}%`);
-            }
-        }
-
-        function handleScroll() {
-            if (!curveContainer || !heroSection) return;
-
-            const rect = heroSection.getBoundingClientRect();
-            
-            // Only flattens when passing the upper exit thresholds
-            const startThreshold = 100; 
-            const endThreshold = -100;     
-
-            let ratio = 0;
-            if (rect.top <= startThreshold) {
-                const totalDistance = startThreshold - endThreshold;
-                const scrolledDistance = startThreshold - rect.top;
-                ratio = Math.min(scrolledDistance / totalDistance, 1);
-            } else {
-                ratio = 0;
-            }
-
-            const baseRx = window.innerWidth <= 768 ? 92 : 90;
-            const maxRx = 500;
-            
-            targetRx = baseRx + (ratio * (maxRx - baseRx));
-
-            if (!isLoopActive) {
-                isLoopActive = true;
-                requestAnimationFrame(updateCurve);
-            }
-        }
-
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        window.addEventListener('resize', () => {
-            targetRx = window.innerWidth <= 768 ? 92 : 90;
-            handleScroll();
-        });
-        
-        // Initial call
-        handleScroll();
-    </script>
 
     <!-- Image Zoom Logic -->
     <script>
