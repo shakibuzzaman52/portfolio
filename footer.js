@@ -84,7 +84,7 @@
             -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
         }
 
-        /* Minimal Grid Container */
+        /* Minimal Grid Container - Spacing reduced to pull content closer to the image */
         .footer-grid-container {
             width: min(700px, 80%); 
             display: flex;
@@ -92,8 +92,8 @@
             align-items: flex-start;
             flex-wrap: wrap;
             gap: 50px;
-            padding-top: 70px; 
-            margin-top: 20px;
+            padding-top: 35px; /* Reduced from 70px to bring content closer to the image */
+            margin-top: 10px; /* Reduced from 20px */
             z-index: 5;
         }
 
@@ -130,7 +130,6 @@
         }
 
         .meta-dot {
-            color: #eab308; 
             font-weight: bold;
         }
 
@@ -174,13 +173,18 @@
             .footer-grid-container {
                 width: 88%;
                 flex-direction: column;
-                gap: 40px;
-                padding-top: 40px;
+                gap: 30px; /* Reduced gap to accommodate the divider line space */
+                padding-top: 25px; /* Reduced to bring content closer to the image on mobile */
             }
+            
+            /* Divider line added below brand metadata on mobile viewports */
             .footer-brand-column {
                 min-width: 100%;
                 gap: 16px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding-bottom: 25px; /* Elegant space before the divider line */
             }
+            
             .footer-tagline {
                 font-size: 1.25rem;
                 max-width: 100%;
