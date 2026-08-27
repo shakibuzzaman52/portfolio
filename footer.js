@@ -1,6 +1,6 @@
 /**
  * Dynamic Footer & Extended Curved Hero Section Integration
- * Theme: Refined 80%/120% Curve with Refined Background Typography & Original Gradient Style
+ * Theme: Refined 80%/120% Curve, Left-Aligned Minimal Layout (No Border Line)
  */
 
 (function () {
@@ -44,7 +44,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Enhanced baseline curve for desktop (80%) */
             clip-path: ellipse(var(--curve-rx, 80%) 100% at 50% 100%);
             will-change: clip-path;
         }
@@ -87,18 +86,18 @@
             -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
         }
 
-        /* Minimal Grid Container */
+        /* Minimal Grid Container - Left aligned and border removed */
         .footer-grid-container {
             width: min(760px, 85%); 
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start; /* Aligned to top-start */
             flex-wrap: wrap;
             gap: 30px;
-            padding-top: 35px; 
+            padding-top: 25px; 
             margin-top: 10px; 
             z-index: 5;
-            border-top: 1px solid rgba(255, 255, 255, 0.05); 
+            /* Border-top removed as requested */
         }
 
         /* Brand Column with Contrast Typography */
@@ -108,6 +107,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px; 
+            text-align: left; /* Left-aligned text */
         }
 
         /* Large, elegant contrast tagline */
@@ -137,13 +137,13 @@
             font-weight: bold;
         }
 
-        /* Sleek Single-Row Minimal Links */
+        /* Sleek Single-Row Minimal Links - Aligned to the left */
         .footer-nav-minimal {
             display: flex;
             align-items: center;
             gap: 14px; 
             flex-wrap: wrap;
-            justify-content: flex-end;
+            justify-content: flex-start; /* Changed to left alignment */
             min-width: 300px;
         }
 
@@ -173,7 +173,6 @@
             }
             .curvedHeroContentContainer {
                 padding: 20px 0 40px 0;
-                /* Enhanced baseline curve for mobile (120%) */
                 clip-path: ellipse(var(--curve-rx, 120%) 100% at 50% 100%);
             }
             .visualContainer { height: 340px; }
@@ -183,17 +182,17 @@
             .footer-grid-container {
                 width: 88%;
                 flex-direction: column;
-                align-items: center;
-                text-align: center;
+                align-items: flex-start; /* Aligned to left on mobile */
+                text-align: left; /* Aligned to left on mobile */
                 gap: 25px; 
-                padding-top: 25px; 
-                border-top: 1px solid rgba(255, 255, 255, 0.08);
+                padding-top: 20px; 
+                /* Border-top removed on mobile */
             }
             
             .footer-brand-column {
                 min-width: 100%;
                 gap: 12px;
-                align-items: center;
+                align-items: flex-start; /* Aligned to left on mobile */
             }
             
             .footer-tagline {
@@ -205,7 +204,7 @@
                 width: 100%;
                 gap: 10px 14px;
                 min-width: unset;
-                justify-content: center;
+                justify-content: flex-start; /* Aligned to left on mobile */
             }
 
             .nav-divider {
@@ -240,7 +239,7 @@
                     </div>
                 </div>
 
-                <!-- Right: Sleek minimal single-row links list -->
+                <!-- Right: Sleek minimal single-row links list (Left-aligned) -->
                 <div class="footer-nav-minimal">
                     <a href="index.html">Home</a>
                     <span class="nav-divider">/</span>
@@ -272,7 +271,6 @@
         const ratio = Math.max(0, Math.min((start - rect.top) / total, 1));
         const eased = ratio * ratio * (3 - 2 * ratio);
         
-        // Dynamic curves adjusted to start with more curvature
         const baseRx = window.innerWidth <= 768 ? 120 : 80;
         const rx = baseRx + eased * (350 - baseRx);
         container.style.setProperty("--curve-rx", `${rx}%`);
