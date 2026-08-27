@@ -1,6 +1,6 @@
 /**
  * Dynamic Footer & Extended Curved Hero Section Integration
- * Theme: Refined 80%/120% Curve, Left-Aligned Minimal Layout (No Border Line)
+ * Theme: Fine-tuned 76%/125% Curve, Left-Aligned Minimal Layout (No Border Line)
  */
 
 (function () {
@@ -44,7 +44,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            clip-path: ellipse(var(--curve-rx, 80%) 100% at 50% 100%);
+            /* Fine-tuned baseline curve for desktop (76% - slightly more curved) */
+            clip-path: ellipse(var(--curve-rx, 76%) 100% at 50% 100%);
             will-change: clip-path;
         }
 
@@ -91,13 +92,12 @@
             width: min(760px, 85%); 
             display: flex;
             justify-content: space-between;
-            align-items: flex-start; /* Aligned to top-start */
+            align-items: flex-start; 
             flex-wrap: wrap;
             gap: 30px;
             padding-top: 25px; 
             margin-top: 10px; 
             z-index: 5;
-            /* Border-top removed as requested */
         }
 
         /* Brand Column with Contrast Typography */
@@ -107,7 +107,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px; 
-            text-align: left; /* Left-aligned text */
+            text-align: left; 
         }
 
         /* Large, elegant contrast tagline */
@@ -137,13 +137,13 @@
             font-weight: bold;
         }
 
-        /* Sleek Single-Row Minimal Links - Aligned to the left */
+        /* Sleek Single-Row Minimal Links - Left aligned */
         .footer-nav-minimal {
             display: flex;
             align-items: center;
             gap: 14px; 
             flex-wrap: wrap;
-            justify-content: flex-start; /* Changed to left alignment */
+            justify-content: flex-start; 
             min-width: 300px;
         }
 
@@ -173,7 +173,8 @@
             }
             .curvedHeroContentContainer {
                 padding: 20px 0 40px 0;
-                clip-path: ellipse(var(--curve-rx, 120%) 100% at 50% 100%);
+                /* Fine-tuned baseline curve for mobile (125% - slightly less curved) */
+                clip-path: ellipse(var(--curve-rx, 125%) 100% at 50% 100%);
             }
             .visualContainer { height: 340px; }
             .heroBgText { font-size: clamp(90px, 22vw, 130px); top: 65%; letter-spacing: -0.02em; }
@@ -182,17 +183,16 @@
             .footer-grid-container {
                 width: 88%;
                 flex-direction: column;
-                align-items: flex-start; /* Aligned to left on mobile */
-                text-align: left; /* Aligned to left on mobile */
+                align-items: flex-start; 
+                text-align: left; 
                 gap: 25px; 
                 padding-top: 20px; 
-                /* Border-top removed on mobile */
             }
             
             .footer-brand-column {
                 min-width: 100%;
                 gap: 12px;
-                align-items: flex-start; /* Aligned to left on mobile */
+                align-items: flex-start; 
             }
             
             .footer-tagline {
@@ -204,7 +204,7 @@
                 width: 100%;
                 gap: 10px 14px;
                 min-width: unset;
-                justify-content: flex-start; /* Aligned to left on mobile */
+                justify-content: flex-start; 
             }
 
             .nav-divider {
@@ -271,7 +271,8 @@
         const ratio = Math.max(0, Math.min((start - rect.top) / total, 1));
         const eased = ratio * ratio * (3 - 2 * ratio);
         
-        const baseRx = window.innerWidth <= 768 ? 120 : 80;
+        // Base curves adjusted (Desktop: 76%, Mobile: 125%)
+        const baseRx = window.innerWidth <= 768 ? 125 : 76;
         const rx = baseRx + eased * (350 - baseRx);
         container.style.setProperty("--curve-rx", `${rx}%`);
     }, { passive: true });
