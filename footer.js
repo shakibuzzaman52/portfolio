@@ -1,6 +1,6 @@
 /**
  * Dynamic Footer & Extended Curved Hero Section Integration
- * Theme: Balanced 90%/135% Curve with Sleek Single-Row Minimal Links
+ * Theme: Refined 80%/120% Curve with Refined Background Typography & Original Gradient Style
  */
 
 (function () {
@@ -31,20 +31,21 @@
         .curvedHero {
             width: 100%;
             position: relative;
-            margin: 120px 0 0 0; /* Reduced margin space above the curve */
+            margin: 120px 0 0 0; 
             padding: 0;
             overflow: hidden;
         }
 
         .curvedHeroContentContainer {
+            /* Original gradient style */
             background: linear-gradient(180deg, #18181b 0%, #000000 100%);
             width: 100%;
-            padding: 35px 0 65px 0; /* Reduced top padding from 55px to bring top section closer */
+            padding: 35px 0 65px 0; 
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Fine-tuned baseline curve */
-            clip-path: ellipse(var(--curve-rx, 90%) 100% at 50% 100%);
+            /* Enhanced baseline curve for desktop (80%) */
+            clip-path: ellipse(var(--curve-rx, 80%) 100% at 50% 100%);
             will-change: clip-path;
         }
 
@@ -52,24 +53,26 @@
         .visualContainer {
             position: relative;
             width: 100%;
-            height: 460px; /* Marginally reduced height to control space above image */
+            height: 460px; 
             display: flex;
             justify-content: center;
             align-items: flex-end;
             overflow: hidden;
         }
 
+        /* Refined Background Typography Settings */
         .heroBgText {
             position: absolute;
-            top: 55%; left: 50%;
+            top: 65%; 
+            left: 50%;
             transform: translate(-50%, -50%);
-            font-family: "Inter", sans-serif;
+            font-family: "Inter", "Plus Jakarta Sans", -apple-system, sans-serif;
             font-size: 175px; 
-            font-weight: 500; 
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.03) 100%);
+            font-weight: 700; 
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.02) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -0.03em; 
+            letter-spacing: -0.04em; 
             z-index: 1;
             pointer-events: none;
             user-select: none;
@@ -78,15 +81,15 @@
         .heroImage {
             position: relative;
             z-index: 2;
-            height: 92%; /* Slightly adjusted scale to fit tightly */
+            height: 92%; 
             object-fit: contain;
             mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
         }
 
-        /* Minimal Grid Container - Spacing pulled closer to the image */
+        /* Minimal Grid Container */
         .footer-grid-container {
-            width: min(760px, 85%); /* Adjusted slightly for longer single row links */
+            width: min(760px, 85%); 
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -95,7 +98,7 @@
             padding-top: 35px; 
             margin-top: 10px; 
             z-index: 5;
-            border-top: 1px solid rgba(255, 255, 255, 0.05); /* Soft premium top border */
+            border-top: 1px solid rgba(255, 255, 255, 0.05); 
         }
 
         /* Brand Column with Contrast Typography */
@@ -138,7 +141,7 @@
         .footer-nav-minimal {
             display: flex;
             align-items: center;
-            gap: 14px; /* Slightly tighter gap for more links */
+            gap: 14px; 
             flex-wrap: wrap;
             justify-content: flex-end;
             min-width: 300px;
@@ -169,11 +172,12 @@
                 margin: 70px 0 0 0; 
             }
             .curvedHeroContentContainer {
-                padding: 20px 0 40px 0; /* Reduced top padding on mobile */
-                clip-path: ellipse(var(--curve-rx, 135%) 100% at 50% 100%);
+                padding: 20px 0 40px 0;
+                /* Enhanced baseline curve for mobile (120%) */
+                clip-path: ellipse(var(--curve-rx, 120%) 100% at 50% 100%);
             }
             .visualContainer { height: 340px; }
-            .heroBgText { font-size: clamp(90px, 22vw, 130px); top: 56%; letter-spacing: -0.02em; }
+            .heroBgText { font-size: clamp(90px, 22vw, 130px); top: 65%; letter-spacing: -0.02em; }
             .heroImage { height: 90%; }
 
             .footer-grid-container {
@@ -205,7 +209,7 @@
             }
 
             .nav-divider {
-                display: none; /* Hide dividers on mobile for better wrapping */
+                display: none; 
             }
         }
     `;
@@ -236,7 +240,7 @@
                     </div>
                 </div>
 
-                <!-- Right: Sleek minimal single-row links list with requested navigation items -->
+                <!-- Right: Sleek minimal single-row links list -->
                 <div class="footer-nav-minimal">
                     <a href="index.html">Home</a>
                     <span class="nav-divider">/</span>
@@ -268,8 +272,8 @@
         const ratio = Math.max(0, Math.min((start - rect.top) / total, 1));
         const eased = ratio * ratio * (3 - 2 * ratio);
         
-        // Base curves adjusted (Desktop: 90%, Mobile: 135%) with slightly softer max curve transitions
-        const baseRx = window.innerWidth <= 768 ? 135 : 90;
+        // Dynamic curves adjusted to start with more curvature
+        const baseRx = window.innerWidth <= 768 ? 120 : 80;
         const rx = baseRx + eased * (350 - baseRx);
         container.style.setProperty("--curve-rx", `${rx}%`);
     }, { passive: true });
