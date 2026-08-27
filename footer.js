@@ -1,6 +1,6 @@
 /**
  * Dynamic Footer & Extended Curved Hero Section Integration
- * Theme: Balanced 84%/148% Curve with Sleek Single-Row Minimal Links
+ * Theme: Balanced 90%/135% Curve with Sleek Single-Row Minimal Links
  */
 
 (function () {
@@ -31,7 +31,7 @@
         .curvedHero {
             width: 100%;
             position: relative;
-            margin: 150px 0 0 0; /* Premium margin space above the curve */
+            margin: 120px 0 0 0; /* Reduced margin space above the curve */
             padding: 0;
             overflow: hidden;
         }
@@ -39,12 +39,12 @@
         .curvedHeroContentContainer {
             background: linear-gradient(180deg, #18181b 0%, #000000 100%);
             width: 100%;
-            padding: 55px 0 65px 0; 
+            padding: 35px 0 65px 0; /* Reduced top padding from 55px to bring top section closer */
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Fine-tuned curve using ellipse formula */
-            clip-path: ellipse(var(--curve-rx, 84%) 100% at 50% 100%);
+            /* Fine-tuned baseline curve */
+            clip-path: ellipse(var(--curve-rx, 90%) 100% at 50% 100%);
             will-change: clip-path;
         }
 
@@ -52,7 +52,7 @@
         .visualContainer {
             position: relative;
             width: 100%;
-            height: 490px; 
+            height: 460px; /* Marginally reduced height to control space above image */
             display: flex;
             justify-content: center;
             align-items: flex-end;
@@ -78,22 +78,22 @@
         .heroImage {
             position: relative;
             z-index: 2;
-            height: 90%; 
+            height: 92%; /* Slightly adjusted scale to fit tightly */
             object-fit: contain;
             mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
         }
 
-        /* Minimal Grid Container - Spacing reduced to pull content closer to the image */
+        /* Minimal Grid Container - Spacing pulled closer to the image */
         .footer-grid-container {
-            width: min(720px, 85%); 
+            width: min(760px, 85%); /* Adjusted slightly for longer single row links */
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 30px;
-            padding-top: 35px; /* Reduced from 70px to bring content closer to the image */
-            margin-top: 10px; /* Reduced from 20px */
+            padding-top: 35px; 
+            margin-top: 10px; 
             z-index: 5;
             border-top: 1px solid rgba(255, 255, 255, 0.05); /* Soft premium top border */
         }
@@ -138,10 +138,10 @@
         .footer-nav-minimal {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 14px; /* Slightly tighter gap for more links */
             flex-wrap: wrap;
             justify-content: flex-end;
-            min-width: 280px;
+            min-width: 300px;
         }
 
         .footer-nav-minimal a {
@@ -166,15 +166,15 @@
         @media (max-width: 768px) {
             .backToTop { right: 20px; bottom: 20px; }
             .curvedHero {
-                margin: 90px 0 0 0; 
+                margin: 70px 0 0 0; 
             }
             .curvedHeroContentContainer {
-                padding: 30px 0 40px 0;
-                clip-path: ellipse(var(--curve-rx, 148%) 100% at 50% 100%);
+                padding: 20px 0 40px 0; /* Reduced top padding on mobile */
+                clip-path: ellipse(var(--curve-rx, 135%) 100% at 50% 100%);
             }
-            .visualContainer { height: 360px; }
+            .visualContainer { height: 340px; }
             .heroBgText { font-size: clamp(90px, 22vw, 130px); top: 56%; letter-spacing: -0.02em; }
-            .heroImage { height: 88%; }
+            .heroImage { height: 90%; }
 
             .footer-grid-container {
                 width: 88%;
@@ -199,7 +199,7 @@
             
             .footer-nav-minimal {
                 width: 100%;
-                gap: 12px 16px;
+                gap: 10px 14px;
                 min-width: unset;
                 justify-content: center;
             }
@@ -236,19 +236,21 @@
                     </div>
                 </div>
 
-                <!-- Right: Sleek minimal single-row links list -->
+                <!-- Right: Sleek minimal single-row links list with requested navigation items -->
                 <div class="footer-nav-minimal">
+                    <a href="index.html">Home</a>
+                    <span class="nav-divider">/</span>
                     <a href="blog.html">Blog</a>
                     <span class="nav-divider">/</span>
                     <a href="project.html">Projects</a>
                     <span class="nav-divider">/</span>
+                    <a href="resources.html">Resources</a>
+                    <span class="nav-divider">/</span>
+                    <a href="education.html">Education</a>
+                    <span class="nav-divider">/</span>
                     <a href="#">Resume</a>
                     <span class="nav-divider">/</span>
-                    <a href="https://github.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <span class="nav-divider">/</span>
-                    <a href="https://www.linkedin.com/in/shakibuzzaman52" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    <span class="nav-divider">/</span>
-                    <a href="https://x.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer">X</a>
+                    <a href="mailto:shakibuzzaman52@gmail.com">Email</a>
                 </div>
             </div>
         </div>
@@ -266,8 +268,9 @@
         const ratio = Math.max(0, Math.min((start - rect.top) / total, 1));
         const eased = ratio * ratio * (3 - 2 * ratio);
         
-        const baseRx = window.innerWidth <= 768 ? 148 : 84;
-        const rx = baseRx + eased * (500 - baseRx);
+        // Base curves adjusted (Desktop: 90%, Mobile: 135%) with slightly softer max curve transitions
+        const baseRx = window.innerWidth <= 768 ? 135 : 90;
+        const rx = baseRx + eased * (350 - baseRx);
         container.style.setProperty("--curve-rx", `${rx}%`);
     }, { passive: true });
 
