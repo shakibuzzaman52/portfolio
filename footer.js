@@ -1,6 +1,6 @@
 /**
  * Dynamic Footer & Extended Curved Hero Section Integration
- * Theme: Balanced 84%/148% Curve & Tight-Knit Real Navigation Columns
+ * Theme: Balanced 84%/148% Curve with Sleek Single-Row Minimal Links
  */
 
 (function () {
@@ -86,30 +86,31 @@
 
         /* Minimal Grid Container - Spacing reduced to pull content closer to the image */
         .footer-grid-container {
-            width: min(700px, 80%); 
+            width: min(720px, 85%); 
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             flex-wrap: wrap;
-            gap: 50px;
+            gap: 30px;
             padding-top: 35px; /* Reduced from 70px to bring content closer to the image */
             margin-top: 10px; /* Reduced from 20px */
             z-index: 5;
+            border-top: 1px solid rgba(255, 255, 255, 0.05); /* Soft premium top border */
         }
 
         /* Brand Column with Contrast Typography */
         .footer-brand-column {
-            flex: 0.8; 
+            flex: 0.9; 
             min-width: 260px;
             display: flex;
             flex-direction: column;
-            gap: 20px; 
+            gap: 12px; 
         }
 
         /* Large, elegant contrast tagline */
         .footer-tagline {
             color: #ffffff;
-            font-size: 1.45rem;
+            font-size: 1.35rem;
             font-weight: 500;
             line-height: 1.45;
             letter-spacing: -0.02em;
@@ -133,27 +134,32 @@
             font-weight: bold;
         }
 
-        /* Vertical Columns Flow (Desktop: Max 3 items vertically before wrapping to next column) */
-        .footer-nav-flow {
-            display: grid;
-            grid-template-rows: repeat(3, auto); /* Max 3 rows (vertical items) */
-            grid-auto-flow: column; /* Flow items vertically top-to-bottom first */
-            grid-auto-columns: 1fr; /* All columns share equal width */
-            gap: 25px 30px; 
-            flex: 1.5;
-            min-width: 340px;
+        /* Sleek Single-Row Minimal Links */
+        .footer-nav-minimal {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            min-width: 280px;
         }
 
-        .footer-nav-flow a {
+        .footer-nav-minimal a {
             color: #888888;
             text-decoration: none;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             font-weight: 400;
             transition: color 0.25s ease;
         }
 
-        .footer-nav-flow a:hover {
+        .footer-nav-minimal a:hover {
             color: #ffffff;
+        }
+
+        .nav-divider {
+            color: #333333;
+            font-size: 0.85rem;
+            user-select: none;
         }
 
         /* Responsive Layout Adjustments */
@@ -173,35 +179,33 @@
             .footer-grid-container {
                 width: 88%;
                 flex-direction: column;
-                gap: 30px; /* Reduced gap to accommodate the divider line space */
-                padding-top: 25px; /* Reduced to bring content closer to the image on mobile */
+                align-items: center;
+                text-align: center;
+                gap: 25px; 
+                padding-top: 25px; 
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
             }
             
-            /* Divider line added below brand metadata on mobile viewports */
             .footer-brand-column {
                 min-width: 100%;
-                gap: 16px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                padding-bottom: 25px; /* Elegant space before the divider line */
+                gap: 12px;
+                align-items: center;
             }
             
             .footer-tagline {
-                font-size: 1.25rem;
+                font-size: 1.2rem;
                 max-width: 100%;
             }
             
-            /* Vertical Columns Flow (Mobile: Max 4 items vertically before wrapping) */
-            .footer-nav-flow {
+            .footer-nav-minimal {
                 width: 100%;
-                grid-template-rows: repeat(4, auto); /* Max 4 rows (vertical items) on mobile */
-                grid-auto-flow: column; 
-                grid-auto-columns: 1fr;
-                gap: 15px 15px; 
+                gap: 12px 16px;
                 min-width: unset;
+                justify-content: center;
             }
-            .footer-nav-flow a { 
-                font-size: clamp(0.8rem, 2.8vw, 1rem); 
-                word-break: break-word;
+
+            .nav-divider {
+                display: none; /* Hide dividers on mobile for better wrapping */
             }
         }
     `;
@@ -232,20 +236,18 @@
                     </div>
                 </div>
 
-                <!-- Right continuous Grid flow (Vertically ordered top-to-bottom) -->
-                <div class="footer-nav-flow">
-                    <!-- Column-based flow -->
+                <!-- Right: Sleek minimal single-row links list -->
+                <div class="footer-nav-minimal">
                     <a href="blog.html">Blog</a>
+                    <span class="nav-divider">/</span>
                     <a href="project.html">Projects</a>
-                    <a href="resources.html">Resources</a>
-                    <a href="achievement.html">Achievements</a>
-                    <a href="education.html">Education</a>
-                    <a href="movie.html">Movies</a>
+                    <span class="nav-divider">/</span>
                     <a href="#">Resume</a>
+                    <span class="nav-divider">/</span>
                     <a href="https://github.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <span class="nav-divider">/</span>
                     <a href="https://www.linkedin.com/in/shakibuzzaman52" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    <a href="https://www.instagram.com/shakibuzzaman_52" target="_blank" rel="noopener noreferrer">Instagram</a>
-                    <a href="https://www.facebook.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer">Facebook</a>
+                    <span class="nav-divider">/</span>
                     <a href="https://x.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer">X</a>
                 </div>
             </div>
