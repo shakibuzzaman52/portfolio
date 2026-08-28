@@ -1,7 +1,7 @@
 /**
  * Dynamic Footer & Extended Curved Hero Section Integration
- * Content: Shakib Personal Portfolio with 3-Column Link Structure
- * Design: Minimal Left-Aligned Multi-Column Layout
+ * Script: footer.js
+ * Structure: 3 Columns (Pages, Info, Social) without "FEATURE"
  */
 
 (function () {
@@ -28,11 +28,11 @@
         .backToTop:hover { color: #fff; background: #111111; border-radius: 50%; }
         .backToTop.active { opacity: 1; pointer-events: auto; }
 
-        /* Full-Width (Edge-to-Edge) Curved Footer Section */
+        /* Full-Width Curved Section */
         .curvedHero {
             width: 100%;
             position: relative;
-            margin: 120px 0 0 0; 
+            margin: 100px 0 0 0; 
             padding: 0;
             overflow: hidden;
             background-color: #000000;
@@ -41,7 +41,7 @@
         .curvedHeroContentContainer {
             background: linear-gradient(180deg, #18181b 0%, #000000 100%);
             width: 100%;
-            padding: 35px 0 80px 0; 
+            padding: 35px 0 90px 0; 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -49,7 +49,7 @@
             will-change: clip-path;
         }
 
-        /* Original Visual Graphic Container */
+        /* Visual Graphic Container (Image & Background Name) */
         .visualContainer {
             position: relative;
             width: 100%;
@@ -61,13 +61,12 @@
             margin-bottom: 50px;
         }
 
-        /* Refined Background Typography Settings */
         .heroBgText {
             position: absolute;
             top: 65%; 
             left: 50%;
             transform: translate(-50%, -50%);
-            font-family: "Inter", "Plus Jakarta Sans", -apple-system, sans-serif;
+            font-family: "Inter", -apple-system, sans-serif;
             font-size: 175px; 
             font-weight: 700; 
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.02) 100%);
@@ -88,7 +87,7 @@
             -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
         }
 
-        /* Content wrapper aligned strictly left */
+        /* Left-aligned Content Container */
         .footer-content-wrapper {
             width: min(760px, 85%); 
             display: flex;
@@ -98,7 +97,7 @@
             z-index: 5;
         }
 
-        /* Spaced Tagline with high-low contrast division */
+        /* High-low contrast Tagline */
         .footer-tagline-main {
             font-family: "Inter", -apple-system, sans-serif;
             font-size: 1.85rem;
@@ -106,15 +105,15 @@
             line-height: 1.4;
             letter-spacing: -0.02em;
             color: #ffffff;
-            margin: 0 0 24px 0;
+            margin: 0 0 20px 0;
             max-width: 580px;
         }
 
         .footer-tagline-main span {
-            color: #4b5563;
+            color: #4b5563; /* Dimmed secondary clause */
         }
 
-        /* Meta block styling with yellow dot separator */
+        /* Meta details line with Yellow Dot */
         .footer-meta-line {
             display: flex;
             align-items: center;
@@ -122,7 +121,7 @@
             font-family: "Inter", -apple-system, sans-serif;
             font-size: 0.95rem;
             color: #6b7280;
-            margin-bottom: 56px;
+            margin-bottom: 50px;
         }
 
         .meta-author {
@@ -130,24 +129,25 @@
         }
 
         .meta-dot-yellow {
-            color: #f59e0b;
+            color: #f59e0b; /* Amber/Yellow dot */
             font-size: 1.1rem;
             line-height: 1;
         }
 
-        /* Multi-column grid for standard lists */
+        /* 3-Column Navigation Grid */
         .footer-links-grid {
             display: flex;
-            gap: 90px;
+            justify-content: flex-start;
+            gap: 90px; 
             width: 100%;
-            flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
+            flex-wrap: wrap;
         }
 
         .footer-col {
             display: flex;
             flex-direction: column;
             gap: 18px;
-            min-width: 120px; /* Ensures columns have a minimum width */
+            min-width: 110px;
         }
 
         .col-title {
@@ -164,12 +164,12 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 15px;
         }
 
         .col-list a {
             font-family: "Inter", -apple-system, sans-serif;
-            font-size: 1rem;
+            font-size: 0.98rem;
             color: #6b7280;
             text-decoration: none;
             transition: color 0.2s ease;
@@ -179,65 +179,58 @@
             color: #ffffff;
         }
 
-        /* Responsive Layout Adjustments */
+        /* Responsive Breakpoints */
         @media (max-width: 768px) {
             .backToTop { right: 20px; bottom: 20px; }
-            .curvedHero {
-                margin: 70px 0 0 0; 
-            }
+            .curvedHero { margin: 60px 0 0 0; }
             .curvedHeroContentContainer {
                 padding: 20px 0 50px 0;
                 clip-path: ellipse(var(--curve-rx, 125%) 100% at 50% 100%);
             }
             .visualContainer { height: 340px; margin-bottom: 25px; }
-            .heroBgText { font-size: clamp(90px, 22vw, 130px); top: 65%; letter-spacing: -0.02em; }
+            .heroBgText { font-size: clamp(90px, 22vw, 130px); top: 65%; }
             .heroImage { height: 90%; }
 
-            .footer-content-wrapper {
-                width: 88%;
-            }
-            .footer-tagline-main {
-                font-size: 1.45rem;
-                margin-bottom: 20px;
-            }
-            .footer-meta-line {
-                margin-bottom: 40px;
-            }
+            .footer-content-wrapper { width: 88%; }
+            .footer-tagline-main { font-size: 1.45rem; margin-bottom: 18px; }
+            .footer-meta-line { margin-bottom: 35px; }
+            
             .footer-links-grid {
-                gap: 40px 60px; /* Row and column gap */
+                gap: 35px 50px;
             }
+            .col-list { gap: 12px; }
         }
     `;
     document.head.appendChild(styleTag);
 
-    // 2. Create the unified full-width Curved Section
+    // 2. Build and inject the curved hero & footer content
     const curvedHero = document.createElement("section");
     curvedHero.className = "curvedHero";
     curvedHero.innerHTML = `
         <div class="curvedHeroContentContainer">
-            <!-- Top: Spaced dynamic visual elements -->
+            <!-- Top visual with dynamic background text & image -->
             <div class="visualContainer">
                 <div class="heroBgText">Shakib</div>
                 <img src="index-myphoto.png" alt="Shakib" class="heroImage">
             </div>
 
-            <!-- Bottom: Organized in a 3-column layout -->
+            <!-- Content Area strictly left-aligned -->
             <div class="footer-content-wrapper">
                 
-                <!-- Left aligned contrast Tagline -->
+                <!-- Headline Tagline -->
                 <h2 class="footer-tagline-main">
                     Building elegant code 
                     <span>and solving complex algorithms.</span>
                 </h2>
 
-                <!-- Author Meta Details (with Yellow Dot) -->
+                <!-- Author Meta Details -->
                 <div class="footer-meta-line">
                     <span class="meta-author">Built by Shakib</span>
                     <span class="meta-dot-yellow">•</span>
                     <span>All rights reserved</span>
                 </div>
 
-                <!-- Structured 3-Column Link Grid -->
+                <!-- 3 Columns: Pages, Info, Social -->
                 <div class="footer-links-grid">
                     <!-- Column 1: Pages -->
                     <div class="footer-col">
@@ -260,7 +253,7 @@
                             <li><a href="mailto:shakibuzzaman52@gmail.com">Email</a></li>
                         </ul>
                     </div>
-                    
+
                     <!-- Column 3: Social -->
                     <div class="footer-col">
                         <h4 class="col-title">Social</h4>
@@ -278,10 +271,9 @@
         </div>
     `;
 
-    // Append to body so it stretches full viewport width
     document.body.appendChild(curvedHero);
 
-    // 3. Real-time scroll deformation calculations
+    // 3. Scroll deformation calculation
     const container = curvedHero.querySelector(".curvedHeroContentContainer");
     window.addEventListener("scroll", () => {
         const rect = curvedHero.getBoundingClientRect();
@@ -295,7 +287,7 @@
         container.style.setProperty("--curve-rx", `${rx}%`);
     }, { passive: true });
 
-    // 4. Back to Top button registration
+    // 4. Back to Top registration
     document.body.insertAdjacentHTML("beforeend", `
         <a href="#" class="backToTop" id="backToTop" title="Back to top">
             <i class="fa-solid fa-arrow-up"></i>
