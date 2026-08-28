@@ -18,14 +18,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #999; /* Matched to page text-muted */
+            color: #666;
             text-decoration: none;
             opacity: 0;
             pointer-events: none;
             transition: 0.3s ease;
             z-index: 9999;
         }
-        .backToTop:hover { color: #fff; background: #18181b; border-radius: 50%; } /* Matched to badge background */
+        .backToTop:hover { color: #fff; background: #111111; border-radius: 50%; }
         .backToTop.active { opacity: 1; pointer-events: auto; }
 
         /* Full-Width (Edge-to-Edge) Curved Footer Section */
@@ -35,11 +35,11 @@
             margin: 120px 0 0 0; 
             padding: 0;
             overflow: hidden;
-            background-color: #000000; /* Matched to page background */
+            background-color: #000000;
         }
 
         .curvedHeroContentContainer {
-            background: linear-gradient(180deg, #18181b 0%, #000000 100%); /* Matched to page gradient style */
+            background: linear-gradient(180deg, #18181b 0%, #000000 100%);
             width: 100%;
             padding: 35px 0 80px 0; 
             display: flex;
@@ -68,10 +68,10 @@
             top: 65%; 
             left: 50%;
             transform: translate(-50%, -50%);
-            font-family: "Inter", Arial, Helvetica, sans-serif;
+            font-family: "Inter", "Plus Jakarta Sans", -apple-system, sans-serif;
             font-size: 175px; 
             font-weight: 700; 
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.01) 100%); /* Subtle white gradient */
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.02) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.04em; 
@@ -101,7 +101,7 @@
 
         /* Spaced Tagline with high-low contrast division */
         .footer-tagline-main {
-            font-family: "Inter", Arial, Helvetica, sans-serif;
+            font-family: "Inter", -apple-system, sans-serif;
             font-size: 1.85rem;
             font-weight: 500;
             line-height: 1.4;
@@ -112,17 +112,17 @@
         }
 
         .footer-tagline-main span {
-            color: #999; /* Matched to page text-muted */
+            color: #4b5563; /* Dimmed text for secondary clause */
         }
 
-        /* Meta block styling with dot separator */
+        /* Meta block styling with yellow dot separator */
         .footer-meta-line {
             display: flex;
             align-items: center;
             gap: 10px;
-            font-family: "Inter", Arial, Helvetica, sans-serif;
+            font-family: "Inter", -apple-system, sans-serif;
             font-size: 0.95rem;
-            color: #999; /* Matched to page text-muted */
+            color: #6b7280;
             margin-bottom: 56px;
         }
 
@@ -131,7 +131,7 @@
         }
 
         .meta-dot-yellow {
-            color: #999; /* Matched to page text-muted dot style */
+            color: #f59e0b; /* Amber/Yellow dot */
             font-size: 1.1rem;
             line-height: 1;
         }
@@ -150,7 +150,7 @@
         }
 
         .col-title {
-            font-family: "Inter", Arial, Helvetica, sans-serif;
+            font-family: "Inter", -apple-system, sans-serif;
             font-size: 1rem;
             font-weight: 500;
             color: #ffffff;
@@ -167,9 +167,9 @@
         }
 
         .col-list a {
-            font-family: "Inter", Arial, Helvetica, sans-serif;
+            font-family: "Inter", -apple-system, sans-serif;
             font-size: 1rem;
-            color: #999; /* Matched to page text-muted */
+            color: #6b7280;
             text-decoration: none;
             transition: color 0.2s ease;
         }
