@@ -73,8 +73,8 @@
             font-size: 175px; 
             font-weight: 700; 
             
-            /* Increased white opacity (55% down to 5%) to make the text significantly whiter and more visible */
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.05) 100%); 
+            /* Increased white opacity (90% down to 15%) to make the text extremely white and prominent */
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.15) 100%); 
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             
