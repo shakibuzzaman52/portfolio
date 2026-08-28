@@ -1,9 +1,3 @@
-/**
- * Dynamic Footer & Extended Curved Hero Section Integration
- * Content: Shakib Personal Portfolio Content (With "Achievements" added)
- * Design: Minimal Left-Aligned Multi-Column Layout (Finely adjusted subtle curve)
- */
-
 (function () {
     // 1. Inject combined CSS styles into the document head
     const styleTag = document.createElement("style");
@@ -39,19 +33,16 @@
         }
 
         .curvedHeroContentContainer {
-            /* Adjusted to a balanced dark gray (#121214) for a subtle elevation transition to absolute black */
             background: linear-gradient(180deg, #121214 0%, #000000 100%); 
             width: 100%;
             padding: 35px 0 80px 0; 
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Finely adjusted to 88% to slightly flatten the curve further while preserving the look */
             clip-path: ellipse(var(--curve-rx, 88%) 100% at 50% 100%);
-            will-change: clip-path;
         }
 
-        /* Original Visual Graphic Container */
+        /* Visual Graphic Container */
         .visualContainer {
             position: relative;
             width: 100%;
@@ -63,7 +54,7 @@
             margin-bottom: 50px;
         }
 
-        /* Refined Background Typography Settings */
+        /* Background Typography Settings */
         .heroBgText {
             position: absolute;
             top: 65%; 
@@ -72,12 +63,9 @@
             font-family: "Inter", Arial, Helvetica, sans-serif;
             font-size: 175px; 
             font-weight: 700; 
-            
-            /* Increased white opacity (90% down to 15%) to make the text extremely white and prominent */
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.15) 100%); 
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            
             letter-spacing: -0.04em; 
             z-index: 1;
             pointer-events: none;
@@ -93,7 +81,7 @@
             -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
         }
 
-        /* Content wrapper aligned strictly left matching the layout width of the screenshot */
+        /* Content wrapper */
         .footer-content-wrapper {
             width: min(760px, 85%); 
             display: flex;
@@ -103,7 +91,7 @@
             z-index: 5;
         }
 
-        /* Spaced Tagline with high-low contrast division */
+        /* Spaced Tagline */
         .footer-tagline-main {
             font-family: "Inter", Arial, Helvetica, sans-serif;
             font-size: 1.85rem;
@@ -119,7 +107,7 @@
             color: #999; 
         }
 
-        /* Meta block styling with dot separator */
+        /* Meta block styling */
         .footer-meta-line {
             display: flex;
             align-items: center;
@@ -140,7 +128,7 @@
             line-height: 1;
         }
 
-        /* Multi-column grid for standard lists */
+        /* Multi-column grid */
         .footer-links-grid {
             display: flex;
             gap: 120px; 
@@ -190,7 +178,6 @@
             }
             .curvedHeroContentContainer {
                 padding: 20px 0 50px 0;
-                /* Adjusted to 138% for mobile curve adjustment */
                 clip-path: ellipse(var(--curve-rx, 138%) 100% at 50% 100%);
             }
             .visualContainer { height: 340px; margin-bottom: 25px; }
@@ -222,31 +209,24 @@
     curvedHero.className = "curvedHero";
     curvedHero.innerHTML = `
         <div class="curvedHeroContentContainer">
-            <!-- Top: Spaced dynamic visual elements -->
             <div class="visualContainer">
                 <div class="heroBgText">Shakib</div>
                 <img src="index-myphoto.png" alt="Shakib" class="heroImage">
             </div>
 
-            <!-- Bottom: Organized in the layout style of the screenshot -->
             <div class="footer-content-wrapper">
-                
-                <!-- Left aligned contrast Tagline -->
                 <h2 class="footer-tagline-main">
                     Building elegant code 
                     <span>and solving complex algorithms.</span>
                 </h2>
 
-                <!-- Author Meta Details (with Yellow Dot) -->
                 <div class="footer-meta-line">
                     <span class="meta-author">Built by Shakib</span>
                     <span class="meta-dot-yellow">•</span>
                     <span>All rights reserved</span>
                 </div>
 
-                <!-- Structured Link Columns -->
                 <div class="footer-links-grid">
-                    <!-- Column 1: Pages -->
                     <div class="footer-col">
                         <h4 class="col-title">Pages</h4>
                         <ul class="col-list">
@@ -257,7 +237,6 @@
                         </ul>
                     </div>
 
-                    <!-- Column 2: Info (with Achievements added) -->
                     <div class="footer-col">
                         <h4 class="col-title">Info</h4>
                         <ul class="col-list">
@@ -268,30 +247,12 @@
                         </ul>
                     </div>
                 </div>
-
             </div>
         </div>
     `;
-
-    // Append to body so it stretches full viewport width
     document.body.appendChild(curvedHero);
 
-    // 3. Real-time scroll deformation calculations
-    const container = curvedHero.querySelector(".curvedHeroContentContainer");
-    window.addEventListener("scroll", () => {
-        const rect = curvedHero.getBoundingClientRect();
-        const start = window.innerHeight * 0.45;
-        const total = start - (-150);
-        const ratio = Math.max(0, Math.min((start - rect.top) / total, 1));
-        const eased = ratio * ratio * (3 - 2 * ratio);
-        
-        // Base values (88 / 138)
-        const baseRx = window.innerWidth <= 768 ? 138 : 88;
-        const rx = baseRx + eased * (360 - baseRx);
-        container.style.setProperty("--curve-rx", `${rx}%`);
-    }, { passive: true });
-
-    // 4. Back to Top button registration
+    // 3. Register Back to Top button
     document.body.insertAdjacentHTML("beforeend", `
         <a href="#" class="backToTop" id="backToTop" title="Back to top">
             <i class="fa-solid fa-arrow-up"></i>
@@ -299,9 +260,25 @@
     `);
 
     const backBtn = document.getElementById("backToTop");
+    const container = curvedHero.querySelector(".curvedHeroContentContainer");
+
+    // 4. Combined Scroll Event (Single listener for better performance)
     window.addEventListener("scroll", () => {
+        // Toggle Back to Top Button
         backBtn.classList.toggle("active", window.scrollY > 150);
-    });
+
+        // Curve Deformation Calculation
+        const rect = curvedHero.getBoundingClientRect();
+        const start = window.innerHeight * 0.45;
+        const total = start + 150; // Simplified
+        const ratio = Math.max(0, Math.min((start - rect.top) / total, 1));
+        
+        const baseRx = window.innerWidth <= 768 ? 138 : 88;
+        const rx = baseRx + ratio * (360 - baseRx); // Linear calculation
+        container.style.setProperty("--curve-rx", `${rx}%`);
+    }, { passive: true });
+
+    // Smooth Scroll Execution
     backBtn.addEventListener("click", (e) => {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: "smooth" });

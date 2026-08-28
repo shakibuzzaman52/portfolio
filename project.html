@@ -6,23 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Shakib Uz Zaman</title>
 
-    <!-- Icon Library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- Dark Theme Settings -->
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <!-- Google Fonts -->
+    <!-- Stylesheets and Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Single Google Font Import: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- External Dynamic Scripts -->
+    <!-- External Scripts -->
+    <script src="logo.js" defer></script>
     <script src="background.js" defer></script>
     <script src="footer.js" defer></script>
 
     <style>
-        /* =======================
-           RESET & BASE STYLES
-        ======================= */
         * {
             margin: 0;
             padding: 0;
@@ -36,12 +35,14 @@
         }
 
         body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
             font-family: "Inter", Arial, Helvetica, sans-serif;
             background-color: #000000;
             color: #ffffff;
             font-size: 1rem;
             line-height: 1.8;
-            -ms-overflow-style: none;
             position: relative;
             overflow-x: hidden;
             animation: pageFadeIn 0.4s ease-in-out;
@@ -51,9 +52,6 @@
             display: none;
         }
 
-        /* =======================
-           HEADER & NAV
-        ======================= */
         header {
             width: 100%;
         }
@@ -70,32 +68,6 @@
         .left {
             display: flex;
             align-items: center;
-        }
-
-        /* Logo Box Styles */
-        .logo-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 28px;
-            border: 2.5px solid #ffffff; 
-            text-decoration: none;
-            transition: opacity 0.2s ease;
-            padding: 2px;
-        }
-
-        .logo-box:hover {
-            opacity: 0.8;
-        }
-
-        /* Bold 'S' shape path styles */
-        .logo-svg-path {
-            fill: none;
-            stroke: #ffffff;
-            stroke-width: 4;
-            stroke-linecap: square;
-            stroke-linejoin: miter;
         }
 
         .right ul {
@@ -120,12 +92,9 @@
             display: none;
         }
 
-        /* =======================
-           MAIN LAYOUT & TYPOGRAPHY
-        ======================= */
         main {
             flex: 1;
-            width: min(700px, 90%);
+            width: min(700px, 80%);
             margin: auto;
         }
 
@@ -146,9 +115,6 @@
             margin-bottom: 30px;
         }
 
-        /* =======================
-           GITHUB LINK
-        ======================= */
         .projectGrids {
             display: flex;
             margin-bottom: 40px;
@@ -175,9 +141,6 @@
             font-size: 1.1rem;
         }
 
-        /* =======================
-           SECTIONS LAYOUT
-        ======================= */
         .projectSection {
             margin-bottom: 45px;
         }
@@ -210,9 +173,6 @@
             gap: 32px;
         }
 
-        /* =======================
-           PROJECT CARD STYLING (HOLLOW / TRANSPARENT DESIGN)
-        ======================= */
         .projectCard {
             border: 1px solid transparent;
             border-radius: 24px;
@@ -222,22 +182,13 @@
             gap: 24px;
             color: inherit;
             background-image: 
-                /* Inner Background (Padding-box) */
                 linear-gradient(to bottom, #000000, #000000),
-                
-                /* Border Layers (Border-box) */
                 radial-gradient(circle at 100% 0%, #000000 0%, transparent 75%),
                 linear-gradient(to bottom, #333336, #1c1c1e);
-                
-            background-origin: 
-                padding-box, 
-                border-box, border-box;
-            background-clip: 
-                padding-box, 
-                border-box, border-box;
+            background-origin: padding-box, border-box, border-box;
+            background-clip: padding-box, border-box, border-box;
         }
 
-        /* Top visual preview container */
         .projectPreview {
             background-color: transparent;
             border: none;
@@ -272,7 +223,6 @@
             color: #222222;
         }
 
-        /* Text layout */
         .projectDetails {
             display: flex;
             flex-direction: column;
@@ -293,7 +243,6 @@
             line-height: 1.6;
         }
 
-        /* Bottom button styling */
         .projectAction {
             display: inline-flex;
             align-items: center;
@@ -315,17 +264,11 @@
             font-size: 0.9rem;
         }
 
-        /* =======================
-           PAGE ANIMATIONS
-        ======================= */
         @keyframes pageFadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
-        /* =======================
-           RESPONSIVE INTERFACES
-        ======================= */
         @media(max-width: 768px) {
             nav {
                 height: 80px;
@@ -346,8 +289,12 @@
                 font-size: 1.1rem;
             }
 
+            .right ul li a:hover i {
+                color: #ffffff;
+            }
+
             main {
-                width: 90%;
+                width: 88%;
             }
 
             .pageSection h1 {
@@ -385,20 +332,9 @@
 
 <body>
 
-    <div id="top"></div>
-
     <header>
         <nav>
-            <div class="left">
-                <!-- Geometric Logo [S] -->
-                <a href="index.html" class="logo-box">
-                    <svg viewBox="0 0 32 32" width="100%" height="100%">
-                        <!-- Sharp S-shaped vector path -->
-                        <path class="logo-svg-path" d="M 23,8 L 10,8 L 10,16 L 22,16 L 22,24 L 9,24" />
-                    </svg>
-                </a>
-            </div>
-
+            <div class="left"></div>
             <div class="right">
                 <ul>
                     <li>
@@ -431,7 +367,6 @@
                 Projects that I created or maintaining.
             </p>
 
-            <!-- Minimal GitHub Link -->
             <div class="projectGrids">
                 <a href="https://github.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer" class="githubLink">
                     <i class="fa-brands fa-github-alt"></i>
@@ -439,9 +374,7 @@
                 </a>
             </div>
 
-            <!-- Recent Projects Section -->
             <div class="projectSection">
-                
                 <div class="sectionHeader">
                     <h2 class="sectionHeading">RECENT PROJECTS</h2>
                     <span class="sectionLine"></span>

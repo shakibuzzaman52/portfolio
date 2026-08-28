@@ -5,21 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Education | Shakib Uz Zaman</title>
 
-    <!-- Icon & Font Libraries -->
+    <!-- Dark Theme Settings -->
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Stylesheets and Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Single Google Font Import: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- External Dynamic Scripts -->
+    <!-- External Scripts -->
+    <script src="logo.js" defer></script>
     <script src="background.js" defer></script>
     <script src="footer.js" defer></script>
 
     <style>
-        /* =======================
-           RESET & BASE STYLES
-        ======================= */
         * {
             margin: 0;
             padding: 0;
@@ -41,7 +42,6 @@
             color: #ffffff;
             font-size: 1rem;
             line-height: 1.8;
-            -ms-overflow-style: none;
             position: relative;
             overflow-x: hidden;
             animation: pageFadeIn 0.4s ease-in-out;
@@ -51,9 +51,6 @@
             display: none;
         }
 
-        /* =======================
-           HEADER & NAVIGATION
-        ======================= */
         header {
             width: 100%;
         }
@@ -70,32 +67,6 @@
         .left {
             display: flex;
             align-items: center;
-        }
-
-        /* Logo Box Styles */
-        .logo-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 28px;
-            border: 2.5px solid #ffffff; 
-            text-decoration: none;
-            transition: opacity 0.2s ease;
-            padding: 2px;
-        }
-
-        .logo-box:hover {
-            opacity: 0.8;
-        }
-
-        /* Bold 'S' shape path styles */
-        .logo-svg-path {
-            fill: none;
-            stroke: #ffffff;
-            stroke-width: 4;
-            stroke-linecap: square;
-            stroke-linejoin: miter;
         }
 
         .right ul {
@@ -120,9 +91,6 @@
             display: none;
         }
 
-        /* =======================
-           MAIN LAYOUT & TYPOGRAPHY
-        ======================= */
         main {
             flex: 1;
             width: min(700px, 80%);
@@ -148,9 +116,6 @@
             margin-bottom: 35px;
         }
 
-        /* =======================
-           SECTION HEADER DIVIDER
-        ======================= */
         .sectionHeader {
             display: flex;
             align-items: center;
@@ -171,9 +136,6 @@
             height: 1px;
         }
 
-        /* =======================
-           EDUCATION ITEMS
-        ======================= */
         .pageContent {
             display: flex;
             flex-direction: column;
@@ -189,7 +151,6 @@
             position: relative;
         }
 
-        /* Connecting timeline line */
         .educationItem:not(:last-child)::after {
             content: '';
             position: absolute;
@@ -221,13 +182,11 @@
             transition: filter 0.3s ease, opacity 0.3s ease;
         }
 
-        /* Default Hover behavior for non-active entries */
         .educationItem:hover .educationIcon img {
             filter: grayscale(0%);
             opacity: 1;
         }
 
-        /* Keep current institution always colorful */
         .educationItem.current .educationIcon img {
             filter: grayscale(0%);
             opacity: 1;
@@ -254,11 +213,10 @@
             text-underline-offset: 4px;
             text-decoration-thickness: 1px;
             display: inline-block;
-            transition: color 0.2s ease, text-decoration-color 0.2s ease;
+            transition: text-decoration-color 0.2s ease;
         }
 
         .educationLink:hover {
-            color: #ffffff;
             text-decoration-color: rgba(255, 255, 255, 1);
         }
 
@@ -275,17 +233,11 @@
             margin-top: 1px;
         }
 
-        /* =======================
-           PAGE ANIMATIONS
-        ======================= */
         @keyframes pageFadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
-        /* =======================
-           RESPONSIVE INTERFACES
-        ======================= */
         @media(max-width: 768px) {
             nav {
                 height: 80px;
@@ -304,6 +256,10 @@
                 display: block;
                 color: #999;
                 font-size: 1.1rem;
+            }
+
+            .right ul li a:hover i {
+                color: #ffffff;
             }
 
             main {
@@ -346,20 +302,9 @@
 </head>
 <body>
 
-    <div id="top"></div>
-
     <header>
         <nav>
-            <div class="left">
-                <!-- Geometric Logo [S] -->
-                <a href="index.html" class="logo-box">
-                    <svg viewBox="0 0 32 32" width="100%" height="100%">
-                        <!-- Sharp S-shaped vector path -->
-                        <path class="logo-svg-path" d="M 23,8 L 10,8 L 10,16 L 22,16 L 22,24 L 9,24" />
-                    </svg>
-                </a>
-            </div>
-
+            <div class="left"></div>
             <div class="right">
                 <ul>
                     <li>

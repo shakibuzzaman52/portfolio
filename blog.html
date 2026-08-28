@@ -5,21 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog | Shakib Uz Zaman</title>
 
-    <!-- Icon & Font Libraries -->
+    <!-- Dark Theme Settings -->
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Stylesheets and Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Single Google Font Import: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- External Dynamic Scripts -->
+    <!-- External Scripts -->
+    <script src="logo.js" defer></script>
     <script src="background.js" defer></script>
     <script src="footer.js" defer></script>
 
     <style>
-        /* =======================
-           RESET & BASE STYLES
-        ======================= */
         * {
             margin: 0;
             padding: 0;
@@ -41,7 +42,6 @@
             color: #ffffff;
             font-size: 1rem;
             line-height: 1.8;
-            -ms-overflow-style: none;
             position: relative;
             overflow-x: hidden;
             animation: pageFadeIn 0.4s ease-in-out;
@@ -51,9 +51,6 @@
             display: none;
         }
 
-        /* =======================
-           HEADER & NAVIGATION
-        ======================= */
         header {
             width: 100%;
         }
@@ -70,32 +67,6 @@
         .left {
             display: flex;
             align-items: center;
-        }
-
-        /* Logo Box Styles */
-        .logo-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 28px;
-            border: 2.5px solid #ffffff; 
-            text-decoration: none;
-            transition: opacity 0.2s ease;
-            padding: 2px;
-        }
-
-        .logo-box:hover {
-            opacity: 0.8;
-        }
-
-        /* Bold 'S' shape path styles */
-        .logo-svg-path {
-            fill: none;
-            stroke: #ffffff;
-            stroke-width: 4;
-            stroke-linecap: square;
-            stroke-linejoin: miter;
         }
 
         .right ul {
@@ -120,9 +91,6 @@
             display: none;
         }
 
-        /* =======================
-           MAIN LAYOUT
-        ======================= */
         main {
             flex: 1;
             width: min(700px, 80%);
@@ -133,9 +101,6 @@
             margin: 50px 0;
         }
 
-        /* =======================
-           BLOG SECTION
-        ======================= */
         .blogSection h1 {
             font-size: 2.2rem;
             font-weight: 750;
@@ -158,7 +123,6 @@
             flex-direction: column;
         }
 
-        /* Section Heading Divider */
         .sectionHeader {
             display: flex;
             align-items: center;
@@ -181,9 +145,6 @@
             height: 1px;
         }
 
-        /* =======================
-           BLOG POST LAYOUT
-        ======================= */
         .blogPost {
             display: flex;
             justify-content: space-between;
@@ -241,7 +202,6 @@
             width: 16px;
             height: 16px;
             stroke: currentColor;
-            transition: transform 0.25s ease;
         }
 
         .postActionBtn:hover {
@@ -250,17 +210,11 @@
             color: #ffffff;
         }
 
-        /* =======================
-           PAGE ANIMATION
-        ======================= */
         @keyframes pageFadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
-        /* =======================
-           RESPONSIVE DESIGN
-        ======================= */
         @media(max-width:768px) {
             nav {
                 height: 80px;
@@ -320,19 +274,9 @@
 </head>
 <body>
 
-    <div id="top"></div>
-
     <header>
         <nav>
-            <div class="left">
-                <!-- Geometric Logo [S] -->
-                <a href="index.html" class="logo-box">
-                    <svg viewBox="0 0 32 32" width="100%" height="100%">
-                        <!-- Sharp S-shaped vector path -->
-                        <path class="logo-svg-path" d="M 23,8 L 10,8 L 10,16 L 22,16 L 22,24 L 9,24" />
-                    </svg>
-                </a>
-            </div>
+            <div class="left"></div>
             <div class="right">
                 <ul>
                     <li>

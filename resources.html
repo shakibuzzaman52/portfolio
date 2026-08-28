@@ -5,21 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resources | Shakib Uz Zaman</title>
 
-    <!-- Icon & Font Libraries -->
+    <!-- Dark Theme Settings -->
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Stylesheets and Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Single Google Font Import: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- External Dynamic Scripts -->
+    <!-- External Scripts -->
+    <script src="logo.js" defer></script>
     <script src="background.js" defer></script>
     <script src="footer.js" defer></script>
 
     <style>
-        /* =======================
-           RESET & BASE STYLES
-        ======================= */
         * {
             margin: 0;
             padding: 0;
@@ -41,7 +42,6 @@
             color: #ffffff;
             font-size: 1rem;
             line-height: 1.8;
-            -ms-overflow-style: none;
             position: relative;
             overflow-x: hidden;
             animation: pageFadeIn 0.4s ease-in-out;
@@ -51,9 +51,6 @@
             display: none;
         }
 
-        /* =======================
-           HEADER & NAVIGATION
-        ======================= */
         header {
             width: 100%;
         }
@@ -70,32 +67,6 @@
         .left {
             display: flex;
             align-items: center;
-        }
-
-        /* Logo Box Styles */
-        .logo-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 28px;
-            border: 2.5px solid #ffffff; 
-            text-decoration: none;
-            transition: opacity 0.2s ease;
-            padding: 2px;
-        }
-
-        .logo-box:hover {
-            opacity: 0.8;
-        }
-
-        /* Bold 'S' shape path styles */
-        .logo-svg-path {
-            fill: none;
-            stroke: #ffffff;
-            stroke-width: 4;
-            stroke-linecap: square;
-            stroke-linejoin: miter;
         }
 
         .right ul {
@@ -120,9 +91,6 @@
             display: none;
         }
 
-        /* =======================
-           MAIN LAYOUT
-        ======================= */
         main {
             flex: 1;
             width: min(700px, 80%);
@@ -133,9 +101,6 @@
             margin: 50px 0;
         }
 
-        /* =======================
-           RESOURCES TYPOGRAPHY
-        ======================= */
         .pageSection h1 {
             font-size: 2.2rem;
             font-weight: 750;
@@ -152,9 +117,6 @@
             margin-bottom: 35px;
         }
 
-        /* =======================
-           SECTIONS LAYOUT
-        ======================= */
         .resourceSection {
             margin-bottom: 45px;
         }
@@ -187,9 +149,6 @@
             gap: 20px;
         }
 
-        /* =======================
-           TALKS STYLE COMPONENT
-        ======================= */
         .talk-item {
             display: flex;
             flex-direction: column;
@@ -223,9 +182,6 @@
             line-height: 1.6;
         }
 
-        /* =======================
-           RESOURCE ACTIONS
-        ======================= */
         .talk-meta {
             display: flex;
             justify-content: flex-end;
@@ -251,31 +207,18 @@
         }
 
         .talk-actions a i {
-            font-size: 0.82rem;
+            font-size: 0.85rem;
         }
 
         .talk-actions a:hover {
             color: #ffffff;
         }
 
-        .talk-divider {
-            width: 50px;
-            height: 1px;
-            background-color: #18181b;
-            margin: 40px auto;
-        }
-
-        /* =======================
-           PAGE ANIMATIONS
-        ======================= */
         @keyframes pageFadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
-        /* =======================
-           RESPONSIVE INTERFACES
-        ======================= */
         @media(max-width: 768px) {
             nav {
                 height: 80px;
@@ -294,7 +237,10 @@
                 display: block;
                 color: #999;
                 font-size: 1.1rem;
-                transition: color 0.3s ease;
+            }
+
+            .right ul li a:hover i {
+                color: #ffffff;
             }
 
             main {
@@ -330,29 +276,14 @@
             .talk-actions a {
                 font-size: 0.85rem;
             }
-
-            .talk-actions a i {
-                font-size: 0.85rem;
-            }
         }
     </style>
 </head>
 <body>
 
-    <div id="top"></div>
-
     <header>
         <nav>
-            <div class="left">
-                <!-- Geometric Logo [S] -->
-                <a href="index.html" class="logo-box">
-                    <svg viewBox="0 0 32 32" width="100%" height="100%">
-                        <!-- Sharp S-shaped vector path -->
-                        <path class="logo-svg-path" d="M 23,8 L 10,8 L 10,16 L 22,16 L 22,24 L 9,24" />
-                    </svg>
-                </a>
-            </div>
-
+            <div class="left"></div>
             <div class="right">
                 <ul>
                     <li>
@@ -403,10 +334,10 @@
                         
                         <div class="talk-meta">
                             <div class="talk-actions">
-                                <a href="https://shorturl.at/gyLD2" class="watchBtn">
+                                <a href="https://shorturl.at/gyLD2" class="watchBtn" target="_blank" rel="noopener noreferrer">
                                     ▷ Module Link
                                 </a>
-                                <a class="watchBtn">
+                                <a href="https://drive.google.com/drive/folders/10EXmnlSJKrGImOOMfrzAq8GYqYkXdlC5?usp=drive_link" class="watchBtn" target="_blank" rel="noopener noreferrer">
                                     ▷ Class Link
                                 </a>
                                 <a class="shareBtn" href="#">
@@ -427,7 +358,7 @@
                         
                         <div class="talk-meta">
                             <div class="talk-actions">
-                                <a class="watchBtn">
+                                <a class="watchBtn" href="https://codeforces.com/group/MWSDmqGsZm/contest/219774" target="_blank" rel="noopener noreferrer">
                                     ▷ Practice
                                 </a>
                                 <a class="shareBtn" href="#">
@@ -448,7 +379,7 @@
                         
                         <div class="talk-meta">
                             <div class="talk-actions">
-                                <a class="watchBtn">
+                                <a class="watchBtn" href="https://codeforces.com/group/MWSDmqGsZm/contest/219158" target="_blank" rel="noopener noreferrer">
                                     ▷ Practice
                                 </a>
                                 <a class="shareBtn" href="#">
@@ -462,42 +393,27 @@
         </section>
     </main>
 
-    <!-- Custom Resource Action Handling -->
     <script>
-        document.querySelectorAll(".talk-item").forEach(post => {
-            const postLink = post.querySelector(".postLink");
-            const shareBtn = post.querySelector(".shareBtn");
+        // Highly optimized dynamic sharing logic
+        document.querySelectorAll(".shareBtn").forEach(btn => {
+            btn.addEventListener("click", function (e) {
+                e.preventDefault();
+                const postLink = this.closest(".talk-item").querySelector(".postLink");
+                const url = postLink.href;
+                const title = postLink.textContent.trim();
 
-            if (postLink && shareBtn) {
-                const mainLink = postLink.href;
-                const resourceTitle = postLink.textContent.trim();
-
-                // Dynamic watch and download link bindings without overriding existing ones
-                post.querySelectorAll(".watchBtn, .downloadBtn").forEach(btn => {
-                    if (!btn.getAttribute("href")) {
-                        btn.href = mainLink;
-                        btn.target = "_blank";
-                        btn.rel = "noopener noreferrer";
-                    }
-                });
-
-                shareBtn.onclick = function (e) {
-                    e.preventDefault();
-                    if (navigator.share) {
-                        navigator.share({
-                            title: resourceTitle,
-                            text: "Check out this resource: " + resourceTitle,
-                            url: mainLink
-                        }).catch(() => {});
-                    } else {
-                        navigator.clipboard.writeText(mainLink).then(() => {
-                            alert("Link copied to clipboard!");
-                        }).catch(() => {
-                            alert("Failed to copy link.");
-                        });
-                    }
-                };
-            }
+                if (navigator.share) {
+                    navigator.share({
+                        title: title,
+                        text: "Check out this resource: " + title,
+                        url: url
+                    }).catch(() => {});
+                } else {
+                    navigator.clipboard.writeText(url)
+                        .then(() => alert("Link copied to clipboard!"))
+                        .catch(() => alert("Failed to copy link."));
+                }
+            });
         });
     </script>
 </body>
