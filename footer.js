@@ -39,8 +39,8 @@
         }
 
         .curvedHeroContentContainer {
-            /* Adjusted to a much darker gradient, extremely close to pure black (#080808 to #000000) */
-            background: linear-gradient(180deg, #080808 0%, #000000 100%); 
+            /* Adjusted to a balanced dark gray (#121214) for a subtle elevation transition to absolute black */
+            background: linear-gradient(180deg, #121214 0%, #000000 100%); 
             width: 100%;
             padding: 35px 0 80px 0; 
             display: flex;
@@ -72,7 +72,7 @@
             font-family: "Inter", Arial, Helvetica, sans-serif;
             font-size: 175px; 
             font-weight: 700; 
-            /* Increased opacity from 0.15 to 0.30 for a brighter, whiter look */
+            /* Kept a clean, visible white gradient */
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.02) 100%); 
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
