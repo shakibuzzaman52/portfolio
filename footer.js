@@ -18,14 +18,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #999; /* Matched to page text-muted */
+            color: #999; 
             text-decoration: none;
             opacity: 0;
             pointer-events: none;
             transition: 0.3s ease;
             z-index: 9999;
         }
-        .backToTop:hover { color: #fff; background: #18181b; border-radius: 50%; } /* Matched to badge background */
+        .backToTop:hover { color: #fff; background: #18181b; border-radius: 50%; } 
         .backToTop.active { opacity: 1; pointer-events: auto; }
 
         /* Full-Width (Edge-to-Edge) Curved Footer Section */
@@ -35,11 +35,12 @@
             margin: 120px 0 0 0; 
             padding: 0;
             overflow: hidden;
-            background-color: #000000; /* Matched to page background */
+            background-color: #000000; 
         }
 
         .curvedHeroContentContainer {
-            background: linear-gradient(180deg, #18181b 0%, #000000 100%); /* Matched to page gradient style */
+            /* Adjusted to a much darker gradient, extremely close to pure black (#080808 to #000000) */
+            background: linear-gradient(180deg, #080808 0%, #000000 100%); 
             width: 100%;
             padding: 35px 0 80px 0; 
             display: flex;
@@ -71,7 +72,8 @@
             font-family: "Inter", Arial, Helvetica, sans-serif;
             font-size: 175px; 
             font-weight: 700; 
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.01) 100%); /* Subtle white gradient */
+            /* Increased opacity from 0.15 to 0.30 for a brighter, whiter look */
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.02) 100%); 
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.04em; 
@@ -112,7 +114,7 @@
         }
 
         .footer-tagline-main span {
-            color: #999; /* Matched to page text-muted */
+            color: #999; 
         }
 
         /* Meta block styling with dot separator */
@@ -122,7 +124,7 @@
             gap: 10px;
             font-family: "Inter", Arial, Helvetica, sans-serif;
             font-size: 0.95rem;
-            color: #999; /* Matched to page text-muted */
+            color: #999; 
             margin-bottom: 56px;
         }
 
@@ -131,7 +133,7 @@
         }
 
         .meta-dot-yellow {
-            color: #999; /* Matched to page text-muted dot style */
+            color: #999; 
             font-size: 1.1rem;
             line-height: 1;
         }
@@ -169,7 +171,7 @@
         .col-list a {
             font-family: "Inter", Arial, Helvetica, sans-serif;
             font-size: 1rem;
-            color: #999; /* Matched to page text-muted */
+            color: #999; 
             text-decoration: none;
             transition: color 0.2s ease;
         }
