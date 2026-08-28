@@ -1,7 +1,7 @@
 /**
  * Dynamic Footer & Extended Curved Hero Section Integration
  * Content: Shakib Personal Portfolio Content (With "Achievements" added)
- * Design: Minimal Left-Aligned Multi-Column Layout (Slightly adjusted from original curve)
+ * Design: Minimal Left-Aligned Multi-Column Layout (Finely adjusted subtle curve)
  */
 
 (function () {
@@ -45,8 +45,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Adjusted slightly from 76% to 82% to make the curve slightly less deep than the first version */
-            clip-path: ellipse(var(--curve-rx, 82%) 100% at 50% 100%);
+            /* Finely adjusted to 88% to slightly flatten the curve further while preserving the look */
+            clip-path: ellipse(var(--curve-rx, 88%) 100% at 50% 100%);
             will-change: clip-path;
         }
 
@@ -186,8 +186,8 @@
             }
             .curvedHeroContentContainer {
                 padding: 20px 0 50px 0;
-                /* Adjusted slightly from 125% to 132% for mobile curve adjustment */
-                clip-path: ellipse(var(--curve-rx, 132%) 100% at 50% 100%);
+                /* Adjusted to 138% for mobile curve adjustment */
+                clip-path: ellipse(var(--curve-rx, 138%) 100% at 50% 100%);
             }
             .visualContainer { height: 340px; margin-bottom: 25px; }
             .heroBgText { font-size: clamp(90px, 22vw, 130px); top: 65%; letter-spacing: -0.02em; }
@@ -281,9 +281,9 @@
         const ratio = Math.max(0, Math.min((start - rect.top) / total, 1));
         const eased = ratio * ratio * (3 - 2 * ratio);
         
-        // Base values (82 / 132) slightly adjusted from original (76 / 125)
-        const baseRx = window.innerWidth <= 768 ? 132 : 82;
-        const rx = baseRx + eased * (350 - baseRx);
+        // Base values (88 / 138)
+        const baseRx = window.innerWidth <= 768 ? 138 : 88;
+        const rx = baseRx + eased * (360 - baseRx);
         container.style.setProperty("--curve-rx", `${rx}%`);
     }, { passive: true });
 
