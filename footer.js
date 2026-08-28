@@ -1,7 +1,7 @@
 /**
  * Dynamic Footer & Extended Curved Hero Section Integration
- * Content: Shakib Personal Portfolio Content (With "FEATURE" removed)
- * Design: Minimal Left-Aligned Multi-Column Layout (Matching Screenshot)
+ * Content: Shakib Personal Portfolio with 3-Column Link Structure
+ * Design: Minimal Left-Aligned Multi-Column Layout
  */
 
 (function () {
@@ -88,7 +88,7 @@
             -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
         }
 
-        /* Content wrapper aligned strictly left matching the layout width of the screenshot */
+        /* Content wrapper aligned strictly left */
         .footer-content-wrapper {
             width: min(760px, 85%); 
             display: flex;
@@ -111,7 +111,7 @@
         }
 
         .footer-tagline-main span {
-            color: #4b5563; /* Dimmed text for secondary clause */
+            color: #4b5563;
         }
 
         /* Meta block styling with yellow dot separator */
@@ -130,7 +130,7 @@
         }
 
         .meta-dot-yellow {
-            color: #f59e0b; /* Amber/Yellow dot */
+            color: #f59e0b;
             font-size: 1.1rem;
             line-height: 1;
         }
@@ -138,14 +138,16 @@
         /* Multi-column grid for standard lists */
         .footer-links-grid {
             display: flex;
-            gap: 120px; 
+            gap: 90px;
             width: 100%;
+            flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
         }
 
         .footer-col {
             display: flex;
             flex-direction: column;
             gap: 18px;
+            min-width: 120px; /* Ensures columns have a minimum width */
         }
 
         .col-title {
@@ -202,10 +204,7 @@
                 margin-bottom: 40px;
             }
             .footer-links-grid {
-                gap: 70px;
-            }
-            .col-list {
-                gap: 12px;
+                gap: 40px 60px; /* Row and column gap */
             }
         }
     `;
@@ -222,7 +221,7 @@
                 <img src="index-myphoto.png" alt="Shakib" class="heroImage">
             </div>
 
-            <!-- Bottom: Organized in the layout style of the screenshot -->
+            <!-- Bottom: Organized in a 3-column layout -->
             <div class="footer-content-wrapper">
                 
                 <!-- Left aligned contrast Tagline -->
@@ -238,7 +237,7 @@
                     <span>All rights reserved</span>
                 </div>
 
-                <!-- Structured Link Columns -->
+                <!-- Structured 3-Column Link Grid -->
                 <div class="footer-links-grid">
                     <!-- Column 1: Pages -->
                     <div class="footer-col">
@@ -256,8 +255,21 @@
                         <h4 class="col-title">Info</h4>
                         <ul class="col-list">
                             <li><a href="education.html">Education</a></li>
+                            <li><a href="achievement.html">Achievements</a></li>
                             <li><a href="#">Resume</a></li>
                             <li><a href="mailto:shakibuzzaman52@gmail.com">Email</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Column 3: Social -->
+                    <div class="footer-col">
+                        <h4 class="col-title">Social</h4>
+                        <ul class="col-list">
+                            <li><a href="https://github.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                            <li><a href="https://www.linkedin.com/in/shakibuzzaman52" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                            <li><a href="https://www.instagram.com/shakibuzzaman_52" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                            <li><a href="https://www.facebook.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+                            <li><a href="https://x.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer">X</a></li>
                         </ul>
                     </div>
                 </div>
