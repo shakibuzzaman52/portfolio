@@ -1,6 +1,7 @@
 /**
  * Dynamic Footer & Extended Curved Hero Section Integration
- * Theme: Fine-tuned 76%/125% Curve, Left-Aligned Minimal Layout (No Border Line)
+ * Content: Shakib Personal Portfolio Content (With "FEATURE" removed)
+ * Design: Minimal Left-Aligned Multi-Column Layout (Matching Screenshot)
  */
 
 (function () {
@@ -34,22 +35,21 @@
             margin: 120px 0 0 0; 
             padding: 0;
             overflow: hidden;
+            background-color: #000000;
         }
 
         .curvedHeroContentContainer {
-            /* Original gradient style */
             background: linear-gradient(180deg, #18181b 0%, #000000 100%);
             width: 100%;
-            padding: 35px 0 65px 0; 
+            padding: 35px 0 80px 0; 
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Fine-tuned baseline curve for desktop (76% - slightly more curved) */
             clip-path: ellipse(var(--curve-rx, 76%) 100% at 50% 100%);
             will-change: clip-path;
         }
 
-        /* Elongated Visual Graphic Container */
+        /* Original Visual Graphic Container */
         .visualContainer {
             position: relative;
             width: 100%;
@@ -58,6 +58,7 @@
             justify-content: center;
             align-items: flex-end;
             overflow: hidden;
+            margin-bottom: 50px;
         }
 
         /* Refined Background Typography Settings */
@@ -87,82 +88,93 @@
             -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
         }
 
-        /* Minimal Grid Container - Left aligned and border removed */
-        .footer-grid-container {
+        /* Content wrapper aligned strictly left matching the layout width of the screenshot */
+        .footer-content-wrapper {
             width: min(760px, 85%); 
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start; 
-            flex-wrap: wrap;
-            gap: 30px;
-            padding-top: 25px; 
-            margin-top: 10px; 
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
             z-index: 5;
         }
 
-        /* Brand Column with Contrast Typography */
-        .footer-brand-column {
-            flex: 0.9; 
-            min-width: 260px;
+        /* Spaced Tagline with high-low contrast division */
+        .footer-tagline-main {
+            font-family: "Inter", -apple-system, sans-serif;
+            font-size: 1.85rem;
+            font-weight: 500;
+            line-height: 1.4;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin: 0 0 24px 0;
+            max-width: 580px;
+        }
+
+        .footer-tagline-main span {
+            color: #4b5563; /* Dimmed text for secondary clause */
+        }
+
+        /* Meta block styling with yellow dot separator */
+        .footer-meta-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: "Inter", -apple-system, sans-serif;
+            font-size: 0.95rem;
+            color: #6b7280;
+            margin-bottom: 56px;
+        }
+
+        .meta-author {
+            color: #ffffff;
+        }
+
+        .meta-dot-yellow {
+            color: #f59e0b; /* Amber/Yellow dot */
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+
+        /* Multi-column grid for standard lists */
+        .footer-links-grid {
+            display: flex;
+            gap: 120px; 
+            width: 100%;
+        }
+
+        .footer-col {
             display: flex;
             flex-direction: column;
-            gap: 12px; 
-            text-align: left; 
+            gap: 18px;
         }
 
-        /* Large, elegant contrast tagline */
-        .footer-tagline {
-            color: #ffffff;
-            font-size: 1.35rem;
+        .col-title {
+            font-family: "Inter", -apple-system, sans-serif;
+            font-size: 1rem;
             font-weight: 500;
-            line-height: 1.45;
-            letter-spacing: -0.02em;
-            max-width: 360px;
-        }
-
-        .footer-tagline span {
-            color: #555555; 
-        }
-
-        .footer-meta {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            color: #555555;
-            letter-spacing: 0.02em;
-        }
-
-        .meta-dot {
-            font-weight: bold;
-        }
-
-        /* Sleek Single-Row Minimal Links - Left aligned */
-        .footer-nav-minimal {
-            display: flex;
-            align-items: center;
-            gap: 14px; 
-            flex-wrap: wrap;
-            justify-content: flex-start; 
-            min-width: 300px;
-        }
-
-        .footer-nav-minimal a {
-            color: #888888;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 400;
-            transition: color 0.25s ease;
-        }
-
-        .footer-nav-minimal a:hover {
             color: #ffffff;
+            margin: 0;
         }
 
-        .nav-divider {
-            color: #333333;
-            font-size: 0.85rem;
-            user-select: none;
+        .col-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .col-list a {
+            font-family: "Inter", -apple-system, sans-serif;
+            font-size: 1rem;
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .col-list a:hover {
+            color: #ffffff;
         }
 
         /* Responsive Layout Adjustments */
@@ -172,43 +184,28 @@
                 margin: 70px 0 0 0; 
             }
             .curvedHeroContentContainer {
-                padding: 20px 0 40px 0;
-                /* Fine-tuned baseline curve for mobile (125% - slightly less curved) */
+                padding: 20px 0 50px 0;
                 clip-path: ellipse(var(--curve-rx, 125%) 100% at 50% 100%);
             }
-            .visualContainer { height: 340px; }
+            .visualContainer { height: 340px; margin-bottom: 25px; }
             .heroBgText { font-size: clamp(90px, 22vw, 130px); top: 65%; letter-spacing: -0.02em; }
             .heroImage { height: 90%; }
 
-            .footer-grid-container {
+            .footer-content-wrapper {
                 width: 88%;
-                flex-direction: column;
-                align-items: flex-start; 
-                text-align: left; 
-                gap: 25px; 
-                padding-top: 20px; 
             }
-            
-            .footer-brand-column {
-                min-width: 100%;
+            .footer-tagline-main {
+                font-size: 1.45rem;
+                margin-bottom: 20px;
+            }
+            .footer-meta-line {
+                margin-bottom: 40px;
+            }
+            .footer-links-grid {
+                gap: 70px;
+            }
+            .col-list {
                 gap: 12px;
-                align-items: flex-start; 
-            }
-            
-            .footer-tagline {
-                font-size: 1.2rem;
-                max-width: 100%;
-            }
-            
-            .footer-nav-minimal {
-                width: 100%;
-                gap: 10px 14px;
-                min-width: unset;
-                justify-content: flex-start; 
-            }
-
-            .nav-divider {
-                display: none; 
             }
         }
     `;
@@ -225,41 +222,51 @@
                 <img src="index-myphoto.png" alt="Shakib" class="heroImage">
             </div>
 
-            <!-- Bottom: Center-aligned flow grid footer -->
-            <div class="footer-grid-container">
-                <!-- Left brand and metadata block -->
-                <div class="footer-brand-column">
-                    <p class="footer-tagline">
-                        Building elegant code,<br><span>and solving complex algorithms.</span>
-                    </p>
-                    <div class="footer-meta">
-                        <span>Built by Shakib</span>
-                        <span class="meta-dot">•</span>
-                        <span>All rights reserved</span>
+            <!-- Bottom: Organized in the layout style of the screenshot -->
+            <div class="footer-content-wrapper">
+                
+                <!-- Left aligned contrast Tagline -->
+                <h2 class="footer-tagline-main">
+                    Building elegant code 
+                    <span>and solving complex algorithms.</span>
+                </h2>
+
+                <!-- Author Meta Details (with Yellow Dot) -->
+                <div class="footer-meta-line">
+                    <span class="meta-author">Built by Shakib</span>
+                    <span class="meta-dot-yellow">•</span>
+                    <span>All rights reserved</span>
+                </div>
+
+                <!-- Structured Link Columns -->
+                <div class="footer-links-grid">
+                    <!-- Column 1: Pages -->
+                    <div class="footer-col">
+                        <h4 class="col-title">Pages</h4>
+                        <ul class="col-list">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="project.html">Projects</a></li>
+                            <li><a href="resources.html">Resources</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 2: Info -->
+                    <div class="footer-col">
+                        <h4 class="col-title">Info</h4>
+                        <ul class="col-list">
+                            <li><a href="education.html">Education</a></li>
+                            <li><a href="#">Resume</a></li>
+                            <li><a href="mailto:shakibuzzaman52@gmail.com">Email</a></li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- Right: Sleek minimal single-row links list (Left-aligned) -->
-                <div class="footer-nav-minimal">
-                    <a href="index.html">Home</a>
-                    <span class="nav-divider">/</span>
-                    <a href="blog.html">Blog</a>
-                    <span class="nav-divider">/</span>
-                    <a href="project.html">Projects</a>
-                    <span class="nav-divider">/</span>
-                    <a href="resources.html">Resources</a>
-                    <span class="nav-divider">/</span>
-                    <a href="education.html">Education</a>
-                    <span class="nav-divider">/</span>
-                    <a href="#">Resume</a>
-                    <span class="nav-divider">/</span>
-                    <a href="mailto:shakibuzzaman52@gmail.com">Email</a>
-                </div>
             </div>
         </div>
     `;
 
-    // Append to body so it stretches full viewport width bypassing <main> constraints
+    // Append to body so it stretches full viewport width
     document.body.appendChild(curvedHero);
 
     // 3. Real-time scroll deformation calculations
@@ -271,7 +278,6 @@
         const ratio = Math.max(0, Math.min((start - rect.top) / total, 1));
         const eased = ratio * ratio * (3 - 2 * ratio);
         
-        // Base curves adjusted (Desktop: 76%, Mobile: 125%)
         const baseRx = window.innerWidth <= 768 ? 125 : 76;
         const rx = baseRx + eased * (350 - baseRx);
         container.style.setProperty("--curve-rx", `${rx}%`);
