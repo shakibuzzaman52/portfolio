@@ -227,7 +227,7 @@
         <div class="curvedHeroContentContainer">
             <div class="visualContainer">
                 <div class="heroBgText">Shakib</div>
-                <img src="index-myphoto.png" alt="Shakib" class="heroImage">
+                <img src="index-myphoto.webp" alt="Shakib" class="heroImage">
             </div>
 
             <div class="footer-content-wrapper">
