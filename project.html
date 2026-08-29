@@ -273,7 +273,73 @@
             to { opacity: 1; }
         }
 
-        @media(max-width: 768px) {
+        /* Desktop Screens */
+        @media (min-width: 1024px) {
+            main {
+                width: min(1100px, 85%); 
+            }
+
+            section {
+                margin: 75px 0;
+            }
+
+            .pageSection h1 {
+                font-size: 3.1rem;
+                margin-bottom: 30px;
+            }
+
+            .pageSubtitle {
+                font-size: 1.15rem;
+                max-width: 650px;
+                margin-top: -15px;
+                margin-bottom: 45px;
+            }
+
+            .githubLink {
+                font-size: 1.12rem;
+            }
+
+            .sectionHeader {
+                margin-top: 35px;
+                margin-bottom: 24px;
+            }
+
+            .sectionHeading {
+                font-size: 1.05rem;
+            }
+
+            /* কন্টেন্ট সুন্দর দেখানোর জন্য ২-কলামের গ্রিড লেআউট */
+            .projectSectionList {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 32px; 
+            }
+
+            .projectCard {
+                padding: 24px;
+                border-radius: 24px;
+                gap: 20px;
+            }
+
+            .projectDetails {
+                gap: 12px;
+            }
+
+            .projectTitle {
+                font-size: 1.45rem;
+            }
+
+            .projectDescription {
+                font-size: 1.0rem;
+            }
+
+            .projectAction {
+                font-size: 1.05rem;
+            }
+        }
+
+        /* Responsive Styles for Mobile and Tablet */
+        @media (max-width: 768px) {
             nav {
                 height: 80px;
                 padding: 0 6%;

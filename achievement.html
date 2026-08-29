@@ -358,6 +358,12 @@
             border: 1px solid #18181b;
         }
 
+        .lightbox-modal iframe.lightbox-content {
+            width: 85%;
+            height: 80%;
+            background: #fff;
+        }
+
         .lightbox-close {
             position: absolute;
             top: 25px;
@@ -379,6 +385,98 @@
             to { opacity: 1; }
         }
 
+        /* Desktop Screens */
+        @media (min-width: 1024px) {
+            main {
+                width: min(1100px, 85%); 
+            }
+
+            section {
+                margin: 75px 0;
+            }
+
+            .minimal-header h1 {
+                font-size: 3.1rem;
+                margin-bottom: 30px;
+            }
+
+            .minimal-subtitle {
+                font-size: 1.15rem;
+                max-width: 650px;
+                margin-top: -15px;
+                margin-bottom: 45px;
+            }
+
+            .sectionHeader {
+                margin-top: 35px;
+                margin-bottom: 24px;
+            }
+
+            .sectionHeading {
+                font-size: 1.1rem;
+            }
+
+            .marquee-section {
+                margin-bottom: 75px;
+            }
+
+            .marquee-content,
+            .marquee-track {
+                gap: 80px; 
+            }
+
+            .marquee-item {
+                font-size: 1.18rem;
+                gap: 14px;
+            }
+
+            .marquee-item i {
+                font-size: 1.45rem;
+            }
+
+            .achievement-list {
+                margin-top: 15px;
+            }
+
+            .achievement-item {
+                padding: 32px 0;
+                gap: 24px;
+            }
+
+            .certificate-thumb-wrapper {
+                width: 100px; 
+                height: 70px; 
+            }
+
+            .zoom-overlay i {
+                font-size: 0.95rem;
+            }
+
+            .achievement-details {
+                gap: 6px;
+            }
+
+            .achievement-title {
+                font-size: 1.25rem;
+            }
+
+            .achievement-meta-row {
+                font-size: 0.92rem;
+                gap: 8px;
+            }
+
+            .achievement-desc {
+                font-size: 1.05rem;
+                margin-top: 8px;
+            }
+
+            .achievement-view-icon {
+                font-size: 1.05rem;
+                padding-left: 15px;
+            }
+        }
+
+        /* Responsive Styles for Mobile and Tablet */
         @media (max-width: 768px) {
             nav {
                 height: 80px;
@@ -567,4 +665,5 @@
         document.addEventListener("keydown", (e) => e.key === "Escape" && closeModal());
     </script>
 </body>
+
 </html>

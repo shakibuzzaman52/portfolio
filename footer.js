@@ -1,5 +1,5 @@
 (function () {
-    // 1. Inject combined CSS styles into the document head
+    // Inject CSS styles into document head
     const styleTag = document.createElement("style");
     styleTag.textContent = `
         /* Back to Top Button Styling */
@@ -22,7 +22,7 @@
         .backToTop:hover { color: #fff; background: #18181b; border-radius: 50%; } 
         .backToTop.active { opacity: 1; pointer-events: auto; }
 
-        /* Full-Width (Edge-to-Edge) Curved Footer Section */
+        /* Curved Footer Section */
         .curvedHero {
             width: 100%;
             position: relative;
@@ -81,7 +81,7 @@
             -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
         }
 
-        /* Content wrapper */
+        /* Content Wrapper */
         .footer-content-wrapper {
             width: min(760px, 85%); 
             display: flex;
@@ -107,7 +107,7 @@
             color: #999; 
         }
 
-        /* Meta block styling */
+        /* Meta Block Styling */
         .footer-meta-line {
             display: flex;
             align-items: center;
@@ -128,7 +128,7 @@
             line-height: 1;
         }
 
-        /* Multi-column grid */
+        /* Multi-column Grid */
         .footer-links-grid {
             display: flex;
             gap: 120px; 
@@ -170,7 +170,35 @@
             color: #ffffff;
         }
 
-        /* Responsive Layout Adjustments */
+        /* Desktop View Adjustments */
+        @media (min-width: 1024px) {
+            .footer-content-wrapper {
+                width: min(1100px, 85%);
+            }
+            .footer-tagline-main {
+                font-size: 2.1rem;
+                max-width: 700px;
+                margin-bottom: 30px;
+            }
+            .footer-meta-line {
+                font-size: 1.12rem;
+                margin-bottom: 65px;
+            }
+            .col-title {
+                font-size: 1.1rem;
+            }
+            .col-list {
+                gap: 18px;
+            }
+            .col-list a {
+                font-size: 1.12rem;
+            }
+            .footer-links-grid {
+                gap: 150px;
+            }
+        }
+
+        /* Responsive Layout Adjustments (Mobile and Tablet) */
         @media (max-width: 768px) {
             .backToTop { right: 20px; bottom: 20px; }
             .curvedHero {
@@ -204,7 +232,7 @@
     `;
     document.head.appendChild(styleTag);
 
-    // 2. Create the unified full-width Curved Section
+    // Create curved footer section
     const curvedHero = document.createElement("section");
     curvedHero.className = "curvedHero";
     curvedHero.innerHTML = `
@@ -252,7 +280,7 @@
     `;
     document.body.appendChild(curvedHero);
 
-    // 3. Register Back to Top button
+    // Register Back to Top button
     document.body.insertAdjacentHTML("beforeend", `
         <a href="#" class="backToTop" id="backToTop" title="Back to top">
             <i class="fa-solid fa-arrow-up"></i>
@@ -262,23 +290,21 @@
     const backBtn = document.getElementById("backToTop");
     const container = curvedHero.querySelector(".curvedHeroContentContainer");
 
-    // 4. Combined Scroll Event (Single listener for better performance)
+    // Unified scroll event listener
     window.addEventListener("scroll", () => {
-        // Toggle Back to Top Button
         backBtn.classList.toggle("active", window.scrollY > 150);
 
-        // Curve Deformation Calculation
         const rect = curvedHero.getBoundingClientRect();
         const start = window.innerHeight * 0.45;
-        const total = start + 150; // Simplified
+        const total = start + 150; 
         const ratio = Math.max(0, Math.min((start - rect.top) / total, 1));
         
         const baseRx = window.innerWidth <= 768 ? 138 : 88;
-        const rx = baseRx + ratio * (360 - baseRx); // Linear calculation
+        const rx = baseRx + ratio * (360 - baseRx); 
         container.style.setProperty("--curve-rx", `${rx}%`);
     }, { passive: true });
 
-    // Smooth Scroll Execution
+    // Smooth scroll execution
     backBtn.addEventListener("click", (e) => {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: "smooth" });

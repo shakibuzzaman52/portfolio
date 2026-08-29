@@ -240,7 +240,76 @@
             to { opacity: 1; }
         }
 
-        @media(max-width: 768px) {
+        /* Desktop Screens */
+        @media (min-width: 1024px) {
+            main {
+                width: min(1100px, 85%); 
+            }
+
+            section {
+                margin: 75px 0;
+            }
+
+            .pageSection h1 {
+                font-size: 3.1rem;
+                margin-bottom: 30px;
+            }
+
+            .pageSubtitle {
+                font-size: 1.15rem;
+                max-width: 650px;
+                margin-top: -15px;
+                margin-bottom: 45px;
+            }
+
+            .sectionHeader {
+                margin-bottom: 10px;
+            }
+
+            .sectionHeading {
+                font-size: 1.1rem;
+            }
+
+            .pageContent {
+                gap: 32px;
+                margin-top: 35px;
+            }
+
+            .educationItem {
+                gap: 24px;
+            }
+
+            .educationItem:not(:last-child)::after {
+                left: 32px;
+                top: 64px;
+                bottom: -32px;
+            }
+
+            .educationIcon {
+                width: 64px;
+                height: 64px;
+            }
+
+            .educationDetails {
+                gap: 4px;
+                padding-top: 4px;
+            }
+
+            .educationDetails h2 {
+                font-size: 1.25rem;
+            }
+
+            .educationDegree {
+                font-size: 1.05rem;
+            }
+
+            .educationYear {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Responsive Styles for Mobile and Tablet */
+        @media (max-width: 768px) {
             nav {
                 height: 80px;
                 padding: 0 6%;

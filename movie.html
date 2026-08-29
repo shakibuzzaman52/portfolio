@@ -16,9 +16,6 @@
     <script src="footer.js" defer></script>
 
     <style>
-        /* =======================
-            RESET & BASE STYLES
-        ======================= */
         * {
             margin: 0;
             padding: 0;
@@ -40,7 +37,6 @@
             color: #ffffff;
             font-size: 1rem;
             line-height: 1.8;
-            -ms-overflow-style: none;
             position: relative;
             overflow-x: hidden;
             animation: pageFadeIn 0.4s ease-in-out;
@@ -50,9 +46,6 @@
             display: none;
         }
 
-        /* =======================
-            HEADER & NAVIGATION
-        ======================= */
         header {
             width: 100%;
         }
@@ -107,9 +100,6 @@
             display: none;
         }
 
-        /* =======================
-            MAIN LAYOUT
-        ======================= */
         main {
             flex: 1;
             width: min(700px, 80%);
@@ -122,9 +112,6 @@
             margin: 50px 0;
         }
 
-        /* =======================
-            MINIMALIST HEADER
-        ======================= */
         .minimal-header h1 {
             font-size: 2.2rem;
             font-weight: 750;
@@ -140,9 +127,6 @@
             margin-bottom: 40px;
         }
 
-        /* =======================
-            MOVIE RANKING LIST
-        ======================= */
         .rank-list {
             display: flex;
             flex-direction: column;
@@ -268,21 +252,68 @@
             animation: spin 1s linear infinite;
         }
 
-        /* =======================
-            PAGE ANIMATIONS
-        ======================= */
-        body {
-            animation: pageFadeIn 0.4s ease-in-out;
-        }
-
         @keyframes pageFadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
-        /* =======================
-            RESPONSIVE DESIGN
-        ======================= */
+        /* Desktop Screens */
+        @media (min-width: 1024px) {
+            main {
+                width: min(1100px, 85%); 
+            }
+
+            section {
+                margin: 75px 0;
+            }
+
+            .minimal-header h1 {
+                font-size: 3.1rem;
+                margin-bottom: 12px;
+            }
+
+            .minimal-subtitle {
+                font-size: 1.05rem;
+                margin-bottom: 45px;
+            }
+
+            .rank-list {
+                gap: 12px;
+            }
+
+            .rank-item {
+                padding: 20px;
+                gap: 32px;
+            }
+
+            .rank-number {
+                font-size: 2.8rem;
+                min-width: 60px;
+            }
+
+            .rank-poster-wrapper {
+                width: 120px;
+            }
+
+            .rank-details {
+                gap: 6px;
+            }
+
+            .rank-title {
+                font-size: 1.3rem;
+            }
+
+            .rank-meta-row {
+                font-size: 0.9rem;
+                gap: 8px;
+            }
+
+            .rank-author {
+                max-width: 250px;
+            }
+        }
+
+        /* Responsive Styles for Mobile and Tablet */
         @media (max-width: 768px) {
             nav {
                 height: 80px;
