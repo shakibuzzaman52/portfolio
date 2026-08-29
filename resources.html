@@ -147,14 +147,18 @@
         .resourceList {
             display: flex;
             flex-direction: column;
-            gap: 20px;
         }
 
         .talk-item {
             display: flex;
             flex-direction: column;
             background-color: transparent;
-            padding: 10px 0;
+            padding: 24px 0;
+            border-bottom: 1px solid #18181b;
+        }
+
+        .talk-item:last-of-type {
+            border-bottom: none;
         }
 
         .talk-title {
@@ -254,7 +258,7 @@
             }
 
             .talk-item {
-                padding: 12px 0;
+                padding: 18px 0;
             }
 
             .talk-title {
@@ -396,7 +400,7 @@
     </main>
 
     <script>
-        // Highly optimized dynamic sharing logic
+        // Dynamic sharing logic
         document.querySelectorAll(".shareBtn").forEach(btn => {
             btn.addEventListener("click", function (e) {
                 e.preventDefault();
