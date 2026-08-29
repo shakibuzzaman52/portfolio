@@ -4,17 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies | Shakib Uz Zaman</title>
-
-    <!-- Icon & Font Libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
-    <!-- External Dynamic Scripts -->
     <script src="background.js" defer></script>
     <script src="footer.js" defer></script>
-
     <style>
         * {
             margin: 0;
@@ -33,7 +28,7 @@
             display: flex;
             flex-direction: column;
             font-family: "Inter", Arial, Helvetica, sans-serif;
-            background-color: #050505;
+            background-color: #000000;
             color: #ffffff;
             font-size: 1rem;
             line-height: 1.8;
@@ -86,9 +81,9 @@
         }
 
         .right ul li a {
-            color: #999;
+            color: #b0b0b0;
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 1.0rem;
             transition: color 0.3s ease;
         }
 
@@ -109,7 +104,7 @@
         }
 
         section {
-            margin: 50px 0;
+            margin: 40px 0;
         }
 
         .minimal-header h1 {
@@ -117,11 +112,11 @@
             font-weight: 750;
             letter-spacing: -0.5px;
             margin-bottom: 12px;
-            color: #f5f5f5;
+            color: #ffffff;
         }
 
         .minimal-subtitle {
-            color: #888888;
+            color: #b0b0b0;
             font-size: 0.92rem;
             font-family: "DM Mono", monospace;
             margin-bottom: 40px;
@@ -153,7 +148,7 @@
             font-family: "DM Mono", monospace;
             font-weight: 700;
             font-size: 2.2rem;
-            color: #222222;
+            color: #18181b;
             min-width: 50px;
             text-align: right;
             letter-spacing: -0.05em;
@@ -187,7 +182,7 @@
 
         .rank-loader {
             font-size: 1.15rem;
-            color: #333333;
+            color: #b0b0b0;
         }
 
         .rank-details {
@@ -217,26 +212,13 @@
             gap: 6px;
             font-size: 0.82rem;
             font-family: "DM Mono", monospace;
-            color: #555555;
+            color: #b0b0b0;
             transition: color 0.25s ease;
             min-width: 0;
         }
 
-        .rank-item:hover .rank-meta-row {
-            color: #888888;
-        }
-
-        .rank-author {
-            color: inherit;
-            display: inline-block;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 180px;
-        }
-
         .rank-bullet {
-            color: #222222;
+            color: #b0b0b0;
             font-weight: bold;
         }
 
@@ -257,14 +239,13 @@
             to { opacity: 1; }
         }
 
-        /* Desktop Screens */
         @media (min-width: 1024px) {
             main {
                 width: min(1100px, 85%); 
             }
 
             section {
-                margin: 75px 0;
+                margin: 60px 0;
             }
 
             .minimal-header h1 {
@@ -311,9 +292,12 @@
             .rank-author {
                 max-width: 250px;
             }
+
+            .right ul li a {
+                font-size: 1.05rem;
+            }
         }
 
-        /* Responsive Styles for Mobile and Tablet */
         @media (max-width: 768px) {
             nav {
                 height: 80px;
@@ -330,13 +314,13 @@
             }
 
             .right ul {
-                gap: 18px;
+                gap: 22px;
             }
 
             .right ul li a i {
                 display: block;
-                color: #999;
-                font-size: 1.1rem;
+                color: #b0b0b0;
+                font-size: 1.15rem;
                 transition: color 0.3s ease;
             }
 
@@ -349,7 +333,11 @@
             }
 
             .minimal-header h1 {
-                font-size: 1.6rem;
+                font-size: 1.75rem;
+            }
+
+            .minimal-subtitle {
+                font-size: 1.02rem;
             }
 
             .rank-item {
@@ -371,7 +359,7 @@
             }
 
             .rank-meta-row {
-                font-size: 0.75rem;
+                font-size: 0.8rem;
                 gap: 4px;
             }
 
@@ -425,21 +413,14 @@
                 <p class="minimal-subtitle">My personal cinematic watch-diary and leaderboard.</p>
             </div>
 
-            <!-- YouTube Video Trailer List -->
             <div class="rank-list">
-                <!-- Ranked Movie Item 1 (Inception Trailer) -->
                 <div class="rank-item" data-url="https://www.youtube.com/watch?v=YoHD9XEInc0"></div>
-
-                <!-- Ranked Movie Item 2 (The Dark Knight Trailer) -->
                 <div class="rank-item" data-url="https://www.youtube.com/watch?v=EXeTwQWrcwY"></div>
-
-                <!-- Ranked Movie Item 3 (Oppenheimer Trailer) -->
                 <div class="rank-item" data-url="https://www.youtube.com/watch?v=uYPbbksJxIg"></div>
             </div>
         </section>
     </main>
 
-    <!-- Client-side YouTube oEmbed dynamic Leaderboard card loader -->
     <script>
         document.querySelectorAll(".rank-item").forEach((item, index) => {
             const youtubeUrl = item.getAttribute("data-url");
@@ -448,7 +429,6 @@
             const indexStr = String(index + 1).padStart(2, '0');
             const oembedUrl = `https://noembed.com/embed?url=${encodeURIComponent(youtubeUrl)}`;
 
-            // Temporary loading spinner injection
             item.innerHTML = `
                 <span class="rank-number">${indexStr}</span>
                 <div class="rank-poster-wrapper">
@@ -459,7 +439,6 @@
                 </div>
             `;
 
-            // Request YouTube oEmbed API
             fetch(oembedUrl)
                 .then(response => {
                     if (!response.ok) throw new Error("Resource error");
@@ -490,7 +469,6 @@
                     `;
                 })
                 .catch(() => {
-                    // Fallback to direct YouTube Image API if Fetch fails
                     const ytRegex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/;
                     const match = youtubeUrl.match(ytRegex);
                     let fallbackThumb = "";

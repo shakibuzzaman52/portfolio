@@ -1,8 +1,6 @@
 (function () {
-    // Inject CSS styles into document head
     const styleTag = document.createElement("style");
     styleTag.textContent = `
-        /* Back to Top Button Styling */
         .backToTop {
             position: fixed;
             right: 25px;
@@ -12,7 +10,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #999; 
+            color: #b0b0b0; 
             text-decoration: none;
             opacity: 0;
             pointer-events: none;
@@ -22,7 +20,6 @@
         .backToTop:hover { color: #fff; background: #18181b; border-radius: 50%; } 
         .backToTop.active { opacity: 1; pointer-events: auto; }
 
-        /* Curved Footer Section */
         .curvedHero {
             width: 100%;
             position: relative;
@@ -42,7 +39,6 @@
             clip-path: ellipse(var(--curve-rx, 88%) 100% at 50% 100%);
         }
 
-        /* Visual Graphic Container */
         .visualContainer {
             position: relative;
             width: 100%;
@@ -54,7 +50,6 @@
             margin-bottom: 50px;
         }
 
-        /* Background Typography Settings */
         .heroBgText {
             position: absolute;
             top: 65%; 
@@ -81,7 +76,6 @@
             -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
         }
 
-        /* Content Wrapper */
         .footer-content-wrapper {
             width: min(760px, 85%); 
             display: flex;
@@ -91,7 +85,6 @@
             z-index: 5;
         }
 
-        /* Spaced Tagline */
         .footer-tagline-main {
             font-family: "Inter", Arial, Helvetica, sans-serif;
             font-size: 1.85rem;
@@ -104,17 +97,16 @@
         }
 
         .footer-tagline-main span {
-            color: #999; 
+            color: #b0b0b0; 
         }
 
-        /* Meta Block Styling */
         .footer-meta-line {
             display: flex;
             align-items: center;
             gap: 10px;
             font-family: "Inter", Arial, Helvetica, sans-serif;
             font-size: 0.95rem;
-            color: #999; 
+            color: #b0b0b0; 
             margin-bottom: 56px;
         }
 
@@ -123,12 +115,11 @@
         }
 
         .meta-dot-yellow {
-            color: #999; 
+            color: #b0b0b0; 
             font-size: 1.1rem;
             line-height: 1;
         }
 
-        /* Multi-column Grid */
         .footer-links-grid {
             display: flex;
             gap: 120px; 
@@ -161,7 +152,7 @@
         .col-list a {
             font-family: "Inter", Arial, Helvetica, sans-serif;
             font-size: 1rem;
-            color: #999; 
+            color: #b0b0b0; 
             text-decoration: none;
             transition: color 0.2s ease;
         }
@@ -170,7 +161,6 @@
             color: #ffffff;
         }
 
-        /* Desktop View Adjustments */
         @media (min-width: 1024px) {
             .footer-content-wrapper {
                 width: min(1100px, 85%);
@@ -198,7 +188,6 @@
             }
         }
 
-        /* Responsive Layout Adjustments (Mobile and Tablet) */
         @media (max-width: 768px) {
             .backToTop { right: 20px; bottom: 20px; }
             .curvedHero {
@@ -232,7 +221,6 @@
     `;
     document.head.appendChild(styleTag);
 
-    // Create curved footer section
     const curvedHero = document.createElement("section");
     curvedHero.className = "curvedHero";
     curvedHero.innerHTML = `
@@ -280,7 +268,6 @@
     `;
     document.body.appendChild(curvedHero);
 
-    // Register Back to Top button
     document.body.insertAdjacentHTML("beforeend", `
         <a href="#" class="backToTop" id="backToTop" title="Back to top">
             <i class="fa-solid fa-arrow-up"></i>
@@ -290,7 +277,6 @@
     const backBtn = document.getElementById("backToTop");
     const container = curvedHero.querySelector(".curvedHeroContentContainer");
 
-    // Unified scroll event listener
     window.addEventListener("scroll", () => {
         backBtn.classList.toggle("active", window.scrollY > 150);
 
@@ -304,7 +290,6 @@
         container.style.setProperty("--curve-rx", `${rx}%`);
     }, { passive: true });
 
-    // Smooth scroll execution
     backBtn.addEventListener("click", (e) => {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: "smooth" });

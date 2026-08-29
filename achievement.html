@@ -5,23 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Achievements | Shakib Uz Zaman</title>
-
-    <!-- Dark Theme Settings -->
     <meta name="theme-color" content="#000000">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <!-- Stylesheets and Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v13/font/simple-icons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- External Scripts -->
     <script src="logo.js" defer></script>
     <script src="background.js" defer></script>
     <script src="footer.js" defer></script>
-
     <style>
         * {
             margin: 0;
@@ -79,9 +72,9 @@
         }
 
         .right ul li a {
-            color: #999;
+            color: #b0b0b0;
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 1.0rem;
             transition: color 0.3s ease;
         }
 
@@ -102,7 +95,7 @@
         }
 
         section {
-            margin: 50px 0;
+            margin: 40px 0;
         }
 
         .minimal-header h1 {
@@ -114,7 +107,7 @@
         }
 
         .minimal-subtitle {
-            color: #999;
+            color: #b0b0b0;
             font-size: 0.92rem;
             line-height: 1.7;
             max-width: 520px;
@@ -132,7 +125,7 @@
         }
 
         .sectionHeading {
-            color: #999;
+            color: #b0b0b0;
             font-size: 0.85rem;
             font-weight: 400;
             text-transform: uppercase;
@@ -178,14 +171,14 @@
             align-items: center;
             gap: 12px;
             font-size: 1.05rem; 
-            color: #999;
+            color: #b0b0b0;
             white-space: nowrap;
             transition: color 0.25s ease;
         }
 
         .marquee-item i {
             font-size: 1.25rem; 
-            color: #999;
+            color: #b0b0b0;
             transition: color 0.25s ease;
         }
 
@@ -281,7 +274,7 @@
 
         .certificate-thumb-wrapper i.fallback-icon {
             font-size: 1.2rem;
-            color: #999;
+            color: #b0b0b0;
         }
 
         .achievement-details {
@@ -305,7 +298,7 @@
             flex-wrap: wrap;
             gap: 6px;
             font-size: 0.82rem;
-            color: #999;
+            color: #b0b0b0;
         }
 
         .achievement-bullet {
@@ -315,7 +308,7 @@
 
         .achievement-desc {
             font-size: 0.92rem;
-            color: #999;
+            color: #b0b0b0;
             margin-top: 6px;
             line-height: 1.6;
         }
@@ -323,7 +316,7 @@
         .achievement-view-icon {
             align-self: center;
             font-size: 0.9rem;
-            color: #999;
+            color: #b0b0b0;
             transition: color 0.25s ease;
             padding-left: 10px;
         }
@@ -368,7 +361,7 @@
             position: absolute;
             top: 25px;
             right: 35px;
-            color: #999;
+            color: #b0b0b0;
             font-size: 2.5rem;
             font-weight: 300;
             cursor: pointer;
@@ -385,14 +378,13 @@
             to { opacity: 1; }
         }
 
-        /* Desktop Screens */
         @media (min-width: 1024px) {
             main {
                 width: min(1100px, 85%); 
             }
 
             section {
-                margin: 75px 0;
+                margin: 60px 0;
             }
 
             .minimal-header h1 {
@@ -474,9 +466,12 @@
                 font-size: 1.05rem;
                 padding-left: 15px;
             }
+
+            .right ul li a {
+                font-size: 1.05rem;
+            }
         }
 
-        /* Responsive Styles for Mobile and Tablet */
         @media (max-width: 768px) {
             nav {
                 height: 80px;
@@ -488,13 +483,13 @@
             }
 
             .right ul {
-                gap: 18px;
+                gap: 22px;
             }
 
             .right ul li a i {
                 display: block;
-                color: #999;
-                font-size: 1.1rem;
+                color: #b0b0b0;
+                font-size: 1.15rem;
                 transition: color 0.3s ease;
             }
 
@@ -507,7 +502,11 @@
             }
 
             .minimal-header h1 {
-                font-size: 1.6rem;
+                font-size: 1.75rem;
+            }
+
+            .minimal-subtitle {
+                font-size: 1.02rem;
             }
 
             .achievement-item {
@@ -583,7 +582,6 @@
                 
                 <div class="marquee-wrapper">
                     <div class="marquee-content">
-                        <!-- Track 1 -->
                         <div class="marquee-track">
                             <div class="marquee-item"><i class="fa-solid fa-code"></i> C++</div>
                             <div class="marquee-item"><i class="fa-brands fa-python"></i> Python</div>
@@ -593,7 +591,6 @@
                             <div class="marquee-item"><i class="fa-brands fa-git-alt"></i> Git</div>
                             <div class="marquee-item"><i class="fa-solid fa-terminal"></i> VS Code</div>
                         </div>
-                        <!-- Track 2 (Seamless Loop) -->
                         <div class="marquee-track" aria-hidden="true">
                             <div class="marquee-item"><i class="fa-solid fa-code"></i> C++</div>
                             <div class="marquee-item"><i class="fa-brands fa-python"></i> Python</div>
@@ -608,9 +605,7 @@
             </div>
 
             <div class="achievement-list">
-                <!-- Achievement Item 1 -->
                 <div class="achievement-item">
-                    <!-- Inline onclick passes image src and wrapper element reference -->
                     <div class="certificate-thumb-wrapper src-trigger" onclick="showLightbox('blog-nubcc-cp-bootcamp-certificate.jpg', this)">
                         <img src="blog-nubcc-cp-bootcamp-certificate.jpg" alt="No Image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <i class="fa-solid fa-award fallback-icon" style="display: none;"></i>
@@ -635,10 +630,8 @@
         </section>
     </main>
 
-    <!-- Clicking backdrop dismisses the lightbox -->
     <div class="lightbox-modal" id="lightboxModal" onclick="closeModal()">
         <span class="lightbox-close">&times;</span>
-        <!-- event.stopPropagation() keeps image clicks from dismissing the backdrop -->
         <img class="lightbox-content" id="lightboxImg" src="" alt="Full Certificate View" onclick="event.stopPropagation()">
     </div>
 
@@ -647,7 +640,6 @@
         const modalImg = document.getElementById("lightboxImg");
 
         function showLightbox(src, el) {
-            // Check if fallback icon is showing instead of real image
             if (el.querySelector("img").style.display !== "none") {
                 modalImg.src = src;
                 modal.classList.add("active");
@@ -661,7 +653,6 @@
             setTimeout(() => modalImg.src = "", 300);
         }
 
-        // Close on Escape key press
         document.addEventListener("keydown", (e) => e.key === "Escape" && closeModal());
     </script>
 </body>

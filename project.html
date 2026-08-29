@@ -5,22 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Shakib Uz Zaman</title>
-
-    <!-- Dark Theme Settings -->
     <meta name="theme-color" content="#000000">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <!-- Stylesheets and Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- External Scripts -->
     <script src="logo.js" defer></script>
     <script src="background.js" defer></script>
     <script src="footer.js" defer></script>
-
     <style>
         * {
             margin: 0;
@@ -78,9 +71,9 @@
         }
 
         .right ul li a {
-            color: #999;
+            color: #b0b0b0;
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 1.0rem;
             transition: color 0.3s ease;
         }
 
@@ -99,7 +92,7 @@
         }
 
         section {
-            margin: 50px 0;
+            margin: 40px 0;
         }
 
         .pageSection h1 {
@@ -110,7 +103,7 @@
         }
 
         .pageSubtitle {
-            color: #999;
+            color: #b0b0b0;
             font-size: 0.92rem;
             line-height: 1.7;
             max-width: 520px;
@@ -158,7 +151,7 @@
         }
 
         .sectionHeading {
-            color: #999;
+            color: #b0b0b0;
             font-size: 0.85rem;
             font-weight: 400;
             text-transform: uppercase;
@@ -242,7 +235,7 @@
         }
 
         .projectDescription {
-            color: #999999;
+            color: #b0b0b0;
             font-size: 0.975rem;
             line-height: 1.6;
         }
@@ -261,7 +254,7 @@
         }
 
         .projectAction:hover {
-            color: #999;
+            color: #b0b0b0;
         }
 
         .projectAction i {
@@ -273,14 +266,13 @@
             to { opacity: 1; }
         }
 
-        /* Desktop Screens */
         @media (min-width: 1024px) {
             main {
                 width: min(1100px, 85%); 
             }
 
             section {
-                margin: 75px 0;
+                margin: 60px 0;
             }
 
             .pageSection h1 {
@@ -308,7 +300,6 @@
                 font-size: 1.05rem;
             }
 
-            /* কন্টেন্ট সুন্দর দেখানোর জন্য ২-কলামের গ্রিড লেআউট */
             .projectSectionList {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -336,9 +327,12 @@
             .projectAction {
                 font-size: 1.05rem;
             }
+
+            .right ul li a {
+                font-size: 1.05rem;
+            }
         }
 
-        /* Responsive Styles for Mobile and Tablet */
         @media (max-width: 768px) {
             nav {
                 height: 80px;
@@ -350,13 +344,13 @@
             }
 
             .right ul {
-                gap: 18px;
+                gap: 22px;
             }
 
             .right ul li a i {
                 display: block;
-                color: #999;
-                font-size: 1.1rem;
+                color: #b0b0b0;
+                font-size: 1.15rem;
                 transition: color 0.3s ease;
             }
 
@@ -369,7 +363,11 @@
             }
 
             .pageSection h1 {
-                font-size: 1.6rem;
+                font-size: 1.75rem;
+            }
+
+            .pageSubtitle {
+                font-size: 1.02rem;
             }
 
             .githubLink {
@@ -453,7 +451,6 @@
 
                 <div class="projectSectionList">
 
-                    <!-- Personal Portfolio Website -->
                     <div class="projectCard">
                         <div class="projectPreview">
                             <img src="project-portfolio.png" alt="Personal Portfolio Website" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -470,7 +467,6 @@
                         </div>
                     </div>
 
-                    <!-- FilmHaat - Movie Discovery Platform -->
                     <div class="projectCard">
                         <div class="projectPreview">
                             <img src="project-filmhaat.png" alt="FilmHaat - Movie Discovery Platform" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -487,7 +483,6 @@
                         </div>
                     </div>
 
-                    <!-- VidExtract - Video Metadata Extractor -->
                     <div class="projectCard">
                         <div class="projectPreview">
                             <img src="project-vidextract.png" alt="VidExtract - Video Metadata Extractor" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -504,7 +499,6 @@
                         </div>
                     </div>
 
-                    <!-- CalenderX -->
                     <div class="projectCard">
                         <div class="projectPreview">
                             <img src="project-calenderx.png" alt="CalenderX" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -521,7 +515,6 @@
                         </div>
                     </div>
 
-                    <!-- PhyHunt Download -->
                     <div class="projectCard">
                         <div class="projectPreview">
                             <img src="project-phyhunt.png" alt="PhyHunt Download" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
