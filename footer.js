@@ -58,7 +58,8 @@
             font-family: "Inter", Arial, Helvetica, sans-serif;
             font-size: 175px; 
             font-weight: 700; 
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.15) 100%); 
+            /* এখানে নিচের ট্রান্সপারেন্ট অংশটির উজ্জ্বলতা বাড়ানো হয়েছে (0.15 থেকে 0.35 এবং উপরের অংশ 0.90 থেকে 0.95 করা হয়েছে) */
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.35) 100%); 
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.04em; 
