@@ -1,11 +1,4 @@
-/**
- * Standalone Modular Binary Rain Background
- * GM Shakib Uz Zaman Portfolio Background
- * 
- * Usage: Just include <script src="background.js" defer></script> in any HTML file.
- */
 (function () {
-    // ১. ব্যাকগ্রাউন্ড ক্যানভাসের জন্য সিএসএস স্টাইল পেজের হেডে ইনজেক্ট করা
     const style = document.createElement('style');
     style.textContent = `
         #bg-canvas {
@@ -23,18 +16,15 @@
     let canvas, ctx;
     let columns = [];
     const mouse = { x: null, y: null, active: false, glowAlpha: 0 };
-    const revealRadius = 150; // স্পটলাইটের ব্যাসার্ধ
-    const topRevealHeight = 160; // ওপরের অলটাইম দৃশ্যমান রেইন হাইট
+    const revealRadius = 150;
+    const topRevealHeight = 160;
 
-    // ক্যানভাস উপাদান তৈরি ও বডিতে ইনজেক্ট করা
     function init() {
         canvas = document.createElement('canvas');
         canvas.id = 'bg-canvas';
-        // ক্যানভাসটি বডির প্রথম উপাদান হিসেবে ইনজেক্ট করা হচ্ছে যাতে এটি সব কন্টেন্টের পেছনে থাকে
         document.body.insertBefore(canvas, document.body.firstChild);
         ctx = canvas.getContext('2d');
 
-        // মাউস এবং টাচ ইভেন্ট লিসেনার সেটআপ
         window.addEventListener('mousemove', (e) => {
             mouse.x = e.pageX;
             mouse.y = e.pageY;
@@ -113,7 +103,6 @@
                 const alpha = Math.max(revealAlpha, topAlpha);
 
                 if (alpha > 0.005) {
-                    const char = Math.random() > 0.98 ? (Math.random() > 0.5 ? '1' : '0') : '0';
                     ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
                     ctx.fillText(Math.random() > 0.5 ? '1' : '0', this.x, charY);
                 }
@@ -133,26 +122,20 @@
         const colWidth = 18;
         const numColumns = Math.floor(canvas.width / colWidth) + 1;
 
-        if (columns.length > 0) {
-            if (numColumns > columns.length) {
-                for (let i = columns.length; i < numColumns; i++) {
-                    columns.push(new PremiumColumn(i * colWidth));
-                }
-            } else if (numColumns < columns.length) {
-                columns.length = numColumns;
-            }
-
-            columns.forEach(col => {
-                if (col.y > canvas.height) {
-                    col.y = -20;
-                }
-            });
-        } else {
-            columns = [];
-            for (let i = 0; i < numColumns; i++) {
+        if (columns.length < numColumns) {
+            for (let i = columns.length; i < numColumns; i++) {
                 columns.push(new PremiumColumn(i * colWidth));
             }
+        } else if (columns.length > numColumns) {
+            columns.length = numColumns;
         }
+
+        columns.forEach(col => {
+            if (col.y > canvas.height) {
+                
+                col.y = -20;
+            }
+        });
     }
 
     function updateGlowAlpha() {
@@ -194,7 +177,6 @@
         requestAnimationFrame(animate);
     }
 
-    // DOM প্রস্তুত হলে ব্যাকগ্রাউন্ড রান করা
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
