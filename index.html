@@ -5,24 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shakib's Portfolio</title>
-    
-    <!-- Dark Theme Settings -->
     <meta name="theme-color" content="#000000">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <!-- Stylesheets and Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-icons-font@v13/font/simple-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- External Scripts -->
     <script src="logo.js" defer></script>
     <script src="background.js" defer></script>
     <script src="footer.js" defer></script>
-
     <style>
         * {
             margin: 0;
@@ -55,13 +48,14 @@
         }
 
         .text-muted {
-            color: #999; 
+            color: #b0b0b0; 
             font-size: 0.98rem;
             line-height: 1.8;
         }
 
         .highlight-link,
-        .findMePlatform a {
+        .findMePlatform a,
+        .mail a {
             color: #ffffff;
             font-size: 0.95rem;
             font-weight: 500; 
@@ -71,13 +65,14 @@
         }
 
         .highlight-link:hover,
-        .findMePlatform a:hover {
+        .findMePlatform a:hover,
+        .mail a:hover {
             border-bottom-color: rgba(255, 255, 255, 0.8);
         }
 
         .hero-section {
-            margin-top: 60px; /* আগের গ্যাপ বজায় রাখা হয়েছে */
-            margin-bottom: 25px; /* নীচের গ্যাপ সামান্য কম রাখা হয়েছে */
+            margin-top: 60px;
+            margin-bottom: 25px;
         }
 
         .hero-name {
@@ -115,7 +110,7 @@
         }
 
         .right ul li a {
-            color: #999;
+            color: #b0b0b0;
             text-decoration: none;
             font-size: 1.0rem; 
             transition: color 0.3s ease;
@@ -136,7 +131,7 @@
         }
 
         section {
-            margin: 40px 0; /* মোবাইল ও ডিফল্ট সেকশন গ্যাপ সামান্য কম */
+            margin: 40px 0;
         }
 
         .secondSection {
@@ -155,7 +150,7 @@
         .secondSection h3,
         .findMeTitle h3 {
             margin-right: 3px;
-            color: #999;
+            color: #b0b0b0;
             font-size: 0.92rem;
             font-weight: 400;
             white-space: nowrap;
@@ -170,7 +165,7 @@
             padding: 0 10px;
             background: #18181b; 
             border-radius: 4px;
-            color: #999;
+            color: #b0b0b0;
             text-decoration: none;
             font-size: 0.93rem;
             font-weight: 400;
@@ -224,36 +219,23 @@
             margin-top: 15px;
         }
 
-        .mail a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 0.95rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            transition: 0.3s ease;
-        }
-
-        .mail a:hover {
-            border-bottom-color: rgba(255, 255, 255, 0.8);
-        }
-
         @keyframes pageFadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
-        /* Desktop Screens */
         @media (min-width: 1024px) {
             main {
                 width: min(1100px, 85%); 
             }
 
             section {
-                margin: 60px 0; /* ডেস্কটপ সেকশন গ্যাপ সামান্য কম */
+                margin: 60px 0;
             }
 
             .hero-section {
-                margin-top: 80px; /* ডেক্সটপে আগের গ্যাপ বজায় রাখা হয়েছে */
-                margin-bottom: 35px; /* নীচের গ্যাপ সামান্য কম রাখা হয়েছে */
+                margin-top: 80px;
+                margin-bottom: 35px;
             }
 
             .hero-name {
@@ -272,7 +254,7 @@
 
             .secondSection h3,
             .findMeTitle h3 {
-                font-size: 1.1rem; 
+                font-size: 1.1rem;
             }
 
             .skill-badge {
@@ -304,7 +286,6 @@
             }
         }
 
-        /* Responsive Styles for Mobile and Tablet */
         @media (max-width: 768px) {
             nav {
                 height: 80px;
@@ -321,8 +302,8 @@
 
             .right ul li a i {
                 display: block;
-                color: #999;
-                font-size: 1.15rem; /* সামান্য ছোট করা হয়েছে (পূর্বের মান: 1.25rem) */
+                color: #b0b0b0;
+                font-size: 1.15rem; 
                 transition: color 0.3s ease;
             }
 
@@ -343,7 +324,9 @@
                 font-size: 1.02rem; 
             }
 
-            .highlight-link {
+            .highlight-link,
+            .findMePlatform a,
+            .mail p {
                 font-size: 1.0rem; 
             }
 
@@ -358,11 +341,6 @@
 
             .secondSection>div {
                 align-items: flex-start;
-            }
-
-            .findMePlatform a,
-            .mail p {
-                font-size: 1.0rem; 
             }
 
             .mail a {
@@ -474,7 +452,7 @@
             </div>
             <div class="mail">
                 <p class="text-muted">
-                    Or mail me at <a href="mailto:shakibuzzaman52@gmail.com">shakibuzzaman52@gmail.com</a>
+                    Or mail me at <a href="mailto:shakibuzzaman52@gmail.com" class="highlight-link">shakibuzzaman52@gmail.com</a>
                 </p>
             </div>
         </section>
