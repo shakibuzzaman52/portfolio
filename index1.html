@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="logo.js" defer></script>
     <script src="background.js" defer></script>
     <script src="footer.js" defer></script>
@@ -35,32 +34,7 @@
             display: flex;
             flex-direction: column;
             font-family: "Inter", Arial, Helvetica, sans-serif;
-            /* background:
-                radial-gradient(ellipse 80% 60% at 0% 0%,
-                    rgba(88, 88, 88, 0.50) 0%,
-                    rgba(52, 52, 52, 0.30) 25%,
-                    rgba(20, 20, 20, 0.12) 52%,
-                    rgba(0, 0, 0, 0) 82%),
-                radial-gradient(ellipse 80% 60% at 100% 0%,
-                    rgba(0, 88, 82, 0.52) 0%,
-                    rgba(0, 61, 57, 0.32) 25%,
-                    rgba(0, 30, 28, 0.12) 52%,
-                    rgba(0, 0, 0, 0) 82%),
-                #000000; */
-            background:
-    radial-gradient(ellipse 85% 60% at 0% 0%,
-        rgba(125, 125, 125, 0.68) 0%,
-        rgba(72, 72, 72, 0.40) 25%,
-        rgba(28, 28, 28, 0.15) 52%,
-        rgba(0, 0, 0, 0) 82%),
-
-    radial-gradient(ellipse 85% 60% at 100% 0%,
-        rgba(0, 125, 117, 0.70) 0%,
-        rgba(0, 82, 77, 0.42) 25%,
-        rgba(0, 38, 35, 0.15) 52%,
-        rgba(0, 0, 0, 0) 82%),
-
-    #000000;
+            background-color: #000000; 
             color: #ffffff;
             font-size: 1rem;
             line-height: 1.8;
@@ -69,12 +43,42 @@
             animation: pageFadeIn 0.4s ease-in-out;
         }
 
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-position: 
+                10% 0, 
+                28% 0, 31% 0, 
+                47% 0, 50% 0, 
+                66% 0, 69% 0, 
+                88% 0;
+            background-size: 1px 100%;
+            background-repeat: no-repeat;
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 65%);
+            mask-image: linear-gradient(to bottom, black 0%, transparent 65%);
+        }
+
         ::-webkit-scrollbar {
             display: none;
         }
 
         .text-muted {
-            color: #b0b0b0;
+            color: #b0b0b0; 
             font-size: 0.98rem;
             line-height: 1.8;
         }
@@ -84,7 +88,7 @@
         .mail a {
             color: #ffffff;
             font-size: 0.95rem;
-            font-weight: 500;
+            font-weight: 500; 
             text-decoration: none;
             border-bottom: 1px solid rgba(255, 255, 255, 0.15);
             transition: 0.3s ease;
@@ -138,7 +142,7 @@
         .right ul li a {
             color: #b0b0b0;
             text-decoration: none;
-            font-size: 1.0rem;
+            font-size: 1.0rem; 
             transition: color 0.3s ease;
         }
 
@@ -189,7 +193,7 @@
             min-width: 65px;
             height: 28px;
             padding: 0 10px;
-            background: #18181b;
+            background: #18181b; 
             border-radius: 4px;
             color: #b0b0b0;
             text-decoration: none;
@@ -246,18 +250,13 @@
         }
 
         @keyframes pageFadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @media (min-width: 1024px) {
             main {
-                width: min(1100px, 85%);
+                width: min(1100px, 85%); 
             }
 
             section {
@@ -270,17 +269,17 @@
             }
 
             .hero-name {
-                font-size: 3.0rem;
+                font-size: 3.0rem; 
                 margin-bottom: 25px;
             }
 
             .text-muted {
-                font-size: 1.15rem;
+                font-size: 1.15rem; 
                 line-height: 1.85;
             }
 
             .threeSection p {
-                max-width: 100%;
+                max-width: 100%; 
             }
 
             .secondSection h3,
@@ -289,13 +288,13 @@
             }
 
             .skill-badge {
-                font-size: 1.0rem;
-                height: 32px;
+                font-size: 1.0rem; 
+                height: 32px;       
                 padding: 0 12px;
             }
 
             .secondSection {
-                gap: 12px;
+                gap: 12px; 
             }
 
             .secondSection>div {
@@ -305,15 +304,15 @@
             .highlight-link,
             .findMePlatform a,
             .mail a {
-                font-size: 1.12rem;
+                font-size: 1.12rem; 
             }
 
             .findMePlatform {
-                gap: 20px;
+                gap: 20px; 
             }
 
             .right ul li a {
-                font-size: 1.05rem;
+                font-size: 1.05rem; 
             }
         }
 
@@ -328,13 +327,13 @@
             }
 
             .right ul {
-                gap: 22px;
+                gap: 22px; 
             }
 
             .right ul li a i {
                 display: block;
                 color: #b0b0b0;
-                font-size: 1.15rem;
+                font-size: 1.15rem; 
                 transition: color 0.3s ease;
             }
 
@@ -347,27 +346,27 @@
             }
 
             .hero-name {
-                font-size: 1.75rem;
+                font-size: 1.75rem; 
                 margin-bottom: 15px;
             }
 
             .text-muted {
-                font-size: 1.02rem;
+                font-size: 1.02rem; 
             }
 
             .highlight-link,
             .findMePlatform a,
             .mail p {
-                font-size: 1.0rem;
+                font-size: 1.0rem; 
             }
 
             .secondSection h3,
             .findMeTitle h3 {
-                font-size: 0.98rem;
+                font-size: 0.98rem; 
             }
 
             .skill-badge {
-                font-size: 0.96rem;
+                font-size: 0.96rem; 
             }
 
             .secondSection>div {
@@ -375,7 +374,7 @@
             }
 
             .mail a {
-                font-size: 0.96rem;
+                font-size: 0.96rem; 
                 word-break: break-word;
             }
         }
@@ -416,8 +415,7 @@
         <section class="hero-section">
             <h1 class="hero-name">G M Shakib Uz Zaman</h1>
             <p class="text-muted">
-                Hey! I'm Shakib Uz Zaman, a <a href="education.html" title="Education" class="highlight-link">CSE
-                    undergraduate</a>, competitive programmer and problem solver.
+                Hey! I'm Shakib Uz Zaman, a <a href="education.html" title="Education" class="highlight-link">CSE undergraduate</a>, competitive programmer and problem solver.
             </p>
         </section>
 
@@ -433,27 +431,22 @@
 
             <div class="competitiveProg">
                 <h3>Competitive Programming</h3>
-                <a href="https://codeforces.com/profile/shakibuzzaman52" class="skill-badge" target="_blank"
-                    rel="noopener noreferrer"><i class="si si-codeforces" style="color:#ca2606;"></i> Codeforces</a>
-                <a href="https://leetcode.com/u/shakibuzzaman52/" class="skill-badge" target="_blank"
-                    rel="noopener noreferrer"><i class="si si-leetcode" style="color:#ca9e0b;"></i> LeetCode</a>
-                <a href="https://www.codechef.com/users/shakibuzzaman" class="skill-badge" target="_blank"
-                    rel="noopener noreferrer"><i class="si si-codechef" style="color:#ffffff;"></i> CodeChef</a>
+                <a href="https://codeforces.com/profile/shakibuzzaman52" class="skill-badge" target="_blank" rel="noopener noreferrer"><i class="si si-codeforces" style="color:#ca2606;"></i> Codeforces</a>
+                <a href="https://leetcode.com/u/shakibuzzaman52/" class="skill-badge" target="_blank" rel="noopener noreferrer"><i class="si si-leetcode" style="color:#ca9e0b;"></i> LeetCode</a>
+                <a href="https://www.codechef.com/users/shakibuzzaman" class="skill-badge" target="_blank" rel="noopener noreferrer"><i class="si si-codechef" style="color:#ffffff;"></i> CodeChef</a>
             </div>
 
             <div class="devTools">
                 <h3>Developer Tools</h3>
                 <span class="skill-badge"><i class="devicon-vscode-plain colored"></i> VS Code</span>
                 <span class="skill-badge"><i class="devicon-git-plain colored"></i> Git</span>
-                <a href="https://github.com/shakibuzzaman52" class="skill-badge" target="_blank"
-                    rel="noopener noreferrer"><i class="devicon-github-original"></i> GitHub</a>
+                <a href="https://github.com/shakibuzzaman52" class="skill-badge" target="_blank" rel="noopener noreferrer"><i class="devicon-github-original"></i> GitHub</a>
             </div>
 
             <div class="currentlyLearning">
                 <h3>Currently Learning</h3>
                 <span class="skill-badge"><i class="devicon-cplusplus-plain colored"></i> C++</span>
-                <span class="skill-badge"><i class="fa-solid fa-diagram-project" style="color:#00d486;"></i> Data
-                    Structures</span>
+                <span class="skill-badge"><i class="fa-solid fa-diagram-project" style="color:#00d486;"></i> Data Structures</span>
                 <span class="skill-badge"><i class="fa-solid fa-brain" style="color:#ffffff;"></i> Algorithms</span>
                 <span class="skill-badge"><i class="devicon-python-plain colored"></i> Python</span>
             </div>
@@ -466,17 +459,12 @@
                 </p>
                 <br>
                 <p class="text-muted">
-                    You can explore my <a href="project.html" class="highlight-link">Projects</a> to see what I’ve
-                    built, read my <a href="blog.html" title="Blog" class="highlight-link">Blog</a> to follow my
-                    journey, check out my <a href="resources.html" class="highlight-link">Resources</a>, and view my <a
-                        href="achievement.html" class="highlight-link">Achievements</a>. You can also learn more about
-                    me through my <a href="#" class="highlight-link">Resume</a>.
+                    You can explore my <a href="project.html" class="highlight-link">Projects</a> to see what I’ve built, read my <a href="blog.html" title="Blog" class="highlight-link">Blog</a> to follow my journey, check out my <a href="resources.html" class="highlight-link">Resources</a>, and view my <a href="achievement.html" class="highlight-link">Achievements</a>. You can also learn more about me through my <a href="#" class="highlight-link">Resume</a>.
                 </p>
             </div>
             <div class="futureDescription">
                 <p class="text-muted">
-                    Outside of programming, I enjoy watching movies. Explore my <a href="movie.html"
-                        class="highlight-link">Movie Collection</a> to see what I’ve watched.
+                    Outside of programming, I enjoy watching movies. Explore my <a href="movie.html" class="highlight-link">Movie Collection</a> to see what I’ve watched.
                 </p>
             </div>
         </section>
@@ -486,21 +474,15 @@
                 <h3>Find me on</h3>
             </div>
             <div class="findMePlatform">
-                <a href="https://github.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i
-                        class="fa-brands fa-github"></i> GitHub</a>
-                <a href="https://www.linkedin.com/in/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i
-                        class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                <a href="https://www.instagram.com/shakibuzzaman_52" target="_blank" rel="noopener noreferrer"><i
-                        class="fa-brands fa-instagram"></i> Instagram</a>
-                <a href="https://www.facebook.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i
-                        class="fa-brands fa-facebook"></i> Facebook</a>
-                <a href="https://x.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i
-                        class="fa-brands fa-x-twitter"></i> X</a>
+                <a href="https://github.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a href="https://www.instagram.com/shakibuzzaman_52" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="https://www.facebook.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i> Facebook</a>
+                <a href="https://x.com/shakibuzzaman52" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i> X</a>
             </div>
             <div class="mail">
                 <p class="text-muted">
-                    Or mail me at <a href="mailto:shakibuzzaman52@gmail.com"
-                        class="highlight-link">shakibuzzaman52@gmail.com</a>
+                    Or mail me at <a href="mailto:shakibuzzaman52@gmail.com" class="highlight-link">shakibuzzaman52@gmail.com</a>
                 </p>
             </div>
         </section>
