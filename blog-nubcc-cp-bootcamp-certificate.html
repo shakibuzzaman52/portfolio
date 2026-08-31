@@ -4,31 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>My First Competitive Programming Contest Experience | Shakib Uz Zaman</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600&display=swap"
-        rel="stylesheet">
-
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="background.js" defer></script>
     <style>
+        ::selection {
+            background-color: #ff7500;
+            color: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            min-height: 100vh;
-            background-color: #050505;
-            background-image: radial-gradient(#1f1f1f 1px, transparent 1px);
-            background-size: 22px 22px;
+            background-color: #000000;
             color: #ffffff;
             font-family: "Inter", Arial, sans-serif;
             line-height: 1.8;
@@ -36,7 +31,23 @@
 
         main {
             width: min(700px, 80%);
-            margin: 70px auto;
+            margin: 40px auto 70px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #b0b0b0;
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: color 0.25s ease;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+        }
+
+        .back-link:hover {
+            color: #ffffff;
         }
 
         h1 {
@@ -56,7 +67,6 @@
 
         article p {
             color: #d0d0d0;
-            font-size: 1rem;
             margin-bottom: 25px;
         }
 
@@ -68,10 +78,9 @@
         }
 
         @media(max-width:768px) {
-
             main {
                 width: 88%;
-                margin: 50px auto;
+                margin: 30px auto 50px;
             }
 
             h1 {
@@ -83,38 +92,30 @@
             }
         }
     </style>
-
 </head>
 
 <body>
-
     <main>
-
+        <a href="blog.html" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i><span>Back</span>
+        </a>
         <h1>NUBCC CP Bootcamp Certificate</h1>
-
         <p class="date">August 13, 2026</p>
-
         <article>
-
             <p>
                 Happy to share that I have successfully completed the CP Bootcamp for Beginners, powered by
                 <strong>Shohoj Coding</strong> and organized by <strong>NUB Computer Club - NUBCC</strong>.
             </p>
-
             <p>
                 A good learning experience that helped me practice Competitive Programming and improve my
                 problem-solving skills.
             </p>
-
             <p>
                 Grateful for the opportunity and looking forward to learning and improving further.
             </p>
-
             <img src="blog-nubcc-cp-bootcamp-certificate.jpg" alt="Shohoj Coding CP Bootcamp (NUB)" class="blogImage">
-
         </article>
-
     </main>
-
 </body>
+
 </html>
