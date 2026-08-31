@@ -58,7 +58,6 @@
             font-family: "Inter", Arial, Helvetica, sans-serif;
             font-size: 175px; 
             font-weight: 700; 
-            /* এখানে নিচের ট্রান্সপারেন্ট অংশটির উজ্জ্বলতা বাড়ানো হয়েছে (0.15 থেকে 0.35 এবং উপরের অংশ 0.90 থেকে 0.95 করা হয়েছে) */
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.35) 100%); 
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -75,6 +74,10 @@
             object-fit: contain;
             mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-user-drag: none;
+            pointer-events: none;
         }
 
         .footer-content-wrapper {
@@ -228,7 +231,7 @@
         <div class="curvedHeroContentContainer">
             <div class="visualContainer">
                 <div class="heroBgText">Shakib</div>
-                <img src="index-myphoto.webp" alt="Shakib" class="heroImage">
+                <img src="index-myphoto.webp" alt="Shakib" class="heroImage" draggable="false">
             </div>
 
             <div class="footer-content-wrapper">
