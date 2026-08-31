@@ -9,6 +9,7 @@
     <meta name="theme-color" content="#000000">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -16,7 +17,6 @@
         rel="stylesheet">
 
     <script src="background.js" defer></script>
-    <script src="footer.js" defer></script>
 
     <style>
         ::selection {
@@ -45,6 +45,20 @@
         main {
             width: min(700px, 80%);
             margin: 70px auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            transition: color 0.25s ease;
+        }
+
+        .back-link:hover {
+            color: #ffffff;
         }
 
         h1 {
@@ -97,6 +111,10 @@
 <body>
 
     <main>
+
+        <a href="blog.html" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
 
         <h1>My First CSE Presentation Experience</h1>
 
