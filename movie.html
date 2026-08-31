@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies | Shakib Uz Zaman</title>
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="logo.js" defer></script>
     <script src="background.js" defer></script>
     <script src="footer.js" defer></script>
     <style>
@@ -64,20 +67,6 @@
             align-items: center;
         }
 
-        .profileLink {
-            display: flex;
-            align-items: center;
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .left img {
-            width: 46px;
-            height: 46px;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
         .right ul {
             display: flex;
             align-items: center;
@@ -104,139 +93,54 @@
             flex: 1;
             width: min(700px, 80%);
             margin: auto;
-            position: relative;
-            z-index: 1;
         }
 
         section {
             margin: 40px 0;
         }
 
-        .minimal-header h1 {
+        .watchlistSection h1 {
             font-size: 2.2rem;
             font-weight: 750;
             letter-spacing: -0.5px;
-            margin-bottom: 12px;
-            color: #ffffff;
+            margin-bottom: 30px;
         }
 
-        .minimal-subtitle {
+        .watchlistSubtitle {
             color: #b0b0b0;
             font-size: 0.92rem;
-            font-family: "DM Mono", monospace;
-            margin-bottom: 40px;
+            line-height: 1.7;
+            max-width: 520px;
+            margin-top: -15px;
+            margin-bottom: 35px;
+            letter-spacing: 0.2px;
         }
 
-        .rank-list {
+        .watchlistList {
             display: flex;
             flex-direction: column;
-            gap: 8px;
         }
 
-        .rank-item {
+        .sectionHeader {
             display: flex;
             align-items: center;
-            gap: 24px;
-            padding: 15px; 
-            border-radius: 8px; 
-            background-color: transparent; 
-            text-decoration: none;
-            color: inherit;
-            transition: background-color 0.25s ease;
+            gap: 15px;
+            margin-top: 25px;
+            margin-bottom: 15px;
         }
 
-        .rank-item:hover {
-            background-color: #121212;
-        }
-
-        .rank-number {
-            font-family: "DM Mono", monospace;
-            font-weight: 700;
-            font-size: 2.2rem;
-            color: #18181b;
-            min-width: 50px;
-            text-align: right;
-            letter-spacing: -0.05em;
-            transition: color 0.25s ease;
-            user-select: none;
-        }
-
-        .rank-item:hover .rank-number {
-            color: #ffffff;
-        }
-
-        .rank-poster-wrapper {
-            width: 96px;
-            aspect-ratio: 16/9;
-            background-color: #000000;
-            border-radius: 4px;
-            overflow: hidden;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #141414;
-        }
-
-        .rank-poster-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 4px;
-        }
-
-        .rank-loader {
-            font-size: 1.15rem;
+        .sectionHeading {
             color: #b0b0b0;
+            font-size: 0.85rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
 
-        .rank-details {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
+        .sectionLine {
             flex-grow: 1;
-            min-width: 0;
-        }
-
-        .rank-title {
-            color: #ffffff;
-            font-size: 1.15rem;
-            font-weight: 550;
-            line-height: 1.4;
-            letter-spacing: -0.01em;
-            transition: color 0.25s ease;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: block;
-        }
-
-        .rank-meta-row {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.82rem;
-            font-family: "DM Mono", monospace;
-            color: #b0b0b0;
-            transition: color 0.25s ease;
-            min-width: 0;
-        }
-
-        .rank-bullet {
-            color: #b0b0b0;
-            font-weight: bold;
-        }
-
-        .rank-platform {
-            color: inherit;
-            flex-shrink: 0;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        .fa-spin {
-            animation: spin 1s linear infinite;
+            border-bottom: 1px solid #18181b;
+            height: 1px;
         }
 
         @keyframes pageFadeIn {
@@ -253,49 +157,25 @@
                 margin: 60px 0;
             }
 
-            .minimal-header h1 {
+            .watchlistSection h1 {
                 font-size: 3.1rem;
-                margin-bottom: 12px;
+                margin-bottom: 30px;
             }
 
-            .minimal-subtitle {
-                font-size: 1.05rem;
+            .watchlistSubtitle {
+                font-size: 1.15rem;
+                max-width: 650px;
+                margin-top: -15px;
                 margin-bottom: 45px;
             }
 
-            .rank-list {
-                gap: 12px;
+            .sectionHeader {
+                margin-top: 35px;
+                margin-bottom: 20px;
             }
 
-            .rank-item {
-                padding: 20px;
-                gap: 32px;
-            }
-
-            .rank-number {
-                font-size: 2.8rem;
-                min-width: 60px;
-            }
-
-            .rank-poster-wrapper {
-                width: 120px;
-            }
-
-            .rank-details {
-                gap: 6px;
-            }
-
-            .rank-title {
-                font-size: 1.3rem;
-            }
-
-            .rank-meta-row {
-                font-size: 0.9rem;
-                gap: 8px;
-            }
-
-            .rank-author {
-                max-width: 250px;
+            .sectionHeading {
+                font-size: 1.05rem;
             }
 
             .right ul li a {
@@ -311,11 +191,6 @@
 
             .right ul li a span {
                 display: none;
-            }
-
-            .left img {
-                width: 42px;
-                height: 42px;
             }
 
             .right ul {
@@ -337,55 +212,21 @@
                 width: 88%;
             }
 
-            .minimal-header h1 {
+            .watchlistSection h1 {
                 font-size: 1.75rem;
             }
 
-            .minimal-subtitle {
+            .watchlistSubtitle {
                 font-size: 1.02rem;
-            }
-
-            .rank-item {
-                padding: 12px 6px;
-                gap: 16px;
-            }
-
-            .rank-number {
-                font-size: 1.6rem;
-                min-width: 36px;
-            }
-
-            .rank-poster-wrapper {
-                width: 72px;
-            }
-
-            .rank-title {
-                font-size: 1.02rem;
-            }
-
-            .rank-meta-row {
-                font-size: 0.8rem;
-                gap: 4px;
-            }
-
-            .rank-author {
-                max-width: 100px;
             }
         }
     </style>
 </head>
-
 <body>
-
-    <div id="top"></div>
 
     <header>
         <nav>
-            <div class="left">
-                <a href="index.html" class="profileLink">
-                    <img src="https://github.com/shakibuzzaman52.png" alt="Profile">
-                </a>
-            </div>
+            <div class="left"></div>
             <div class="right">
                 <ul>
                     <li>
@@ -412,95 +253,19 @@
     </header>
 
     <main>
-        <section class="pageSection">
-            <div class="minimal-header">
-                <h1>Watching</h1>
-                <p class="minimal-subtitle">My personal cinematic watch-diary and leaderboard.</p>
-            </div>
+        <section class="watchlistSection">
+            <h1>Watchlist</h1>
+            <p class="watchlistSubtitle">
+                My personal log of movies, series & animation, rated by me.
+            </p>
 
-            <div class="rank-list">
-                <div class="rank-item" data-url=""></div>
-                <div class="rank-item" data-url=""></div>
-                <div class="rank-item" data-url=""></div>
+            <div class="watchlistList">
+                <div class="sectionHeader">
+                    <h2 class="sectionHeading">Watched & Rated</h2>
+                    <span class="sectionLine"></span>
+                </div>
             </div>
         </section>
     </main>
-
-    <script>
-        document.querySelectorAll(".rank-item").forEach((item, index) => {
-            const youtubeUrl = item.getAttribute("data-url");
-            if (!youtubeUrl) return;
-
-            const indexStr = String(index + 1).padStart(2, '0');
-            const oembedUrl = `https://noembed.com/embed?url=${encodeURIComponent(youtubeUrl)}`;
-
-            item.innerHTML = `
-                <span class="rank-number">${indexStr}</span>
-                <div class="rank-poster-wrapper">
-                    <div class="rank-loader"><i class="fa-solid fa-spinner fa-spin"></i></div>
-                </div>
-                <div class="rank-details">
-                    <h3 class="rank-title">Loading...</h3>
-                </div>
-            `;
-
-            fetch(oembedUrl)
-                .then(response => {
-                    if (!response.ok) throw new Error("Resource error");
-                    return response.json();
-                })
-                .then(data => {
-                    const title = data.title || "Untitled Video";
-                    const channel = data.author_name || "YouTube Video";
-                    const thumbnail = data.thumbnail_url || "";
-
-                    item.innerHTML = `
-                        <span class="rank-number">${indexStr}</span>
-                        <div class="rank-poster-wrapper">
-                            <img src="${thumbnail}" alt="${title}">
-                        </div>
-                        <div class="rank-details">
-                            <h3 class="rank-title">
-                                <a href="${youtubeUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
-                                    ${title}
-                                </a>
-                            </h3>
-                            <div class="rank-meta-row">
-                                <span class="rank-author" title="${channel}">${channel}</span>
-                                <span class="rank-bullet">·</span>
-                                <span class="rank-platform">YouTube</span>
-                            </div>
-                        </div>
-                    `;
-                })
-                .catch(() => {
-                    const ytRegex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/;
-                    const match = youtubeUrl.match(ytRegex);
-                    let fallbackThumb = "";
-                    if (match && match[1]) {
-                        fallbackThumb = `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`;
-                    }
-
-                    item.innerHTML = `
-                        <span class="rank-number">${indexStr}</span>
-                        <div class="rank-poster-wrapper">
-                            ${fallbackThumb ? `<img src="${fallbackThumb}" alt="Video">` : `<div class="rank-loader"><i class="fa-solid fa-film"></i></div>`}
-                        </div>
-                        <div class="rank-details">
-                            <h3 class="rank-title">
-                                <a href="${youtubeUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
-                                    Watch Trailer
-                                </a>
-                            </h3>
-                            <div class="rank-meta-row">
-                                <span class="rank-author">External Link</span>
-                                <span class="rank-bullet">·</span>
-                                <span class="rank-platform">Video</span>
-                            </div>
-                        </div>
-                    `;
-                });
-        });
-    </script>
 </body>
 </html>
