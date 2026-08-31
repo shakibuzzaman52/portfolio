@@ -63,8 +63,6 @@
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.04em; 
             z-index: 1;
-            pointer-events: none;
-            user-select: none;
         }
 
         .heroImage {
@@ -119,7 +117,7 @@
         }
 
         .meta-dot-yellow {
-            color: #b0b0b0; 
+            color: #ff7500; 
             font-size: 1.1rem;
             line-height: 1;
         }
