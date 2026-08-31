@@ -42,22 +42,9 @@
             line-height: 1.8;
         }
 
-        header {
-            width: 100%;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            height: 90px;
-            padding: 0 3%;
-        }
-
-        .left {
-            display: flex;
-            align-items: center;
+        main {
+            width: min(700px, 80%);
+            margin: 70px auto;
         }
 
         .back-link {
@@ -67,16 +54,12 @@
             color: #b0b0b0;
             text-decoration: none;
             font-size: 1.0rem;
+            margin-bottom: 30px;
             transition: color 0.25s ease;
         }
 
         .back-link:hover {
             color: #ffffff;
-        }
-
-        main {
-            width: min(700px, 80%);
-            margin: 40px auto 70px;
         }
 
         h1 {
@@ -108,14 +91,10 @@
         }
 
         @media(max-width:768px) {
-            nav {
-                height: 80px;
-                padding: 0 6%;
-            }
 
             main {
                 width: 88%;
-                margin: 30px auto 50px;
+                margin: 50px auto;
             }
 
             h1 {
@@ -132,17 +111,11 @@
 
 <body>
 
-    <header>
-        <nav>
-            <div class="left">
-                <a href="blog.html" class="back-link">
-                    <i class="fa-solid fa-arrow-left"></i><span>Back</span>
-                </a>
-            </div>
-        </nav>
-    </header>
-
     <main>
+
+        <a href="blog.html" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i><span>Back</span>
+        </a>
 
         <h1>My First CSE Presentation Experience</h1>
 
