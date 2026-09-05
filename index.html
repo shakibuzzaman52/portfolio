@@ -13,6 +13,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Google Material Symbols Outlined -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
     <script src="logo.js" defer></script>
     <script src="background.js" defer></script>
     <script src="footer.js" defer></script>
@@ -160,12 +164,13 @@
         color: #ffffff;  
     }  
   
-    .right ul li a i {  
+    /* মোবাইলে শুধুমাত্র আইকন দেখাবে */
+    .right ul li a .nav-icon {  
         display: block;  
-        font-size: 1.15rem;  
+        font-size: 1.35rem;  
     }  
   
-    .right ul li a span {  
+    .right ul li a .nav-text {  
         display: none;  
     }  
   
@@ -327,11 +332,12 @@
             font-size: 1.05rem;  
         }  
   
-        .right ul li a i {  
+        /* ডেক্সটপে শুধুমাত্র টেক্সট দেখাবে */
+        .right ul li a .nav-icon {  
             display: none;  
         }  
   
-        .right ul li a span {  
+        .right ul li a .nav-text {  
             display: inline;  
         }  
     }  
@@ -346,21 +352,33 @@
             <div class="right">
                 <ul>
                     <li>
-                        <a href="blog.html" title="Blog">
-                            <i class="fa-regular fa-newspaper"></i>
-                            <span>Blog</span>
+                        <a href="project.html" title="Projects">
+                            <span class="material-symbols-outlined nav-icon">folder_open</span>
+                            <span class="nav-text">Projects</span>
                         </a>
                     </li>
                     <li>
-                        <a href="project.html" title="Projects">
-                            <i class="fa-regular fa-folder"></i>
-                            <span>Projects</span>
+                        <a href="achievement.html" title="Achievements">
+                            <span class="material-symbols-outlined nav-icon">trophy</span>
+                            <span class="nav-text">Achievements</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="education.html" title="Education">
+                            <span class="material-symbols-outlined nav-icon">school</span>
+                            <span class="nav-text">Education</span>
                         </a>
                     </li>
                     <li>
                         <a href="resources.html" title="Resources">
-                            <i class="fa-regular fa-file-pdf"></i>
-                            <span>Resources</span>
+                            <span class="material-symbols-outlined nav-icon">note_stack</span>
+                            <span class="nav-text">Resources</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blog.html" title="Blog">
+                            <span class="material-symbols-outlined nav-icon">news</span>
+                            <span class="nav-text">Blog</span>
                         </a>
                     </li>
                 </ul>
