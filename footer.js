@@ -107,9 +107,9 @@
             align-items: center;
             gap: 10px;
             font-family: "Inter", Arial, Helvetica, sans-serif;
-            font-size: 0.95rem; /* মূল ফাইলের সাথে মিলানো সাইজ */
+            font-size: 0.95rem; 
             color: #b0b0b0; 
-            margin-bottom: 40px; /* হাইট গ্যাপ কমানো হয়েছে */
+            margin-bottom: 40px; 
         }
 
         .meta-author {
@@ -124,22 +124,23 @@
 
         .footer-links-grid {
             display: flex;
-            gap: 80px; /* কলামগুলোর মাঝের গ্যাপ */
+            gap: 80px; 
             width: 100%;
         }
 
         .footer-col {
             display: flex;
             flex-direction: column;
-            gap: 14px; /* টাইটেল ও সাব-লিংকের মাঝের গ্যাপ */
+            gap: 14px; /* হেডিং (যেমন: Pages) থেকে লিস্টের প্রথম আইটেমের দূরত্ব */
         }
 
         .col-title {
             font-family: "Inter", Arial, Helvetica, sans-serif;
-            font-size: 0.98rem; /* মূল HTML এর .secondSection h3 এর সাইজ */
+            font-size: 0.98rem; 
             font-weight: 500;
             color: #ffffff;
             margin: 0;
+            letter-spacing: 0.02em;
         }
 
         .col-list {
@@ -148,12 +149,12 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            gap: 10px; /* প্রতিটি লিংকের মধ্যকার ভার্টিক্যাল গ্যাপ কমানো হয়েছে */
+            gap: 6px; /* লিস্টের নিজস্ব আইটেমগুলো (Home, Blog) পরস্পরের আরও কাছাকাছি আনা হয়েছে */
         }
 
         .col-list a {
             font-family: "Inter", Arial, Helvetica, sans-serif;
-            font-size: 1.0rem; /* মূল HTML এর .highlight-link এর সাইজ */
+            font-size: 1.0rem; 
             color: #b0b0b0; 
             text-decoration: none;
             transition: color 0.2s ease;
@@ -176,14 +177,17 @@
                 font-size: 1.05rem;
                 margin-bottom: 50px;
             }
+            .footer-col {
+                gap: 18px; /* ডেস্কটপে টাইটেল থেকে লিস্টের চমৎকার দূরত্ব */
+            }
             .col-title {
-                font-size: 1.1rem; /* ডেস্কটপে মূল ফাইলের হেডিং সাইজের সাথে মিলানো */
+                font-size: 1.1rem; 
             }
             .col-list {
-                gap: 12px;
+                gap: 8px; /* ডেস্কটপে লিস্ট আইটেমগুলোর মাঝের সমন্বিত গ্যাপ */
             }
             .col-list a {
-                font-size: 1.12rem; /* ডেস্কটপে মূল ফাইলের লিংক সাইজের সাথে মিলানো */
+                font-size: 1.12rem; 
             }
             .footer-links-grid {
                 gap: 120px;
@@ -217,9 +221,6 @@
             }
             .footer-links-grid {
                 gap: 60px;
-            }
-            .col-list {
-                gap: 8px; /* মোবাইলের জন্য সামান্য টাইট গ্যাপ */
             }
         }
     `;
