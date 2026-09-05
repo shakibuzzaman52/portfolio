@@ -558,25 +558,21 @@
             };
 
             const onMove = (e) => {
-                const rect = tooltip.getBoundingClientRect();
-                const tooltipWidth = rect.width || 220;
-                const tooltipHeight = rect.height || 40;
+                const tw = tooltip.offsetWidth || 220;
+                const th = tooltip.offsetHeight || 40;
 
                 let px = e.clientX + 12;
                 let py = e.clientY + 12;
 
-                if (px + tooltipWidth > window.innerWidth - 10) {
-                    px = e.clientX - tooltipWidth - 12;
+                if (px + tw > window.innerWidth - 10) {
+                    px = e.clientX - tw - 12;
                 }
-                if (px < 10) px = 10;
-
-                if (py + tooltipHeight > window.innerHeight - 10) {
-                    py = e.clientY - tooltipHeight - 12;
+                if (py + th > window.innerHeight - 10) {
+                    py = e.clientY - th - 12;
                 }
-                if (py < 10) py = 10;
 
-                tooltip.style.left = `${px}px`;
-                tooltip.style.top = `${py}px`;
+                tooltip.style.left = `${Math.max(10, px)}px`;
+                tooltip.style.top = `${Math.max(10, py)}px`;
             };
 
             const onOut = () => {
@@ -590,6 +586,10 @@
             element.addEventListener("touchstart", (e) => onIn(e.touches[0]));
             element.addEventListener("touchend", onOut);
         }
+
+        window.addEventListener("scroll", () => {
+            document.getElementById("flat-tooltip").style.opacity = "0";
+        });
 
         window.addEventListener("resize", () => {
             if (activeTab === 'circles') renderCirclesCluster();
