@@ -30,7 +30,7 @@
         }
 
         .curvedHeroContentContainer {
-            background: linear-gradient(180deg, #121214 0%, #0f0f0f 100%); 
+            background: linear-gradient(180deg, #121214 0%, #000000 100%); 
             width: 100%;
             padding: 35px 0 70px 0; 
             display: flex;
@@ -131,7 +131,7 @@
         .footer-col {
             display: flex;
             flex-direction: column;
-            gap: 14px; /* হেডিং (যেমন: Pages) থেকে লিস্টের প্রথম আইটেমের দূরত্ব */
+            gap: 14px; 
         }
 
         .col-title {
@@ -149,7 +149,7 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            gap: 6px; /* লিস্টের নিজস্ব আইটেমগুলো (Home, Blog) পরস্পরের আরও কাছাকাছি আনা হয়েছে */
+            gap: 6px; 
         }
 
         .col-list a {
@@ -178,13 +178,13 @@
                 margin-bottom: 50px;
             }
             .footer-col {
-                gap: 18px; /* ডেস্কটপে টাইটেল থেকে লিস্টের চমৎকার দূরত্ব */
+                gap: 18px; 
             }
             .col-title {
                 font-size: 1.1rem; 
             }
             .col-list {
-                gap: 8px; /* ডেস্কটপে লিস্ট আইটেমগুলোর মাঝের সমন্বিত গ্যাপ */
+                gap: 8px; 
             }
             .col-list a {
                 font-size: 1.12rem; 
@@ -202,7 +202,7 @@
             }
             .curvedHeroContentContainer {
                 padding: 20px 0 50px 0;
-                background: linear-gradient(180deg, #121214 0%, #0f0f0f 100%);
+                background: linear-gradient(180deg, #121214 0%, #000000 100%);
                 clip-path: ellipse(var(--curve-rx, 138%) 100% at 50% 100%);
             }
             .visualContainer { height: 300px; margin-bottom: 25px; }
