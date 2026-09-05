@@ -80,6 +80,28 @@
             flex-direction: column;
         }
 
+        .sectionHeader {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .sectionHeading {
+            color: #b0b0b0;
+            font-size: 0.85rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .sectionLine {
+            flex-grow: 1;
+            border-bottom: 1px solid #18181b;
+            height: 1px;
+        }
+
         @keyframes pageFadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -104,6 +126,15 @@
                 max-width: 650px;
                 margin-top: -15px;
                 margin-bottom: 45px;
+            }
+
+            .sectionHeader {
+                margin-top: 35px;
+                margin-bottom: 20px;
+            }
+
+            .sectionHeading {
+                font-size: 1.05rem;
             }
         }
 
@@ -220,16 +251,22 @@
             background-size: cover;
             background-position: center;
             cursor: pointer;
-            border: 2px solid #18181b;
-            transition: transform 0.15s ease, border-color 0.15s ease, background-image 0.3s ease-in-out;
+            border: 2px solid transparent;
+            opacity: 0.3;
+            transition: transform 0.15s ease, border-color 0.15s ease, opacity 0.4s ease-in-out;
             position: absolute;
+        }
+
+        .movie-circle-item.loaded {
+            opacity: 1;
+            border: 2px solid #18181b;
         }
 
         .tier-block-items .movie-circle-item {
             position: relative;
         }
 
-        .movie-circle-item:hover {
+        .movie-circle-item.loaded:hover {
             transform: scale(1.1);
             border-color: #ff7500;
             z-index: 50;
@@ -256,6 +293,21 @@
             font-weight: 700;
             margin-left: 8px;
         }
+
+        @media (max-width: 768px) {
+            .flat-tooltip {
+                left: 50% !important;
+                right: auto !important;
+                top: auto !important;
+                bottom: 20px !important;
+                transform: translateX(-50%) !important;
+                width: 90%;
+                max-width: 320px;
+                white-space: normal;
+                text-align: center;
+                border-color: #27272a;
+            }
+        }
     </style>
 </head>
 <body>
@@ -269,6 +321,11 @@
             </p>
 
             <div class="watchlistList">
+                <div class="sectionHeader">
+                    <h2 class="sectionHeading">Watched & Rated</h2>
+                    <span class="sectionLine"></span>
+                </div>
+
                 <div class="sponsor-tabs">
                     <button class="tab-link active" onclick="setSponsorTab('circles')">Movie Circles</button>
                     <span class="tab-divider">|</span>
@@ -366,6 +423,7 @@
 
             if (movie.loaded) {
                 item.style.backgroundImage = `url('${movie.posterUrl}')`;
+                item.classList.add("loaded");
                 bindTooltip(item, movie);
             }
             return item;
@@ -443,8 +501,13 @@
                     movie.loaded = true;
 
                     document.querySelectorAll(`[data-id="${movie.id}"]`).forEach(el => {
-                        el.style.backgroundImage = `url('${movie.posterUrl}')`;
-                        bindTooltip(el, movie);
+                        const img = new Image();
+                        img.src = movie.posterUrl;
+                        img.onload = () => {
+                            el.style.backgroundImage = `url('${movie.posterUrl}')`;
+                            el.classList.add("loaded");
+                            bindTooltip(el, movie);
+                        };
                     });
                 } catch (e) {
                     document.querySelectorAll(`[data-id="${movie.id}"]`).forEach(el => {
@@ -510,14 +573,10 @@
             };
 
             const onMove = (e) => {
-                let px = e.clientX + 12;
-                let py = e.clientY + 12;
-
-                if (px + 240 > window.innerWidth) {
-                    px = e.clientX - 240;
+                if (window.innerWidth > 768) {
+                    tooltip.style.left = `${e.clientX + 12}px`;
+                    tooltip.style.top = `${e.clientY + 12}px`;
                 }
-                tooltip.style.left = `${px}px`;
-                tooltip.style.top = `${py}px`;
             };
 
             const onOut = () => {
