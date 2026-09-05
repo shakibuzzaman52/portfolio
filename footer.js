@@ -36,7 +36,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            clip-path: ellipse(var(--curve-rx, 88%) 100% at 50% 100%);
+            clip-path: ellipse(var(--curve-rx, 82%) 100% at 50% 100%);
         }
 
         .visualContainer {
@@ -203,7 +203,7 @@
             .curvedHeroContentContainer {
                 padding: 20px 0 50px 0;
                 background: linear-gradient(180deg, #121214 0%, #000000 100%);
-                clip-path: ellipse(var(--curve-rx, 138%) 100% at 50% 100%);
+                clip-path: ellipse(var(--curve-rx, 128%) 100% at 50% 100%);
             }
             .visualContainer { height: 300px; margin-bottom: 25px; }
             .heroBgText { font-size: clamp(80px, 20vw, 115px); top: 65%; letter-spacing: -0.02em; }
@@ -290,7 +290,7 @@
         const total = start + 150; 
         const ratio = Math.max(0, Math.min((start - rect.top) / total, 1));
         
-        const baseRx = window.innerWidth <= 768 ? 138 : 88;
+        const baseRx = window.innerWidth <= 768 ? 128 : 82;
         const rx = baseRx + ratio * (360 - baseRx); 
         container.style.setProperty("--curve-rx", `${rx}%`);
     }, { passive: true });
