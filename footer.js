@@ -23,16 +23,16 @@
         .curvedHero {
             width: 100%;
             position: relative;
-            margin: 120px 0 0 0; 
+            margin: 100px 0 0 0; 
             padding: 0;
             overflow: hidden;
-            background-color: #000000; /* বাইরের অংশ আগের মতো কালো */
+            background-color: #000000; 
         }
 
         .curvedHeroContentContainer {
-            background: linear-gradient(180deg, #121214 0%, #0f0f0f 100%); /* কার্ভ এর শেষ অংশে #0f0f0f */
+            background: linear-gradient(180deg, #121214 0%, #0f0f0f 100%); 
             width: 100%;
-            padding: 35px 0 80px 0; 
+            padding: 35px 0 70px 0; 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -42,12 +42,12 @@
         .visualContainer {
             position: relative;
             width: 100%;
-            height: 410px; /* আগের চেয়ে সামান্য ছোট (পূর্বে ৪৬০px ছিল) */
+            height: 410px; 
             display: flex;
             justify-content: center;
             align-items: flex-end;
             overflow: hidden;
-            margin-bottom: 50px;
+            margin-bottom: 45px;
         }
 
         .heroBgText {
@@ -56,7 +56,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             font-family: "Inter", Arial, Helvetica, sans-serif;
-            font-size: 155px; /* ইমেজের সাথে মিল রেখে সামান্য ছোট */
+            font-size: 155px; 
             font-weight: 700; 
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.35) 100%); 
             -webkit-background-clip: text;
@@ -68,7 +68,7 @@
         .heroImage {
             position: relative;
             z-index: 2;
-            height: 86%; /* আগের চেয়ে সামান্য ছোট (পূর্বে ৯২% ছিল) */
+            height: 86%; 
             object-fit: contain;
             mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
@@ -89,12 +89,12 @@
 
         .footer-tagline-main {
             font-family: "Inter", Arial, Helvetica, sans-serif;
-            font-size: 1.85rem;
-            font-weight: 500;
-            line-height: 1.4;
+            font-size: 1.55rem;
+            font-weight: 600;
+            line-height: 1.6;
             letter-spacing: -0.02em;
             color: #ffffff;
-            margin: 0 0 24px 0;
+            margin: 0 0 16px 0;
             max-width: 580px;
         }
 
@@ -107,9 +107,9 @@
             align-items: center;
             gap: 10px;
             font-family: "Inter", Arial, Helvetica, sans-serif;
-            font-size: 0.95rem;
+            font-size: 0.95rem; /* মূল ফাইলের সাথে মিলানো সাইজ */
             color: #b0b0b0; 
-            margin-bottom: 56px;
+            margin-bottom: 40px; /* হাইট গ্যাপ কমানো হয়েছে */
         }
 
         .meta-author {
@@ -118,25 +118,25 @@
 
         .meta-dot-yellow {
             color: #ff7500; 
-            font-size: 1.1rem;
+            font-size: 1.0rem;
             line-height: 1;
         }
 
         .footer-links-grid {
             display: flex;
-            gap: 120px; 
+            gap: 80px; /* কলামগুলোর মাঝের গ্যাপ */
             width: 100%;
         }
 
         .footer-col {
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 14px; /* টাইটেল ও সাব-লিংকের মাঝের গ্যাপ */
         }
 
         .col-title {
             font-family: "Inter", Arial, Helvetica, sans-serif;
-            font-size: 1rem;
+            font-size: 0.98rem; /* মূল HTML এর .secondSection h3 এর সাইজ */
             font-weight: 500;
             color: #ffffff;
             margin: 0;
@@ -148,12 +148,12 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 10px; /* প্রতিটি লিংকের মধ্যকার ভার্টিক্যাল গ্যাপ কমানো হয়েছে */
         }
 
         .col-list a {
             font-family: "Inter", Arial, Helvetica, sans-serif;
-            font-size: 1rem;
+            font-size: 1.0rem; /* মূল HTML এর .highlight-link এর সাইজ */
             color: #b0b0b0; 
             text-decoration: none;
             transition: color 0.2s ease;
@@ -163,30 +163,30 @@
             color: #ffffff;
         }
 
-        @media (min-width: 1024px) {
+        @media (min-width: 768px) {
             .footer-content-wrapper {
                 width: min(1100px, 85%);
             }
             .footer-tagline-main {
-                font-size: 2.1rem;
+                font-size: 1.85rem;
                 max-width: 700px;
-                margin-bottom: 30px;
+                margin-bottom: 20px;
             }
             .footer-meta-line {
-                font-size: 1.12rem;
-                margin-bottom: 65px;
+                font-size: 1.05rem;
+                margin-bottom: 50px;
             }
             .col-title {
-                font-size: 1.1rem;
+                font-size: 1.1rem; /* ডেস্কটপে মূল ফাইলের হেডিং সাইজের সাথে মিলানো */
             }
             .col-list {
-                gap: 18px;
+                gap: 12px;
             }
             .col-list a {
-                font-size: 1.12rem;
+                font-size: 1.12rem; /* ডেস্কটপে মূল ফাইলের লিংক সাইজের সাথে মিলানো */
             }
             .footer-links-grid {
-                gap: 150px;
+                gap: 120px;
             }
         }
 
@@ -201,7 +201,7 @@
                 background: linear-gradient(180deg, #121214 0%, #0f0f0f 100%);
                 clip-path: ellipse(var(--curve-rx, 138%) 100% at 50% 100%);
             }
-            .visualContainer { height: 300px; margin-bottom: 25px; } /* রেসপন্সিভ ইমেজের জন্য সামান্য ছোট */
+            .visualContainer { height: 300px; margin-bottom: 25px; }
             .heroBgText { font-size: clamp(80px, 20vw, 115px); top: 65%; letter-spacing: -0.02em; }
             .heroImage { height: 84%; }
 
@@ -209,17 +209,17 @@
                 width: 88%;
             }
             .footer-tagline-main {
-                font-size: 1.45rem;
-                margin-bottom: 20px;
+                font-size: 1.35rem;
+                margin-bottom: 14px;
             }
             .footer-meta-line {
-                margin-bottom: 40px;
+                margin-bottom: 35px;
             }
             .footer-links-grid {
-                gap: 70px;
+                gap: 60px;
             }
             .col-list {
-                gap: 12px;
+                gap: 8px; /* মোবাইলের জন্য সামান্য টাইট গ্যাপ */
             }
         }
     `;
