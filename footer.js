@@ -26,11 +26,11 @@
             margin: 120px 0 0 0; 
             padding: 0;
             overflow: hidden;
-            background-color: #000000; 
+            background-color: #000000; /* বাইরের অংশ আগের মতো কালো */
         }
 
         .curvedHeroContentContainer {
-            background: linear-gradient(180deg, #121214 0%, #000000 100%); 
+            background: linear-gradient(180deg, #121214 0%, #0f0f0f 100%); /* কার্ভ এর শেষ অংশে #0f0f0f */
             width: 100%;
             padding: 35px 0 80px 0; 
             display: flex;
@@ -42,7 +42,7 @@
         .visualContainer {
             position: relative;
             width: 100%;
-            height: 460px; 
+            height: 410px; /* আগের চেয়ে সামান্য ছোট (পূর্বে ৪৬০px ছিল) */
             display: flex;
             justify-content: center;
             align-items: flex-end;
@@ -56,7 +56,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             font-family: "Inter", Arial, Helvetica, sans-serif;
-            font-size: 175px; 
+            font-size: 155px; /* ইমেজের সাথে মিল রেখে সামান্য ছোট */
             font-weight: 700; 
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.35) 100%); 
             -webkit-background-clip: text;
@@ -68,7 +68,7 @@
         .heroImage {
             position: relative;
             z-index: 2;
-            height: 92%; 
+            height: 86%; /* আগের চেয়ে সামান্য ছোট (পূর্বে ৯২% ছিল) */
             object-fit: contain;
             mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
@@ -194,14 +194,16 @@
             .backToTop { right: 20px; bottom: 20px; }
             .curvedHero {
                 margin: 70px 0 0 0; 
+                background-color: #000000;
             }
             .curvedHeroContentContainer {
                 padding: 20px 0 50px 0;
+                background: linear-gradient(180deg, #121214 0%, #0f0f0f 100%);
                 clip-path: ellipse(var(--curve-rx, 138%) 100% at 50% 100%);
             }
-            .visualContainer { height: 340px; margin-bottom: 25px; }
-            .heroBgText { font-size: clamp(90px, 22vw, 130px); top: 65%; letter-spacing: -0.02em; }
-            .heroImage { height: 90%; }
+            .visualContainer { height: 300px; margin-bottom: 25px; } /* রেসপন্সিভ ইমেজের জন্য সামান্য ছোট */
+            .heroBgText { font-size: clamp(80px, 20vw, 115px); top: 65%; letter-spacing: -0.02em; }
+            .heroImage { height: 84%; }
 
             .footer-content-wrapper {
                 width: 88%;
