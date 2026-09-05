@@ -247,12 +247,12 @@
 
         .movie-circle-item {
             border-radius: 50%;
-            background-color: #111113;
+            background-color: #27272a;
             background-size: cover;
             background-position: center;
             cursor: pointer;
             border: 2px solid transparent;
-            opacity: 0.3;
+            opacity: 0.85;
             transition: transform 0.15s ease, border-color 0.15s ease, opacity 0.4s ease-in-out;
             position: absolute;
         }
@@ -292,21 +292,6 @@
             color: #ff7500;
             font-weight: 700;
             margin-left: 8px;
-        }
-
-        @media (max-width: 768px) {
-            .flat-tooltip {
-                left: 50% !important;
-                right: auto !important;
-                top: auto !important;
-                bottom: 20px !important;
-                transform: translateX(-50%) !important;
-                width: 90%;
-                max-width: 320px;
-                white-space: normal;
-                text-align: center;
-                border-color: #27272a;
-            }
         }
     </style>
 </head>
@@ -573,10 +558,25 @@
             };
 
             const onMove = (e) => {
-                if (window.innerWidth > 768) {
-                    tooltip.style.left = `${e.clientX + 12}px`;
-                    tooltip.style.top = `${e.clientY + 12}px`;
+                const rect = tooltip.getBoundingClientRect();
+                const tooltipWidth = rect.width || 220;
+                const tooltipHeight = rect.height || 40;
+
+                let px = e.clientX + 12;
+                let py = e.clientY + 12;
+
+                if (px + tooltipWidth > window.innerWidth - 10) {
+                    px = e.clientX - tooltipWidth - 12;
                 }
+                if (px < 10) px = 10;
+
+                if (py + tooltipHeight > window.innerHeight - 10) {
+                    py = e.clientY - tooltipHeight - 12;
+                }
+                if (py < 10) py = 10;
+
+                tooltip.style.left = `${px}px`;
+                tooltip.style.top = `${py}px`;
             };
 
             const onOut = () => {
