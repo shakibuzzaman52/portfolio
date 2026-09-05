@@ -63,7 +63,7 @@ if (!document.querySelector("header")) {
         .right ul li a {  
             color: #b0b0b0;  
             text-decoration: none;  
-            font-size: 0.96rem;  
+            font-size: 0.90rem;  
             transition: color 0.3s ease;  
         }  
         .right ul li a:hover {  
@@ -71,7 +71,7 @@ if (!document.querySelector("header")) {
         }  
         .right ul li a .nav-icon {  
             display: block;  
-            font-size: 1.34rem;  
+            font-size: 1.31rem;  
         }  
         .right ul li a .nav-text {  
             display: none;  
@@ -85,7 +85,7 @@ if (!document.querySelector("header")) {
                 gap: 28px;  
             }  
             .right ul li a {  
-                font-size: 1.05rem;  
+                font-size: 0.98rem;  
             }  
             .right ul li a .nav-icon {  
                 display: none;  
