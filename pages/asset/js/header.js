@@ -1,3 +1,12 @@
+let pathPrefix = "";
+if (document.currentScript) {
+    const src = document.currentScript.getAttribute("src") || "";
+    const match = src.match(/^(\.\.\/)+/);
+    if (match) {
+        pathPrefix = match[0];
+    }
+}
+
 let favicon = document.querySelector("link[rel*='icon']");
 if (!favicon) {
     favicon = document.createElement("link");
@@ -101,7 +110,7 @@ if (!document.querySelector("header")) {
     header.innerHTML = `
         <nav>
             <div class="left">
-                <a href="index.html" class="logo-box" aria-label="Home">
+                <a href="${pathPrefix}index.html" class="logo-box" aria-label="Home">
                     <svg viewBox="0 0 32 32" width="100%" height="100%">
                         <path class="logo-svg-path" d="M 23,8 L 10,8 L 10,16 L 22,16 L 22,24 L 9,24" />
                     </svg>
@@ -110,31 +119,31 @@ if (!document.querySelector("header")) {
             <div class="right">
                 <ul>
                     <li>
-                        <a href="education.html" title="Education">
+                        <a href="${pathPrefix}pages/education/education.html" title="Education">
                             <span class="material-symbols-outlined nav-icon">school</span>
                             <span class="nav-text">Education</span>
                         </a>
                     </li>
                     <li>
-                        <a href="achievement.html" title="Achievements">
+                        <a href="${pathPrefix}pages/achievement/achievement.html" title="Achievements">
                             <span class="material-symbols-outlined nav-icon">trophy</span>
                             <span class="nav-text">Achievements</span>
                         </a>
                     </li>
                     <li>
-                        <a href="project.html" title="Projects">
+                        <a href="${pathPrefix}pages/project/project.html" title="Projects">
                             <span class="material-symbols-outlined nav-icon">folder_open</span>
                             <span class="nav-text">Projects</span>
                         </a>
                     </li>
                     <li>
-                        <a href="resources.html" title="Resources">
+                        <a href="${pathPrefix}pages/resource/resource.html" title="Resources">
                             <span class="material-symbols-outlined nav-icon">note_stack</span>
                             <span class="nav-text">Resources</span>
                         </a>
                     </li>
                     <li>
-                        <a href="blog.html" title="Blog">
+                        <a href="${pathPrefix}pages/blog/blog.html" title="Blog">
                             <span class="material-symbols-outlined nav-icon">news</span>
                             <span class="nav-text">Blog</span>
                         </a>

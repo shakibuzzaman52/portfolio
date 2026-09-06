@@ -10,8 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="background.js" defer></script>
-    <script src="footer.js" defer></script>
+    <script src="../../pages/asset/js/background.js" defer></script>
+    <script src="../../pages/asset/js/footer.js" defer></script>
     <style>
         ::selection {
             background-color: #ff7500;
@@ -296,7 +296,7 @@
     </style>
 </head>
 <body>
-    <script src="logo.js"></script>
+    <script src="../../pages/asset/js/header.js"></script>
 
     <main>
         <section class="watchlistSection">
@@ -502,6 +502,11 @@
             });
         }
 
+        // Wait for fonts to be ready before packing/rendering
+        function handleClusterLayout() {
+            if (activeTab === 'circles') renderCirclesCluster();
+        }
+
         function renderCirclesCluster() {
             const container = document.getElementById("circles-cluster-container");
             const innerBox = document.getElementById("circles-inner-scale-box");
@@ -591,9 +596,7 @@
             document.getElementById("flat-tooltip").style.opacity = "0";
         });
 
-        window.addEventListener("resize", () => {
-            if (activeTab === 'circles') renderCirclesCluster();
-        });
+        window.addEventListener("resize", handleClusterLayout);
 
         document.addEventListener("DOMContentLoaded", initMoviesPlaceholder);
     </script>

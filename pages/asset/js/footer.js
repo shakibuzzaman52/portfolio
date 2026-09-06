@@ -1,4 +1,13 @@
 (function () {
+    let pathPrefix = "";
+    if (document.currentScript) {
+        const src = document.currentScript.getAttribute("src") || "";
+        const match = src.match(/^(\.\.\/)+/);
+        if (match) {
+            pathPrefix = match[0];
+        }
+    }
+
     const styleTag = document.createElement("style");
     styleTag.textContent = `
         .backToTop {
@@ -232,7 +241,7 @@
         <div class="curvedHeroContentContainer">
             <div class="visualContainer">
                 <div class="heroBgText">Shakib</div>
-                <img src="index-myphoto.webp" alt="Shakib" class="heroImage" draggable="false">
+                <img src="${pathPrefix}pages/asset/js/footer-my-photo.webp" alt="Shakib" class="heroImage" draggable="false">
             </div>
 
             <div class="footer-content-wrapper">
@@ -251,18 +260,18 @@
                     <div class="footer-col">
                         <h4 class="col-title">Pages</h4>
                         <ul class="col-list">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="project.html">Projects</a></li>
-                            <li><a href="resources.html">Resources</a></li>
+                            <li><a href="${pathPrefix}index.html">Home</a></li>
+                            <li><a href="${pathPrefix}pages/blog/blog.html">Blog</a></li>
+                            <li><a href="${pathPrefix}pages/project/project.html">Projects</a></li>
+                            <li><a href="${pathPrefix}pages/resource/resource.html">Resources</a></li>
                         </ul>
                     </div>
 
                     <div class="footer-col">
                         <h4 class="col-title">Info</h4>
                         <ul class="col-list">
-                            <li><a href="education.html">Education</a></li>
-                            <li><a href="achievement.html">Achievements</a></li>
+                            <li><a href="${pathPrefix}pages/education/education.html">Education</a></li>
+                            <li><a href="${pathPrefix}pages/achievement/achievement.html">Achievements</a></li>
                             <li><a href="#">Resume</a></li>
                             <li><a href="mailto:shakibuzzaman52@gmail.com">Email</a></li>
                         </ul>
