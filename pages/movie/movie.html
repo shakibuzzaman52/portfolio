@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies | Shakib Uz Zaman</title>
     <meta name="theme-color" content="#000000">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="../../pages/asset/js/background.js" defer></script>
-    <script src="../../pages/asset/js/footer.js" defer></script>
     <style>
+        html {
+            scrollbar-gutter: stable;
+        }
+
         ::selection {
             background-color: #ff7500;
             color: #ffffff;
@@ -22,134 +22,39 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scrollbar-width: none;
         }
 
         body {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            font-family: "Inter", Arial, Helvetica, sans-serif;
+            font-family: "Inter", sans-serif;
             background-color: #000000;
             color: #ffffff;
-            font-size: 1rem;
-            line-height: 1.8;
-            position: relative;
+            line-height: 1.6;
             overflow-x: hidden;
-            animation: pageFadeIn 0.4s ease-in-out;
-        }
-
-        ::-webkit-scrollbar {
-            display: none;
         }
 
         main {
             flex: 1;
             width: min(700px, 80%);
-            margin: auto;
+            margin: 40px auto 70px;
         }
 
-        section {
-            margin: 40px 0;
-        }
-
-        .watchlistSection h1 {
-            font-size: 2.2rem;
-            font-weight: 750;
-            letter-spacing: -0.5px;
-            margin-bottom: 30px;
-        }
-
-        .watchlistSubtitle {
-            color: #b0b0b0;
-            font-size: 0.92rem;
-            line-height: 1.7;
-            max-width: 520px;
-            margin-top: -15px;
-            margin-bottom: 35px;
-            letter-spacing: 0.2px;
-        }
-
-        .watchlistList {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .sectionHeader {
-            display: flex;
+        .back-link {
+            display: inline-flex;
             align-items: center;
-            gap: 15px;
-            margin-top: 25px;
-            margin-bottom: 15px;
-        }
-
-        .sectionHeading {
+            gap: 8px;
             color: #b0b0b0;
-            font-size: 0.85rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: color 0.25s ease;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
         }
 
-        .sectionLine {
-            flex-grow: 1;
-            border-bottom: 1px solid #18181b;
-            height: 1px;
-        }
-
-        @keyframes pageFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @media (min-width: 1024px) {
-            main {
-                width: min(1100px, 85%); 
-            }
-
-            section {
-                margin: 60px 0;
-            }
-
-            .watchlistSection h1 {
-                font-size: 3.1rem;
-                margin-bottom: 30px;
-            }
-
-            .watchlistSubtitle {
-                font-size: 1.15rem;
-                max-width: 650px;
-                margin-top: -15px;
-                margin-bottom: 45px;
-            }
-
-            .sectionHeader {
-                margin-top: 35px;
-                margin-bottom: 20px;
-            }
-
-            .sectionHeading {
-                font-size: 1.05rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            main {
-                width: 88%;
-            }
-
-            .watchlistSection h1 {
-                font-size: 1.75rem;
-            }
-
-            .watchlistSubtitle {
-                font-size: 1.02rem;
-            }
+        .back-link:hover {
+            color: #ffffff;
         }
 
         .sponsor-tabs {
@@ -157,7 +62,8 @@
             justify-content: center;
             align-items: center;
             gap: 15px;
-            margin: 10px 0 30px 0;
+            margin-bottom: 30px;
+            height: 35px;
         }
 
         .tab-link {
@@ -168,7 +74,7 @@
             font-weight: 500;
             cursor: pointer;
             transition: color 0.15s ease;
-            font-family: "Inter", sans-serif;
+            font-family: inherit;
         }
 
         .tab-link.active {
@@ -184,34 +90,24 @@
 
         .view-content {
             display: none;
+            width: 100%;
         }
 
         .view-content.active {
             display: block;
         }
 
-        .circles-cluster-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 480px;
-            position: relative;
-            width: 100%;
-        }
-
         .circles-cluster-container {
             position: relative;
             width: 100%;
-            height: 480px;
-            overflow: visible;
+            height: 450px;
         }
 
         .circles-inner-scale-box {
             position: absolute;
             left: 50%;
             top: 50%;
-            transform: translate(-50%, -50%) scale(1);
-            transform-origin: center center;
+            transform: translate(-50%, -50%);
             width: 100%;
             height: 100%;
         }
@@ -220,7 +116,6 @@
             display: flex;
             flex-direction: column;
             gap: 40px;
-            align-items: center;
         }
 
         .tier-block {
@@ -251,15 +146,14 @@
             background-size: cover;
             background-position: center;
             cursor: pointer;
-            border: 2px solid transparent;
+            border: 2px solid #18181b;
             opacity: 0.85;
-            transition: transform 0.15s ease, border-color 0.15s ease, opacity 0.4s ease-in-out;
+            transition: border-color 0.15s ease, opacity 0.3s ease;
             position: absolute;
         }
 
         .movie-circle-item.loaded {
             opacity: 1;
-            border: 2px solid #18181b;
         }
 
         .tier-block-items .movie-circle-item {
@@ -267,9 +161,7 @@
         }
 
         .movie-circle-item.loaded:hover {
-            transform: scale(1.1);
             border-color: #ff7500;
-            z-index: 50;
         }
 
         .flat-tooltip {
@@ -283,7 +175,7 @@
             font-weight: 500;
             pointer-events: none;
             opacity: 0;
-            transition: opacity 0.1s ease;
+            transition: opacity 0.15s ease;
             z-index: 9999;
             white-space: nowrap;
         }
@@ -293,79 +185,83 @@
             font-weight: 700;
             margin-left: 8px;
         }
+
+        @media (max-width: 768px) {
+            main {
+                width: 88%;
+                margin: 30px auto 50px;
+            }
+
+            .flat-tooltip {
+                padding: 5px 8px;
+                font-size: 0.72rem;
+                border-radius: 4px;
+            }
+            .tooltip-rating-badge {
+                margin-left: 4px;
+            }
+        }
     </style>
 </head>
 <body>
-    <script src="../../pages/asset/js/header.js"></script>
 
     <main>
-        <section class="watchlistSection">
-            <h1>Watchlist</h1>
-            <p class="watchlistSubtitle">
-                My personal log of movies, series & animation, rated by me.
-            </p>
+        <a href="../../index.html" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i><span>Back</span>
+        </a>
 
-            <div class="watchlistList">
-                <div class="sectionHeader">
-                    <h2 class="sectionHeading">Watched & Rated</h2>
-                    <span class="sectionLine"></span>
+        <section>
+            <div class="sponsor-tabs">
+                <button class="tab-link active" onclick="setSponsorTab('circles', this)">Movie Circles</button>
+                <span class="tab-divider">|</span>
+                <button class="tab-link" onclick="setSponsorTab('tiers', this)">Movie Tiers</button>
+            </div>
+
+            <div id="view-circles" class="view-content active">
+                <div class="circles-cluster-container">
+                    <div id="circles-inner-scale-box" class="circles-inner-scale-box"></div>
                 </div>
+            </div>
 
-                <div class="sponsor-tabs">
-                    <button class="tab-link active" onclick="setSponsorTab('circles')">Movie Circles</button>
-                    <span class="tab-divider">|</span>
-                    <button class="tab-link" onclick="setSponsorTab('tiers')">Movie Tiers</button>
-                </div>
-
-                <div id="view-circles" class="view-content active">
-                    <div class="circles-cluster-wrapper">
-                        <div id="circles-cluster-container" class="circles-cluster-container">
-                            <div id="circles-inner-scale-box" class="circles-inner-scale-box"></div>
-                        </div>
+            <div id="view-tiers" class="view-content">
+                <div class="tiers-grid-container">
+                    <div class="tier-block">
+                        <h3 class="tier-block-title">Loved It (9.0+)</h3>
+                        <div id="tier-loved" class="tier-block-items"></div>
+                    </div>
+                    <div class="tier-block">
+                        <h3 class="tier-block-title">Liked It (7.5 - 8.9)</h3>
+                        <div id="tier-liked" class="tier-block-items"></div>
+                    </div>
+                    <div class="tier-block">
+                        <h3 class="tier-block-title">Meh / Average (5.5 - 7.4)</h3>
+                        <div id="tier-meh" class="tier-block-items"></div>
+                    </div>
+                    <div class="tier-block">
+                        <h3 class="tier-block-title">Disliked It (4.0 - 5.4)</h3>
+                        <div id="tier-disliked" class="tier-block-items"></div>
+                    </div>
+                    <div class="tier-block">
+                        <h3 class="tier-block-title">Trash / Avoid (< 4.0)</h3>
+                        <div id="tier-trash" class="tier-block-items"></div>
                     </div>
                 </div>
+            </div>
 
-                <div id="view-tiers" class="view-content">
-                    <div class="tiers-grid-container">
-                        <div class="tier-block">
-                            <h3 class="tier-block-title">Loved It (9.0+)</h3>
-                            <div id="tier-loved" class="tier-block-items"></div>
-                        </div>
-                        <div class="tier-block">
-                            <h3 class="tier-block-title">Liked It (7.5 - 8.9)</h3>
-                            <div id="tier-liked" class="tier-block-items"></div>
-                        </div>
-                        <div class="tier-block">
-                            <h3 class="tier-block-title">Meh / Average (5.5 - 7.4)</h3>
-                            <div id="tier-meh" class="tier-block-items"></div>
-                        </div>
-                        <div class="tier-block">
-                            <h3 class="tier-block-title">Disliked It (4.0 - 5.4)</h3>
-                            <div id="tier-disliked" class="tier-block-items"></div>
-                        </div>
-                        <div class="tier-block">
-                            <h3 class="tier-block-title">Trash / Avoid (< 4.0)</h3>
-                            <div id="tier-trash" class="tier-block-items"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="movies-data-input" style="display: none;">
-                    <div class="movie-entry" data-tmdb-id="157336" data-my-rating="9.8"></div>
-                    <div class="movie-entry" data-tmdb-id="550" data-my-rating="9.5"></div>
-                    <div class="movie-entry" data-tmdb-id="27205" data-my-rating="9.1"></div>
-                    <div class="movie-entry" data-tmdb-id="155" data-my-rating="9.4"></div>
-                    <div class="movie-entry" data-tmdb-id="129" data-my-rating="8.9"></div>
-                    <div class="movie-entry" data-tmdb-id="496243" data-my-rating="8.5"></div>
-                    <div class="movie-entry" data-tmdb-id="244786" data-my-rating="8.2"></div>
-                    <div class="movie-entry" data-tmdb-id="11324" data-my-rating="7.8"></div>
-                    <div class="movie-entry" data-tmdb-id="546554" data-my-rating="7.4"></div>
-                    <div class="movie-entry" data-tmdb-id="284053" data-my-rating="7.0"></div>
-                    <div class="movie-entry" data-tmdb-id="335983" data-my-rating="6.5"></div>
-                    <div class="movie-entry" data-tmdb-id="415" data-my-rating="4.8"></div>
-                    <div class="movie-entry" data-tmdb-id="14164" data-my-rating="3.5"></div>
-                </div>
-
+            <div id="movies-data-input" style="display: none;">
+                <div class="movie-entry" data-tmdb-id="157336" data-my-rating="9.8"></div>
+                <div class="movie-entry" data-tmdb-id="550" data-my-rating="9.5"></div>
+                <div class="movie-entry" data-tmdb-id="27205" data-my-rating="9.1"></div>
+                <div class="movie-entry" data-tmdb-id="155" data-my-rating="9.4"></div>
+                <div class="movie-entry" data-tmdb-id="129" data-my-rating="8.9"></div>
+                <div class="movie-entry" data-tmdb-id="496243" data-my-rating="8.5"></div>
+                <div class="movie-entry" data-tmdb-id="244786" data-my-rating="8.2"></div>
+                <div class="movie-entry" data-tmdb-id="11324" data-my-rating="7.8"></div>
+                <div class="movie-entry" data-tmdb-id="546554" data-my-rating="7.4"></div>
+                <div class="movie-entry" data-tmdb-id="284053" data-my-rating="7.0"></div>
+                <div class="movie-entry" data-tmdb-id="335983" data-my-rating="6.5"></div>
+                <div class="movie-entry" data-tmdb-id="415" data-my-rating="4.8"></div>
+                <div class="movie-entry" data-tmdb-id="14164" data-my-rating="3.5"></div>
             </div>
         </section>
     </main>
@@ -377,25 +273,19 @@
         let fetchedMovies = [];
         let activeTab = 'circles';
 
-        function setSponsorTab(tabName) {
-            activeTab = tabName;
-            document.querySelectorAll('.tab-link').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.view-content').forEach(view => view.classList.remove('active'));
-
-            document.querySelector(`[onclick="setSponsorTab('${tabName}')"]`).classList.add('active');
-            document.getElementById(`view-${tabName}`).classList.add('active');
-
-            if (tabName === 'circles') renderCirclesCluster();
-            else renderTiersGrid();
+        function setSponsorTab(name, btn) {
+            activeTab = name;
+            document.querySelectorAll('.tab-link').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.view-content').forEach(v => v.classList.toggle('active', v.id === `view-${name}`));
+            requestAnimationFrame(() => {
+                name === 'circles' ? renderCirclesCluster() : renderTiersGrid();
+            });
         }
 
-        function getCircleRadius(rating) {
-            const r = parseFloat(rating);
-            if (r >= 9.0) return 56;
-            if (r >= 7.5) return 44;
-            if (r >= 5.5) return 34;
-            if (r >= 4.0) return 26;
-            return 18;
+        function getCircleRadius(r) {
+            const v = parseFloat(r);
+            return v >= 9 ? 56 : v >= 7.5 ? 44 : v >= 5.5 ? 34 : v >= 4 ? 26 : 18;
         }
 
         function createMovieCircleEl(movie) {
@@ -416,7 +306,7 @@
 
         function packCirclesFlat(movies, width, height) {
             const nodes = movies.map(movie => ({
-                movie: movie,
+                movie,
                 r: getCircleRadius(movie.myRating) + 3,
                 x: 0,
                 y: 0
@@ -427,30 +317,16 @@
             const cy = height / 2;
 
             for (let node of nodes) {
-                let angle = 0;
-                let distance = 0;
-                let foundSpot = false;
-
-                while (!foundSpot) {
+                let angle = 0, distance = 0;
+                while (true) {
                     const x = cx + distance * Math.cos(angle);
                     const y = cy + distance * Math.sin(angle);
-
-                    let overlap = false;
-                    for (let other of placed) {
-                        const d = Math.hypot(x - other.x, y - other.y);
-                        if (d < node.r + other.r) {
-                            overlap = true;
-                            break;
-                        }
-                    }
-
-                    if (!overlap) {
+                    if (!placed.some(o => Math.hypot(x - o.x, y - o.y) < node.r + o.r)) {
                         node.x = x;
                         node.y = y;
                         placed.push(node);
-                        foundSpot = true;
+                        break;
                     }
-
                     angle += 0.15;
                     distance += 0.5;
                 }
@@ -459,10 +335,9 @@
         }
 
         function initMoviesPlaceholder() {
-            const movieEntries = document.querySelectorAll(".movie-entry");
-            fetchedMovies = Array.from(movieEntries).map(entry => ({
-                id: entry.getAttribute("data-tmdb-id"),
-                myRating: parseFloat(entry.getAttribute("data-my-rating")),
+            fetchedMovies = Array.from(document.querySelectorAll(".movie-entry")).map(e => ({
+                id: e.dataset.tmdbId,
+                myRating: parseFloat(e.dataset.myRating),
                 title: "Loading...",
                 year: "",
                 posterUrl: "",
@@ -478,43 +353,27 @@
                 try {
                     const res = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=${API_KEY}&language=en-US`);
                     if (!res.ok) throw new Error();
-                    const data = await res.json();
+                    const d = await res.json();
 
-                    movie.title = data.title;
-                    movie.year = data.release_date ? data.release_date.split("-")[0] : "N/A";
-                    movie.posterUrl = data.poster_path ? `https://image.tmdb.org/t/p/w300${data.poster_path}` : 'https://via.placeholder.com/300x450?text=No+Poster';
+                    movie.title = d.title;
+                    movie.year = d.release_date ? d.release_date.split("-")[0] : "N/A";
+                    movie.posterUrl = d.poster_path ? `https://image.tmdb.org/t/p/w300${d.poster_path}` : '';
                     movie.loaded = true;
 
                     document.querySelectorAll(`[data-id="${movie.id}"]`).forEach(el => {
-                        const img = new Image();
-                        img.src = movie.posterUrl;
-                        img.onload = () => {
-                            el.style.backgroundImage = `url('${movie.posterUrl}')`;
-                            el.classList.add("loaded");
-                            bindTooltip(el, movie);
-                        };
+                        el.style.backgroundImage = `url('${movie.posterUrl}')`;
+                        el.classList.add("loaded");
+                        bindTooltip(el, movie);
                     });
-                } catch (e) {
-                    document.querySelectorAll(`[data-id="${movie.id}"]`).forEach(el => {
-                        el.style.backgroundColor = "#27272a";
-                    });
-                }
+                } catch (e) {}
             });
         }
 
-        // Wait for fonts to be ready before packing/rendering
-        function handleClusterLayout() {
-            if (activeTab === 'circles') renderCirclesCluster();
-        }
-
         function renderCirclesCluster() {
-            const container = document.getElementById("circles-cluster-container");
-            const innerBox = document.getElementById("circles-inner-scale-box");
-            innerBox.innerHTML = "";
-
-            const width = container.clientWidth || 700;
-            const height = container.clientHeight || 480;
-
+            const container = document.getElementById("circles-inner-scale-box");
+            container.innerHTML = "";
+            const width = container.parentElement.clientWidth || 700;
+            const height = container.parentElement.clientHeight || 450;
             const packed = packCirclesFlat(fetchedMovies, width, height);
             let maxDistance = 0;
 
@@ -522,15 +381,14 @@
                 const item = createMovieCircleEl(node.movie);
                 item.style.left = `${node.x - (node.r - 3)}px`;
                 item.style.top = `${node.y - (node.r - 3)}px`;
-                innerBox.appendChild(item);
-
+                container.appendChild(item);
                 const dist = Math.hypot(node.x - width / 2, node.y - height / 2) + node.r;
                 if (dist > maxDistance) maxDistance = dist;
             });
 
             if (packed.length > 0) {
                 const scale = Math.min((width - 20) / (maxDistance * 2), (height - 20) / (maxDistance * 2), 1);
-                innerBox.style.transform = `translate(-50%, -50%) scale(${scale})`;
+                container.style.transform = `translate(-50%, -50%) scale(${scale})`;
             }
         }
 
@@ -542,61 +400,42 @@
                 { min: 4.0, el: document.getElementById("tier-disliked") },
                 { min: 0.0, el: document.getElementById("tier-trash") }
             ];
-
             tiers.forEach(t => t.el.innerHTML = "");
-
             fetchedMovies.forEach(movie => {
-                const item = createMovieCircleEl(movie);
                 const target = tiers.find(t => movie.myRating >= t.min);
-                if (target) target.el.appendChild(item);
+                if (target) target.el.appendChild(createMovieCircleEl(movie));
             });
         }
 
         function bindTooltip(element, movie) {
-            if (!movie.loaded) return;
             const tooltip = document.getElementById("flat-tooltip");
-
-            const onIn = (e) => {
-                tooltip.innerHTML = `${movie.title} (${movie.year}) <span class="tooltip-rating-badge">My Rating: ${movie.myRating}</span>`;
+            const toggle = (show) => {
+                if (!show) {
+                    tooltip.style.opacity = "0";
+                    return;
+                }
+                tooltip.innerHTML = `${movie.title} (${movie.year}) <span class="tooltip-rating-badge">${movie.myRating}</span>`;
                 tooltip.style.opacity = "1";
-                onMove(e);
+                const r = element.getBoundingClientRect();
+                let x = r.left + (r.width - tooltip.offsetWidth) / 2;
+                x = Math.max(10, Math.min(x, window.innerWidth - tooltip.offsetWidth - 10));
+                tooltip.style.left = `${x}px`;
+                tooltip.style.top = `${r.top - tooltip.offsetHeight - 8}px`;
             };
 
-            const onMove = (e) => {
-                const tw = tooltip.offsetWidth || 220;
-                const th = tooltip.offsetHeight || 40;
-
-                let px = e.clientX + 12;
-                let py = e.clientY + 12;
-
-                if (px + tw > window.innerWidth - 10) {
-                    px = e.clientX - tw - 12;
-                }
-                if (py + th > window.innerHeight - 10) {
-                    py = e.clientY - th - 12;
-                }
-
-                tooltip.style.left = `${Math.max(10, px)}px`;
-                tooltip.style.top = `${Math.max(10, py)}px`;
-            };
-
-            const onOut = () => {
-                tooltip.style.opacity = "0";
-            };
-
-            element.addEventListener("mouseenter", onIn);
-            element.addEventListener("mousemove", onMove);
-            element.addEventListener("mouseleave", onOut);
-
-            element.addEventListener("touchstart", (e) => onIn(e.touches[0]));
-            element.addEventListener("touchend", onOut);
+            element.addEventListener("mouseenter", () => toggle(true));
+            element.addEventListener("mouseleave", () => toggle(false));
+            element.addEventListener("touchstart", () => toggle(true), { passive: true });
+            element.addEventListener("touchend", () => toggle(false));
         }
 
         window.addEventListener("scroll", () => {
             document.getElementById("flat-tooltip").style.opacity = "0";
         });
 
-        window.addEventListener("resize", handleClusterLayout);
+        window.addEventListener("resize", () => {
+            if (activeTab === 'circles') renderCirclesCluster();
+        });
 
         document.addEventListener("DOMContentLoaded", initMoviesPlaceholder);
     </script>
