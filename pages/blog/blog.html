@@ -109,6 +109,8 @@
             padding: 24px 0;
             border-bottom: 1px solid #18181b;
             gap: 20px;
+            text-decoration: none;
+            color: inherit;
         }
 
         .blogPost:last-of-type {
@@ -121,17 +123,16 @@
             gap: 6px;
         }
 
-        .postLink {
+        .postTitle {
             font-family: "Inter", Arial, Helvetica, sans-serif;
             color: #ffffff;
-            text-decoration: none;
             font-size: 1.15rem;
             font-weight: 550;
             line-height: 1.4;
             transition: color 0.25s ease;
         }
 
-        .postLink:hover {
+        .blogPost:hover .postTitle {
             color: #b0b0b0;
         }
 
@@ -150,7 +151,6 @@
             border: 1px solid #18181b;
             background-color: transparent;
             color: #b0b0b0;
-            text-decoration: none;
             transition: all 0.25s ease;
             flex-shrink: 0;
         }
@@ -161,7 +161,7 @@
             stroke: currentColor;
         }
 
-        .postActionBtn:hover {
+        .blogPost:hover .postActionBtn {
             border-color: rgba(255, 255, 255, 0.15);
             color: #ffffff;
         }
@@ -209,7 +209,7 @@
                 gap: 8px;
             }
 
-            .postLink {
+            .postTitle {
                 font-size: 1.25rem;
             }
 
@@ -245,7 +245,7 @@
                 padding: 18px 0;
             }
 
-            .postLink {
+            .postTitle {
                 font-size: 1.05rem;
             }
 
@@ -281,65 +281,57 @@
                     <span class="sectionLine"></span>
                 </div>
 
-                <article class="blogPost">
+                <a class="blogPost" href="article/nubcc-cp-bootcamp-certificate.html">
                     <div class="postLeft">
-                        <a class="postLink" href="article/nubcc-cp-bootcamp-certificate.html">
-                            NUBCC CP Bootcamp Certificate 
-                        </a>
+                        <span class="postTitle">NUBCC CP Bootcamp Certificate</span>
                         <span class="postDate">August 13, 2026</span>
                     </div>
-                    <a class="postActionBtn" href="article/nubcc-cp-bootcamp-certificate.html" title="Read Post">
+                    <div class="postActionBtn" title="Read Post">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M15 10l5 5-5 5"/>
                             <path d="M4 4v7a4 4 0 0 0 4 4h12"/>
                         </svg>
-                    </a>
-                </article>
+                    </div>
+                </a>
 
-                <article class="blogPost">
+                <a class="blogPost" href="article/nub-shohoj-coding-cp-bootcamp.html">
                     <div class="postLeft">
-                        <a class="postLink" href="article/nub-shohoj-coding-cp-bootcamp.html">
-                            Shohoj Coding CP Bootcamp (NUB) 
-                        </a>
+                        <span class="postTitle">Shohoj Coding CP Bootcamp (NUB)</span>
                         <span class="postDate">August 6, 2026</span>
                     </div>
-                    <a class="postActionBtn" href="article/nub-shohoj-coding-cp-bootcamp.html" title="Read Post">
+                    <div class="postActionBtn" title="Read Post">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M15 10l5 5-5 5"/>
                             <path d="M4 4v7a4 4 0 0 0 4 4h12"/>
                         </svg>
-                    </a>
-                </article>
+                    </div>
+                </a>
                 
-                <article class="blogPost">
+                <a class="blogPost" href="article/cse-presentation-experience.html">
                     <div class="postLeft">
-                        <a class="postLink" href="article/cse-presentation-experience.html">
-                            My CSE Presentation Experience
-                        </a>
+                        <span class="postTitle">My CSE Presentation Experience</span>
                         <span class="postDate">July 17, 2026</span>
                     </div>
-                    <a class="postActionBtn" href="article/cse-presentation-experience.html" title="Read Post">
+                    <div class="postActionBtn" title="Read Post">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M15 10l5 5-5 5"/>
                             <path d="M4 4v7a4 4 0 0 0 4 4h12"/>
                         </svg>
-                    </a>
-                </article>
+                    </div>
+                </a>
             
-                <article class="blogPost">
+                <a class="blogPost" href="article/first-programing-contest.html">
                     <div class="postLeft">
-                        <a class="postLink" href="article/first-programing-contest.html">
-                            First Programming Contest Experience
-                        </a>
+                        <span class="postTitle">First Programming Contest Experience</span>
                         <span class="postDate">July 10, 2026</span>
                     </div>
-                    <a class="postActionBtn" href="article/first-programing-contest.html" title="Read Post">
+                    <div class="postActionBtn" title="Read Post">
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M15 10l5 5-5 5"/>
                             <path d="M4 4v7a4 4 0 0 0 4 4h12"/>
                         </svg>
-                    </a>
-                </article>
+                    </div>
+                </a>
             </div>
         </section>
     </main>

@@ -500,22 +500,13 @@
                             <div class="marquee-item"><i class="fa-brands fa-git-alt"></i> Git</div>
                             <div class="marquee-item"><i class="fa-solid fa-terminal"></i> VS Code</div>
                         </div>
-                        <div class="marquee-track" aria-hidden="true">
-                            <div class="marquee-item"><i class="fa-solid fa-code"></i> C++</div>
-                            <div class="marquee-item"><i class="fa-brands fa-python"></i> Python</div>
-                            <div class="marquee-item"><i class="fa-brands fa-html5"></i> HTML5</div>
-                            <div class="marquee-item"><i class="fa-brands fa-css3-alt"></i> CSS3</div>
-                            <div class="marquee-item"><i class="fa-brands fa-js"></i> JavaScript</div>
-                            <div class="marquee-item"><i class="fa-brands fa-git-alt"></i> Git</div>
-                            <div class="marquee-item"><i class="fa-solid fa-terminal"></i> VS Code</div>
-                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="achievement-list">
                 <div class="achievement-item">
-                    <div class="certificate-thumb-wrapper src-trigger" onclick="showLightbox('images/nubcc-cp-bootcamp-certificate.webp', this)">
+                    <div class="certificate-thumb-wrapper src-trigger" onclick="showLightbox(this)">
                         <img src="images/nubcc-cp-bootcamp-certificate.webp" alt="No Image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <i class="fa-solid fa-award fallback-icon" style="display: none;"></i>
                         <div class="zoom-overlay">
@@ -548,9 +539,10 @@
         const modal = document.getElementById("lightboxModal");
         const modalImg = document.getElementById("lightboxImg");
 
-        function showLightbox(src, el) {
-            if (el.querySelector("img").style.display !== "none") {
-                modalImg.src = src;
+        function showLightbox(el) {
+            const img = el.querySelector("img");
+            if (img && img.style.display !== "none") {
+                modalImg.src = img.src;
                 modal.classList.add("active");
                 document.body.style.overflow = "hidden";
             }
@@ -563,6 +555,13 @@
         }
 
         document.addEventListener("keydown", (e) => e.key === "Escape" && closeModal());
+
+        const track = document.querySelector(".marquee-track");
+        if (track) {
+            const clone = track.cloneNode(true);
+            clone.setAttribute("aria-hidden", "true");
+            track.parentNode.appendChild(clone);
+        }
     </script>
 </body>
 
