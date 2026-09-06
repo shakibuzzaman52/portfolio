@@ -23,7 +23,6 @@
             text-decoration: none;
             opacity: 0;
             pointer-events: none;
-            transition: 0.3s ease;
             z-index: 9999;
         }
         .backToTop:hover { color: #fff; background: #18181b; border-radius: 50%; } 
