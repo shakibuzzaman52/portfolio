@@ -22,6 +22,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -49,7 +50,6 @@
             text-decoration: none;
             margin-bottom: 30px;
             transition: color 0.25s ease;
-            -webkit-tap-highlight-color: transparent;
             outline: none;
         }
 
@@ -75,6 +75,7 @@
             cursor: pointer;
             transition: color 0.15s ease;
             font-family: inherit;
+            outline: none;
         }
 
         .tab-link.active {
@@ -150,6 +151,9 @@
             opacity: 0.85;
             transition: border-color 0.15s ease, opacity 0.3s ease;
             position: absolute;
+            outline: none;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         .movie-circle-item.loaded {
@@ -247,22 +251,6 @@
                     </div>
                 </div>
             </div>
-
-            <div id="movies-data-input" style="display: none;">
-                <div class="movie-entry" data-tmdb-id="157336" data-my-rating="9.8"></div>
-                <div class="movie-entry" data-tmdb-id="550" data-my-rating="9.5"></div>
-                <div class="movie-entry" data-tmdb-id="27205" data-my-rating="9.1"></div>
-                <div class="movie-entry" data-tmdb-id="155" data-my-rating="9.4"></div>
-                <div class="movie-entry" data-tmdb-id="129" data-my-rating="8.9"></div>
-                <div class="movie-entry" data-tmdb-id="496243" data-my-rating="8.5"></div>
-                <div class="movie-entry" data-tmdb-id="244786" data-my-rating="8.2"></div>
-                <div class="movie-entry" data-tmdb-id="11324" data-my-rating="7.8"></div>
-                <div class="movie-entry" data-tmdb-id="546554" data-my-rating="7.4"></div>
-                <div class="movie-entry" data-tmdb-id="284053" data-my-rating="7.0"></div>
-                <div class="movie-entry" data-tmdb-id="335983" data-my-rating="6.5"></div>
-                <div class="movie-entry" data-tmdb-id="415" data-my-rating="4.8"></div>
-                <div class="movie-entry" data-tmdb-id="14164" data-my-rating="3.5"></div>
-            </div>
         </section>
     </main>
 
@@ -272,6 +260,22 @@
         const API_KEY = "27af13baac123eb1faca1e068ccfb73d";
         let fetchedMovies = [];
         let activeTab = 'circles';
+
+        const moviesRawData = [
+            { id: 157336, rating: 9.8 },
+            { id: 550, rating: 9.5 },
+            { id: 27205, rating: 9.1 },
+            { id: 155, rating: 9.4 },
+            { id: 129, rating: 8.9 },
+            { id: 496243, rating: 8.5 },
+            { id: 244786, rating: 8.2 },
+            { id: 11324, rating: 7.8 },
+            { id: 546554, rating: 7.4 },
+            { id: 284053, rating: 7.0 },
+            { id: 335983, rating: 6.5 },
+            { id: 415, rating: 4.8 },
+            { id: 14164, rating: 3.5 }
+        ];
 
         function setSponsorTab(name, btn) {
             activeTab = name;
@@ -335,9 +339,9 @@
         }
 
         function initMoviesPlaceholder() {
-            fetchedMovies = Array.from(document.querySelectorAll(".movie-entry")).map(e => ({
-                id: e.dataset.tmdbId,
-                myRating: parseFloat(e.dataset.myRating),
+            fetchedMovies = moviesRawData.map(m => ({
+                id: m.id,
+                myRating: m.rating,
                 title: "Loading...",
                 year: "",
                 posterUrl: "",
