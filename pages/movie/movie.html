@@ -36,33 +36,25 @@
             overflow-x: hidden;
         }
 
-        .back-container {
-            width: 100%;
-            padding: 0 6%;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-        }
-
-        @media (min-width: 768px) {
-            .back-container {
-                padding: 0 3%;
-                margin-top: 30px;
-            }
-        }
-
         .back-link {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             color: #b0b0b0;
             text-decoration: none;
+            margin: 20px 0 0 6%;
             transition: color 0.25s ease;
             outline: none;
         }
 
         .back-link:hover {
             color: #ffffff;
+        }
+
+        @media (min-width: 768px) {
+            .back-link {
+                margin: 30px 0 0 3%;
+            }
         }
 
         main {
@@ -223,11 +215,9 @@
 </head>
 <body>
 
-    <div class="back-container">
-        <a href="../../index.html" class="back-link">
-            <i class="fa-solid fa-arrow-left"></i><span>Back</span>
-        </a>
-    </div>
+    <a href="../../index.html" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i><span>Back</span>
+    </a>
 
     <main>
         <section>
