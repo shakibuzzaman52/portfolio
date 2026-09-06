@@ -36,10 +36,19 @@
             overflow-x: hidden;
         }
 
-        main {
-            flex: 1;
-            width: min(700px, 80%);
-            margin: 40px auto 70px;
+        .back-container {
+            width: 100%;
+            padding: 0 6%;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .back-container {
+                padding: 0 3%;
+                margin-top: 30px;
+            }
         }
 
         .back-link {
@@ -48,13 +57,18 @@
             gap: 8px;
             color: #b0b0b0;
             text-decoration: none;
-            margin-bottom: 30px;
             transition: color 0.25s ease;
             outline: none;
         }
 
         .back-link:hover {
             color: #ffffff;
+        }
+
+        main {
+            flex: 1;
+            width: min(700px, 80%);
+            margin: 40px auto 70px;
         }
 
         .sponsor-tabs {
@@ -209,11 +223,13 @@
 </head>
 <body>
 
-    <main>
+    <div class="back-container">
         <a href="../../index.html" class="back-link">
             <i class="fa-solid fa-arrow-left"></i><span>Back</span>
         </a>
+    </div>
 
+    <main>
         <section>
             <div class="sponsor-tabs">
                 <button class="tab-link active" onclick="setSponsorTab('circles', this)">Movie Circles</button>
@@ -246,7 +262,7 @@
                         <div id="tier-disliked" class="tier-block-items"></div>
                     </div>
                     <div class="tier-block">
-                        <h3 class="tier-block-title">Trash / Avoid (< 4.0)</h3>
+                        <h3 class="tier-block-title">Trash / Avoid (&lt; 4.0)</h3>
                         <div id="tier-trash" class="tier-block-items"></div>
                     </div>
                 </div>
@@ -282,13 +298,10 @@
             document.querySelectorAll('.tab-link').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             document.querySelectorAll('.view-content').forEach(v => v.classList.toggle('active', v.id === `view-${name}`));
-            requestAnimationFrame(() => {
-                name === 'circles' ? renderCirclesCluster() : renderTiersGrid();
-            });
+            name === 'circles' ? renderCirclesCluster() : renderTiersGrid();
         }
 
-        function getCircleRadius(r) {
-            const v = parseFloat(r);
+        function getCircleRadius(v) {
             return v >= 9 ? 56 : v >= 7.5 ? 44 : v >= 5.5 ? 34 : v >= 4 ? 26 : 18;
         }
 
