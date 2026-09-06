@@ -298,10 +298,13 @@
             document.querySelectorAll('.tab-link').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             document.querySelectorAll('.view-content').forEach(v => v.classList.toggle('active', v.id === `view-${name}`));
-            name === 'circles' ? renderCirclesCluster() : renderTiersGrid();
+            requestAnimationFrame(() => {
+                name === 'circles' ? renderCirclesCluster() : renderTiersGrid();
+            });
         }
 
-        function getCircleRadius(v) {
+        function getCircleRadius(r) {
+            const v = parseFloat(r);
             return v >= 9 ? 56 : v >= 7.5 ? 44 : v >= 5.5 ? 34 : v >= 4 ? 26 : 18;
         }
 
