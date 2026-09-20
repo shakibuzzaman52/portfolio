@@ -144,7 +144,7 @@ if (!document.querySelector("header")) {
             <div class="right">
                 <ul>
                     <li>
-                        <a href="${pathPrefix}cv.pdf" class="cv-btn" target="_blank" title="Resume">
+                        <a href="${pathPrefix}pages/resume/shakibuzzaman_cv.webp" class="cv-btn" target="_blank" title="Resume">
                             Resume
                         </a>
                     </li>
