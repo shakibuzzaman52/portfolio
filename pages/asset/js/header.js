@@ -87,7 +87,7 @@ if (!document.querySelector("header")) {
         }  
         .right ul li a.cv-btn {
             color: #ffffff;
-            border: 1.5px solid #ffffff;
+            border: 1px solid #ffffff;
             padding: 4px 12px;
             border-radius: 50px;
             font-size: 0.82rem;
