@@ -91,7 +91,6 @@ if (!document.querySelector("header")) {
             padding: 4px 12px;
             border-radius: 50px;
             font-size: 0.82rem;
-            font-weight: 600;
             transition: background-color 0.2s ease, color 0.2s ease;
         }
         .right ul li a.cv-btn:hover {
