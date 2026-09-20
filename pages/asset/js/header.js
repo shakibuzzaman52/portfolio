@@ -99,11 +99,28 @@ if (!document.querySelector("header")) {
             text-decoration: none;
             white-space: nowrap;
             line-height: 1.2;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
             transition: background-color 0.25s ease, color 0.25s ease;
         }
-        .right ul li a.cv-btn:hover {
+        .right ul li a.cv-btn:hover,
+        .right ul li a.cv-btn:active {
             background-color: #ffffff;
             color: #000000 !important;
+        }
+        .right ul li a.cv-btn:focus:not(:hover) {
+            background-color: transparent;
+            color: #ffffff !important;
+        }
+        @media (hover: none) {
+            .right ul li a.cv-btn:hover {
+                background-color: transparent;
+                color: #ffffff !important;
+            }
+            .right ul li a.cv-btn:active {
+                background-color: #ffffff;
+                color: #000000 !important;
+            }
         }
         @media (min-width: 768px) {  
             nav {  
