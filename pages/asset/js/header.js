@@ -92,11 +92,18 @@ if (!document.querySelector("header")) {
             border-radius: 50px;
             font-size: 0.82rem;
             font-weight: 600;
+            -webkit-tap-highlight-color: transparent;
             transition: background-color 0.2s ease, color 0.2s ease;
         }
-        .right ul li a.cv-btn:hover {
+        .right ul li a.cv-btn:active {
             background-color: #ffffff;
             color: #000000;
+        }
+        @media (hover: hover) {
+            .right ul li a.cv-btn:hover {
+                background-color: #ffffff;
+                color: #000000;
+            }
         }
         @media (min-width: 768px) {  
             nav {  
