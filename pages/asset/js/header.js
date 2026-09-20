@@ -86,8 +86,9 @@ if (!document.querySelector("header")) {
             display: none;  
         }  
         .right ul li a.cv-btn {
-            background-color: #ffffff;
-            color: #111111 !important;
+            background-color: transparent;
+            color: #ffffff !important;
+            border: 1.5px solid #ffffff;
             padding: 5px 14px;
             border-radius: 50px;
             font-size: 0.82rem;
@@ -98,13 +99,11 @@ if (!document.querySelector("header")) {
             text-decoration: none;
             white-space: nowrap;
             line-height: 1.2;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-            transition: background-color 0.25s ease, box-shadow 0.25s ease;
+            transition: background-color 0.25s ease, color 0.25s ease;
         }
         .right ul li a.cv-btn:hover {
-            background-color: #e5e5e5;
+            background-color: #ffffff;
             color: #000000 !important;
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
         }
         @media (min-width: 768px) {  
             nav {  
